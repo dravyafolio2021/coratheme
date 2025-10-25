@@ -19,7 +19,7 @@
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <h2 class="cora-science-healing__heading">
+        <h2 class="cora-science-healing__heading ">
           {{
             section.settings.heading
             | replace: '[highlight]', '<span class="highlight">'
@@ -73,7 +73,7 @@
       "type": "text",
       "id": "heading",
       "label": "Main Heading",
-      "default": "[highlight]Science-Backed[/highlight] Healing"
+      "default": " [highlight]Science-Backed[/highlight] Healing"
     },
     {
       "type": "richtext",
@@ -102,106 +102,4 @@
 }
 {% endschema %}
 
-{% comment %}
-  <section id="cora-science-backed" class="cora-science-backed" role="region" aria-label="Science-Backed Healing">
-    <div class="cora-science-backed__inner container">
-      <div class="cora-science-backed__image-wrap">
-        {% if section.settings.image %}
-          <img
-            src="{{ section.settings.image | img_url: 'master' }}"
-            alt="{{ section.settings.image_alt | escape }}"
-            class="cora-science-backed__image"
-            loading="lazy"
-          >
-        {% endif %}
-      </div>
-
-      <div class="cora-science-backed__content">
-        {% if section.settings.subheading != blank %}
-          <p class="cora-science-backed__subheading">{{ section.settings.subheading }}</p>
-        {% endif %}
-
-        {% if section.settings.heading != blank %}
-          <h2 class="cora-science-backed__heading">
-            {{
-              section.settings.heading
-              | replace: '[highlight]', '<span class="highlight">'
-              | replace: '[/highlight]', '</span>'
-            }}
-          </h2>
-        {% endif %}
-
-        {% if section.settings.description != blank %}
-          <div class="cora-science-backed__description">
-            {{ section.settings.description }}
-          </div>
-        {% endif %}
-
-        {% if section.settings.cta_label != blank %}
-          <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
-            {{ section.settings.cta_label }}
-            <span class="arrow">→</span>
-          </a>
-        {% endif %}
-      </div>
-    </div>
-  </section>
-
-
-  {{ 'cora-science-backed.css' | asset_url | stylesheet_tag }}
-
-
-  {% schema %}
-  {
-    "name": "Cora Science-Backed",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Left Side Image"
-      },
-      {
-        "type": "text",
-        "id": "image_alt",
-        "label": "Image Alt Text",
-        "default": "Red light therapy device close-up"
-      },
-      {
-        "type": "text",
-        "id": "subheading",
-        "label": "Subheading",
-        "default": "WHAT IS RED LIGHT THERAPY?"
-      },
-      {
-        "type": "text",
-        "id": "heading",
-        "label": "Main Heading",
-        "default": "[highlight]Science-Backed[/highlight] Healing"
-      },
-      {
-        "type": "richtext",
-        "id": "description",
-        "label": "Description",
-        "default": "<p>Light therapy is a powerful, science-backed treatment that uses specific wavelengths of red and near-infrared light to activate your body’s natural healing response.</p><p>When absorbed into the body, these wavelengths energize the mitochondria—the powerhouses of your cells—boosting cellular function, improving blood flow, and helping your body repair itself faster.</p>"
-      },
-      {
-        "type": "text",
-        "id": "cta_label",
-        "label": "Button Label",
-        "default": "BUY NOW"
-      },
-      {
-        "type": "url",
-        "id": "cta_url",
-        "label": "Button Link"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Cora Science-Backed Healing",
-        "category": "Cora Custom Sections"
-      }
-    ]
-  }
-  {% endschema %}
-{% endcomment %}
+ 

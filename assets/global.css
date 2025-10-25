@@ -180,7 +180,7 @@ body, p, li, span {
 }
 
 .btn--primary {
-  background: var(--gradient-primary);
+  background: var(--gradient-one);
   color: var(--color-inverse);
   box-shadow: 0 8px 20px rgba(95, 78, 207, 0.25);
 }

@@ -10,9 +10,9 @@ The project demonstrates a systematic, scalable, and token-driven approach to th
 To help visualize design accuracy and responsiveness, we’ve included a short preview and comparison video.  
 This demonstrates the final implementation against the provided Figma design.
 
-🎬 **Video Reference:** [`PreviewCompareVideo.mp4`](./PreviewCompareVideo.mp4)
-<video width="100%" controls poster="./assets/video-poster.png">
-  <source src="./PreviewCompareVideo.mp4" type="video/mp4">
+🎬 **Video Reference:** [`PreviewCompareVideo.mp4`](./assets/PreviewCompareVideo.mp4)
+<video width="100%" controls >
+  <source src="./assets/PreviewCompareVideo.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 

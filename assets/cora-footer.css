@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .cora-footer {
-  background: #1e1a3a;
+  background: var(--color-purple);
   color: #fff;
   font-family: var(--font-family-body, "Product Sans", sans-serif);
   padding: var(--space-5xl) var(--space-lg) var(--space-2xl);

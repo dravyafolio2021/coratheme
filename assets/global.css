@@ -23,6 +23,7 @@
   --line-relaxed: 1.8;
   /* Primary Brand */
   --color-primary: #5f4ecf;
+  --color-purple: #282460;
   --color-primary-light: #a68fef;
   --color-primary-dark: #2d2461;
 
@@ -42,7 +43,7 @@
   --color-bg-card: rgba(255, 255, 255, 0.9);
 
   /* Borders & Shadows */
-  --color-border: #e5e5e9;
+  --color-border: #e5e5e9; 
   --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 25px 40px rgba(0, 0, 0, 0.12);
@@ -111,6 +112,7 @@
   --space-xl: 48px;
   --space-2xl: 64px;
   --space-3xl: 96px;
+  --space-4xl: 120px;
 }
 
 /* -------------------------------
@@ -147,7 +149,8 @@ h4,
 h5,
 h6 {
   color: var(--color-heading);
-  font-family: var(--font-family-heading);
+  /* font-family: var(--font-family-heading); */
+  font-family: Helvetica Neue;
   margin: 0;
   line-height: var(--line-snug);
 }

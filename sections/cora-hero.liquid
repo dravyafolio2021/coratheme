@@ -58,13 +58,12 @@
       <!-- Hero Content -->
       <div class="cora-hero__content-stack">
         <h1 class="cora-hero__heading">
-          {{
-            section.settings.heading
-            
-          }}
+          {{ section.settings.heading }}
         </h1>
-{% comment %} | replace: '[highlight]', '<span class="highlight">'
-            | replace: '[/highlight]', '</span>' {% endcomment %}
+        {% comment %}
+          | replace: '[highlight]', '<span class="highlight">'
+          | replace: '[/highlight]', '</span>'
+        {% endcomment %}
         <div class="cora-hero__description-group">
           <p class="cora-hero__description">{{ section.settings.description }}</p>
 

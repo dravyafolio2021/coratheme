@@ -1,6 +1,5 @@
 <section id="cora-product-info" class="cora-product-info" role="region" aria-label="Product Overview">
   <div class="cora-product-info__inner container">
-
     <!-- Text Block (Subheading + Heading + Description + CTA) -->
     <div class="cora-product-info__text-block">
       {% if section.settings.subheading != blank %}
@@ -29,7 +28,7 @@
         <div class="cora-product-info__cta-wrap">
           <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
             {{ section.settings.cta_label }}
-            <span class="arrow">      {% render 'icon-chevron' %}</span>
+            <span class="arrow"> {% render 'icon-chevron' %}</span>
           </a>
         </div>
       {% endif %}
@@ -47,6 +46,14 @@
           height="100%"
         >
       </div>
+      {% if section.settings.cta_label != blank %}
+        <div class="cora-product-info__cta-wrap_mobile">
+          <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
+            {{ section.settings.cta_label }}
+            <span class="arrow"> {% render 'icon-chevron' %}</span>
+          </a>
+        </div>
+      {% endif %}
     {% endif %}
   </div>
 </section>

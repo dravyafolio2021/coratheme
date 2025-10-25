@@ -1,11 +1,7 @@
-/* ==========================================================================
-   Cora Product Info Section (Professional Gap-Based Layout)
-   ========================================================================== */
-
 .cora-product-info {
   width: 100%;
-   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: var(--space-3xl) var(--space-md);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: var(--space-4xl) var(--space-md);
 }
 
 .cora-product-info__inner {
@@ -31,7 +27,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: var(--font-weight-semibold);
-  color: #A9A7BF;
+  color: #a9a7bf;
   margin-bottom: 0;
 }
 
@@ -48,23 +44,22 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-heading);
   line-height: var(--line-snug);
-  word-break: keep-all;       /* Prevent random mid-word breaks */
+  word-break: keep-all; /* Prevent random mid-word breaks */
   white-space: normal;
   margin-bottom: 0;
 }
 
 .cora-product-info__heading .highlight {
   display: inline;
-  background: var(--gradient-one);              /* Use your global gradient */
-  -webkit-background-clip: text;                /* Clip gradient to text */
-  -webkit-text-fill-color: transparent;         /* Make gradient visible */
+  background: var(--gradient-one); /* Use your global gradient */
+  -webkit-background-clip: text; /* Clip gradient to text */
+  -webkit-text-fill-color: transparent; /* Make gradient visible */
   background-clip: text;
-  color: transparent;                           /* Hide solid color */
+  color: transparent; /* Hide solid color */
   line-height: inherit;
   font-weight: inherit;
-  white-space: normal;             /* Prevent accidental line breaks */
+  white-space: normal; /* Prevent accidental line breaks */
 }
-
 
 .cora-product-info__description {
   font-size: var(--text-lg);
@@ -78,7 +73,10 @@
   display: flex;
   justify-content: center;
 }
-
+.cora-product-info__cta-wrap_mobile {
+  display: none;
+  justify-content: center;
+}
 .cora-btn {
   display: inline-flex;
   align-items: center;
@@ -105,7 +103,8 @@
 .cora-btn .arrow {
   margin-left: 8px;
   transition: transform 0.3s ease;
-  color: white;}
+  color: white;
+}
 
 .cora-btn:hover .arrow {
   transform: translateX(4px);
@@ -131,7 +130,7 @@
 
 @media (max-width: 1024px) {
   .cora-product-info {
-    padding: var(--space-2xl) var(--space-md);
+    padding: var(--space-3xl) var(--space-xs);
   }
 
   .cora-product-info__inner {
@@ -149,11 +148,21 @@
 
 @media (max-width: 600px) {
   .cora-product-info {
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-3xl) var(--space-xs);
   }
+.cora-product-info__cta-wrap {
+  display: none;
+  justify-content: center;
+}
+.cora-product-info__cta-wrap_mobile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
+}
   .cora-product-info__inner {
     gap: var(--space-lg);
+    padding: 0;
   }
 
   .cora-product-info__heading {
@@ -167,6 +176,10 @@
 
   .cora-btn {
     width: 100%;
-    max-width: 280px;
-  }
+    max-width: 360px;   background-color: var(--color-purple);
+  } .cora-btn--primary {
+  background: var(--color-purple);
+  color: var(--color-inverse);
+  box-shadow: 0 8px 20px rgba(95, 78, 207, 0.25);
+}
 }

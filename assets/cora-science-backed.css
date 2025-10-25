@@ -170,9 +170,9 @@
   }
 
   .cora-btn {
-    width: 80%;
-    max-width: 260px;
-    font-size: var(--text-sm);
+    width: 100%;
+    max-width: 360px;
+    font-size: var(--text-sm);   background-color: var(--color-purple);
   }
 
   .cora-science-healing__image-wrap {
@@ -181,5 +181,10 @@
 
   .cora-science-healing__image {
     max-width: 90%;
-  }
+  } 
+.cora-btn--primary {
+  background: var(--color-purple);
+  color: var(--color-inverse);
+  box-shadow: 0 8px 20px rgba(95, 78, 207, 0.25);
 }
+} 

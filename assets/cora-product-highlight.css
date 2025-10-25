@@ -1,0 +1,117 @@
+.cora-product-highlight {
+  padding: var(--space-3xl) 0 var(--space-2xl) 0;
+  background: var(--color-bg);
+}
+.cora-product-highlight__container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* PARENT - Holds all content */
+.cora-product-highlight__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* INTRO block: eyebrow + title/desc */
+.cora-product-highlight__intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+/* Eyebrow Styling */
+.cora-product-highlight__eyebrow {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-bold);
+   opacity: 0.85;
+  text-align: center;
+}
+
+/* Group for heading + desc */
+.cora-product-highlight__title-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading Styles */
+.cora-product-highlight__heading {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-tight);
+  color: var(--color-heading);
+    text-align: center;
+}
+
+/* Gradient Span */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Description */
+.cora-product-highlight__desc {
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  font-weight: var(--font-weight-medium);
+   max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Block - button */
+.cora-product-highlight__cta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  §text-align: center;
+}
+.cora-product-highlight__button {
+  box-shadow: 0 6px 20px rgba(95,78,207,0.32);
+  font-size: var(--text-md);
+}
+
+/* Product image centered */
+.cora-product-highlight__image {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-md);
+ }
+.cora-product-highlight__img {
+  max-width: 420px;
+  width: 100%;
+  border-radius: var(--space-xs);
+  box-shadow: var(--shadow-md);
+  background: #fff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cora-product-highlight {
+    padding: var(--space-2xl) 0 var(--space-xl) 0;
+  }
+  .cora-product-highlight__heading {
+    font-size: var(--text-2xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .cora-product-highlight {
+    padding: var(--space-lg) 0 var(--space-lg) 0;
+  }
+  .cora-product-highlight__heading {
+    font-size: var(--text-xl);
+  }
+  .cora-product-highlight__desc {
+    font-size: var(--text-md);
+   }
+  .cora-product-highlight__img {
+    max-width: 95vw;
+  }
+}

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Cora Footer Section — Kineon Style
+   ========================================================================== */
+
+.cora-footer {
+  background: #1e1a3a;
+  color: #fff;
+  font-family: var(--font-family-body, "Product Sans", sans-serif);
+  padding: var(--space-5xl) var(--space-lg) var(--space-2xl);
+}
+
+/* Layout */
+.cora-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-5xl);
+  flex-wrap: wrap;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-bottom: var(--space-4xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Left Section */
+.cora-footer__left {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.cora-footer__logo {
+  font-family: var(--font-family-heading, "Helvetica Neue", sans-serif);
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  font-weight: var(--font-weight-bold, 700);
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.cora-footer__socials {
+  display: flex;
+  gap: var(--space-md);
+}
+.cora-footer__socials svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+.cora-footer__socials a:hover svg {
+  opacity: 1;
+}
+
+.cora-footer__mission {
+  font-size: var(--text-md, 1rem);
+  line-height: 1.6;
+  color: #e5e5f0;
+  max-width: 360px;
+}
+
+.cora-footer__trust {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+.trust-logo {
+  height: 28px;
+  width: auto;
+}
+
+/* Right Section (Menus) */
+.cora-footer__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: var(--space-2xl);
+}
+
+.cora-footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 120px;
+}
+
+.cora-footer__heading {
+  font-weight: var(--font-weight-semibold, 600);
+  text-transform: uppercase;
+  color: #fff;
+  font-size: var(--text-md, 1rem);
+  margin-bottom: var(--space-sm);
+}
+
+.cora-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cora-footer__link {
+  color: #d0cfee;
+  text-decoration: none;
+  font-size: var(--text-sm, 0.9rem);
+  transition: color 0.3s ease;
+}
+.cora-footer__link:hover {
+  color: #fff;
+}
+
+/* Bottom Section */
+.cora-footer__bottom {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2xl);
+  padding-top: var(--space-3xl);
+}
+
+.cora-footer__payments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+.cora-footer__payments svg {
+  height: 26px;
+  width: auto;
+}
+
+.cora-footer__legal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #ffffff;
+  font-size: var(--text-sm, 0.85rem);
+}
+.cora-footer__legal p{
+  color: #ffffff;
+}
+.cora-footer__policies {
+  display: flex;
+  gap: var(--space-md);
+}
+.cora-footer__policies a {
+  color: #d0cfee;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+.cora-footer__policies a:hover {
+  color: #fff;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .cora-footer__top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cora-footer__right {
+    justify-content: flex-start;
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .cora-footer {
+    padding: var(--space-4xl) var(--space-md);
+  }
+  .cora-footer__legal {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-md);
+  }
+  .cora-footer__policies {
+    flex-direction: column;
+    gap: var(--space-xs);
+    align-items: center;
+  }
+}

@@ -1,0 +1,185 @@
+/* ==========================================================================
+   Cora Science Healing Section (Split Layout - Image Absolute Left)
+   ========================================================================== */
+
+.cora-science-healing {
+  position: relative;
+  background: var(--color-bg);
+  padding: var(--space-2xl) 0;
+  overflow: hidden;
+  font-family: var(--font-family-body);
+}
+
+/* Inner container */
+.cora-science-healing__inner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-2xl);
+}
+
+/* ----- Image (Absolute Left) ----- */
+.cora-science-healing__image-wrap {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55%;
+  max-width: 750px;
+  z-index: 1;
+}
+
+.cora-science-healing__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 40px rgba(0, 0, 0, 0.1));
+}
+
+/* ----- Content (Right Column) ----- */
+.cora-science-healing__content {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-md);
+  text-align: left;
+ }
+
+.cora-science-healing__subheading {
+  font-size: var(--text-sm);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  color: #A9A7BF;
+}
+
+.cora-science-healing__heading {
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-snug);
+  color: var(--color-heading);
+  margin-bottom: 0;
+}
+
+.cora-science-healing__heading .highlight {
+  background: var(--gradient-one);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.cora-science-healing__description {
+  font-family: var(--font-family-body);
+  font-size: var(--text-md);
+  color: var(--color-body);
+  line-height: var(--line-normal);
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* ----- CTA ----- */
+.cora-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: var(--text-md);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.cora-btn--primary {
+  background: var(--gradient-one);
+  color: var(--color-inverse);
+  box-shadow: 0 8px 20px rgba(95, 78, 207, 0.25);
+}
+
+.cora-btn--primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.cora-btn .arrow {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.cora-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .cora-science-healing__inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--space-md);
+  }
+
+  .cora-science-healing__image-wrap {
+    position: relative;
+    transform: none;
+    width: 100%;
+    max-width: 500px;
+    order: -1;
+    margin-bottom: var(--space-lg);
+  }
+
+  .cora-science-healing__content {
+    flex: none;
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .cora-science-healing__description {
+    max-width: 90%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .cora-science-healing {
+    padding: var(--space-2xl) var(--space-sm);
+  }
+
+  .cora-science-healing__heading {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .cora-science-healing__description {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+  }
+
+  .cora-btn {
+    width: 80%;
+    max-width: 260px;
+    font-size: var(--text-sm);
+  }
+
+  .cora-science-healing__image-wrap {
+    margin-bottom: var(--space-md);
+  }
+
+  .cora-science-healing__image {
+    max-width: 90%;
+  }
+}

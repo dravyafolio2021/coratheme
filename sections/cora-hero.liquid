@@ -1,0 +1,201 @@
+<section id="cora-hero" class="cora-hero">
+  <div class="cora-hero__inner container">
+    <div class="cora-hero__content">
+      <!-- Clinician's Choice Badge -->
+      <div class="cora-hero__badge">
+        {% render 'icon-union' %}
+        <span class="cora-chip">
+          <span class="cora-hero__badge-icon">
+            {% render 'icon-medical' %}
+          </span>
+          <span class="cora-hero__badge-text">{{ section.settings.badge_text }}</span>
+        </span>
+        {% render 'icon-union-two' %}
+      </div>
+
+      <!-- Social Proof -->
+      <div class="cora-hero__social-proof">
+        {% if section.settings.avatar_1 %}
+          <img
+            src="{{ section.settings.avatar_1 | image_url: width: 50 }}"
+            width="{{ section.settings.avatar_1.width }}"
+            height="{{ section.settings.avatar_1.height }}"
+            alt="Clinician"
+            class="avatar"
+          >
+        {% endif %}
+        {% if section.settings.avatar_2 %}
+          <img
+            src="{{ section.settings.avatar_2 | image_url: width: 50 }}"
+            width="{{ section.settings.avatar_2.width }}"
+            height="{{ section.settings.avatar_2.height }}"
+            alt="Clinician"
+            class="avatar"
+          >
+        {% endif %}
+        {% if section.settings.avatar_3 %}
+          <img
+            src="{{ section.settings.avatar_3 | image_url: width: 50 }}"
+            width="{{ section.settings.avatar_3.width }}"
+            height="{{ section.settings.avatar_3.height }}"
+            alt="Clinician"
+            class="avatar"
+          >
+        {% endif %}
+        {% comment %} <p class="cora-hero__social-text">{{ section.settings.social_text }}</p> {% endcomment %}
+        {% assign words = section.settings.social_text | split: ' ' %}
+        <p class="cora-hero__social-text">
+          {% for word in words %}
+            {% if forloop.last %}
+              <span class="cora-hero__social-text--emphasized">{{ word }}</span>
+            {% else %}
+              {{ word }}
+            {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="cora-hero__content-stack">
+        <h1 class="cora-hero__heading">
+          {{
+            section.settings.heading
+            | replace: '[highlight]', '<span class="highlight">'
+            | replace: '[/highlight]', '</span>'
+          }}
+        </h1>
+
+        <div class="cora-hero__description-group">
+          <p class="cora-hero__description">{{ section.settings.description }}</p>
+
+          <div class="cora-hero__buttons">
+            <a href="{{ section.settings.btn_secondary_url }}" class="btn btn--secondary">
+              {{ section.settings.btn_secondary_label }}
+            </a>
+            <a href="{{ section.settings.btn_primary_url }}" class="btn btn--primary">
+              {{ section.settings.btn_primary_label }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Images -->
+    <div class="cora-hero__image-wrap">
+      {% if section.settings.hero_image_desktop %}
+        <img
+          src="{{ section.settings.hero_image_desktop | image_url: width: 1200 }}"
+          width="{{ section.settings.hero_image_desktop.width }}"
+          height="{{ section.settings.hero_image_desktop.height }}"
+          alt="{{ section.settings.hero_image_alt | escape }}"
+          class="cora-hero__image cora-hero__image--desktop"
+          loading="lazy"
+        >
+      {% endif %}
+
+      {% if section.settings.hero_image_mobile %}
+        <img
+          src="{{ section.settings.hero_image_mobile | image_url: width: 800 }}"
+          width="{{ section.settings.hero_image_mobile.width }}"
+          height="{{ section.settings.hero_image_mobile.height }}"
+          alt="{{ section.settings.hero_image_alt | escape }}"
+          class="cora-hero__image cora-hero__image--mobile"
+          loading="lazy"
+        >
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{{ 'cora-hero.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Cora Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image_desktop",
+      "label": "Hero Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image_mobile",
+      "label": "Hero Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Image Alt Text",
+      "default": "Red light therapy device in use"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Clinician’s Choice"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Avatar 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Avatar 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Avatar 3"
+    },
+    {
+      "type": "text",
+      "id": "social_text",
+      "label": "Social Proof Text",
+      "default": "612 clinicians share this on FrontrowMD"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "From [highlight]Pain[/highlight] to Possible"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Experience targeted pain relief, improved mobility, and faster recovery with clinically-backed red light laser therapy."
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_label",
+      "label": "Primary Button Label",
+      "default": "BUY NOW"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_url",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_label",
+      "label": "Secondary Button Label",
+      "default": "LEARN MORE"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_url",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cora Hero Section",
+      "category": "Cora Custom Sections"
+    }
+  ]
+}
+{% endschema %}

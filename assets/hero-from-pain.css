@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Hero — From Pain to Possible
+   ==========================================================================
+   Matches Figma design (Desktop + Mobile)
+   ========================================================================== */
+
+:root {
+  --hp-accent-start: #5f4ecf;
+  --hp-accent-end: #a68fef;
+  --hp-text: #2b2b3a;
+  --hp-muted: #666;
+  --hp-bg: #ffffff;
+  --hp-card-bg: rgba(255, 255, 255, 0.9);
+  --hp-radius: 24px;
+  --hp-container: 1280px;
+}
+
+/* Section Wrapper */
+.hp-hero {
+  width: 100%;
+  overflow: hidden;
+  background: var(--hp-bg);
+}
+
+/* Inner Layout */
+.hp-hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--hp-container);
+  margin: 0 auto;
+  padding: 100px 5%;
+  gap: 80px;
+}
+
+/* Left Column */
+.hp-hero__left {
+  flex: 0 0 46%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Badge */
+.hp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 245, 247, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+/* Review Row */
+.hp-review-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0 22px;
+}
+.hp-review-row__avatars {
+  display: flex;
+  align-items: center;
+  gap: -8px;
+}
+.hp-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.hp-review-row__text {
+  color: var(--hp-muted);
+  font-weight: 500;
+  font-size: 15px;
+}
+
+/* Headline */
+.hp-title {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  font-size: clamp(60px, 6vw, 94px);
+  font-weight: 700;
+  line-height: 1;
+  background: linear-gradient(180deg, #8b79db 0%, #5e49b4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 20px 0 36px;
+}
+
+/* Card */
+.hp-card {
+  background: var(--hp-card-bg);
+  backdrop-filter: blur(20px);
+  border-radius: var(--hp-radius);
+  padding: 32px;
+  box-shadow: 0 20px 40px rgba(67, 59, 139, 0.08);
+  max-width: 640px;
+}
+.hp-card__text {
+  color: var(--hp-text);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* CTA Buttons */
+.hp-card__ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn.hp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  min-height: 48px;
+  transition: all 0.2s ease;
+}
+.hp-btn--primary {
+  background: linear-gradient(
+    90deg,
+    var(--hp-accent-start) 0%,
+    var(--hp-accent-end) 100%
+  );
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(95, 78, 207, 0.25);
+  border: none;
+}
+.hp-btn--secondary {
+  background: transparent;
+  border: 2px solid var(--hp-accent-start);
+  color: var(--hp-accent-start);
+}
+.hp-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Right Column (Image) */
+.hp-hero__right {
+  flex: 0 0 54%;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+.hp-hero__image-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+.hp-hero__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--hp-radius);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 2;
+}
+/* Bottom Fade */
+.hp-hero__image-wrap::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  z-index: 3;
+}
+
+/* Glow behind device */
+.hp-hero__glow {
+  position: absolute;
+  right: 26%;
+  top: 18%;
+  width: 280px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 85, 85, 0.22) 0%,
+    rgba(255, 85, 85, 0.06) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+/* --- Responsive --- */
+@media (max-width: 880px) {
+  .hp-hero__inner {
+    flex-direction: column-reverse;
+    padding: 60px 24px;
+    text-align: center;
+    gap: 40px;
+  }
+  .hp-hero__left,
+  .hp-hero__right {
+    flex: 1 1 100%;
+  }
+  .hp-title {
+    font-size: clamp(42px, 10vw, 72px);
+  }
+  .hp-card {
+    margin: 0 auto;
+  }
+  .hp-card__ctas {
+    justify-content: center;
+  }
+  .hp-btn {
+    width: 45%;
+    min-width: 140px;
+  }
+  .hp-hero__image-wrap::after {
+    height: 120px;
+  }
+}

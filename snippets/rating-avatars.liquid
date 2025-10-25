@@ -1,0 +1,23 @@
+{% comment %}
+Small snippet: render avatar row and review count with accessible markup.
+Accepts:
+ - avatars: array of image objects (section setting images)
+ - review_count: string
+ - review_label: string
+{% endcomment %}
+
+<div class="hp-review-row" role="note" aria-label="Clinician reviews">
+  <div class="hp-review-row__avatars">
+    {% assign idx = 0 %}
+    {% for img in avatars %}
+      {% if idx < 3 %}
+        <img src="{{ img | img_url: '64x64' }}" alt="Reviewer {{ forloop.index }}" class="hp-avatar" loading="lazy" />
+      {% endif %}
+      {% assign idx = idx | plus: 1 %}
+    {% endfor %}
+  </div>
+  <div class="hp-review-row__text">
+    <span class="hp-review-row__count">{{ review_count }}</span>
+    <span class="hp-review-row__label">{{ review_label }}</span>
+  </div>
+</div>

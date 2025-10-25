@@ -1,0 +1,108 @@
+<section id="cora-product-info" class="cora-product-info" role="region" aria-label="Product Overview">
+  <div class="cora-product-info__inner container">
+
+    <!-- Text Block (Subheading + Heading + Description + CTA) -->
+    <div class="cora-product-info__text-block">
+      {% if section.settings.subheading != blank %}
+        <p class="cora-product-info__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank or section.settings.description != blank %}
+        <div class="cora-product-info__text-group">
+          {% if section.settings.heading != blank %}
+            <h2 class="cora-product-info__heading">
+              {{
+                section.settings.heading
+                | replace: '[highlight]', '<span class="highlight">'
+                | replace: '[/highlight]', '</span>'
+              }}
+            </h2>
+          {% endif %}
+
+          {% if section.settings.description != blank %}
+            <p class="cora-product-info__description">{{ section.settings.description }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.cta_label != blank %}
+        <div class="cora-product-info__cta-wrap">
+          <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
+            {{ section.settings.cta_label }}
+            <span class="arrow">      {% render 'icon-chevron' %}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Product Image -->
+    {% if section.settings.product_image %}
+      <div class="cora-product-info__image-wrap">
+        <img
+          src="{{ section.settings.product_image | img_url: 'master' }}"
+          alt="{{ section.settings.product_image_alt | escape }}"
+          loading="lazy"
+          class="cora-product-info__image"
+          width="100%"
+          height="100%"
+        >
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{{ 'cora-product-info.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Cora Product Info",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "WHAT IS RED LIGHT THERAPY?"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "What is the [highlight]MOVE+ Pro?[/highlight]"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "The MOVE+ is a clinically backed red light therapy device that uses LED and laser technology to relieve joint pain, reduce inflammation, and improve mobility."
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "text",
+      "id": "product_image_alt",
+      "label": "Image Alt Text",
+      "default": "MOVE+ Pro red light therapy device"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "BUY NOW"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cora Product Info",
+      "category": "Cora Custom Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -4,8 +4,7 @@
 
 .cora-product-info {
   width: 100%;
-  background: var(--color-bg);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: var(--space-3xl) var(--space-md);
 }
 

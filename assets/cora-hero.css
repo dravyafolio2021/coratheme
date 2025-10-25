@@ -49,6 +49,10 @@
   justify-content: center;
   gap: 4px;
 }
+.cora-hero__badge-text{
+  color: black;
+  font-weight: bold;
+}
 
 .cora-hero__badge-icon {
   color: var(--color-primary);
@@ -57,7 +61,7 @@
 .cora-hero__social-proof {
   display: flex;
   align-items: center;
-  gap: -var(--space-sm);
+
 }
 
 .cora-hero__social-proof .avatar {
@@ -153,47 +157,54 @@
 .cora-hero__image--mobile {
   display: none;
 }
-/* ===========================
-   Mobile & Tablet fixes for absolute top-right image
-   (Drop into your cora-hero.css replacing prior mobile/tablet blocks)
-   =========================== */
+
+
 
 /* =========================================================
-   📱 Mobile & Tablet Responsive Fix — Cora Hero Section
-   (Keeps desktop unchanged)
+   📱 Responsive Layout — Cora Hero Section (Tablet + Mobile)
    ========================================================= */
 
 @media (max-width: 1024px) {
   .cora-hero {
     position: relative;
     padding: 0;
-    padding: 0;
-      --page-margin: 0px;
-      margin-left: var(--page-margin);
-  margin-right: var(--page-margin);
+    margin: 0;
     overflow: hidden;
+    background: var(--color-bg);
+  }
+
+  /* remove global theme margin for this section */
+  #cora-hero,
+  .cora-hero__inner {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: none;
   }
 
   .cora-hero__inner {
+    display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: var(--space-xl);
+    gap: var(--space-lg);
     position: relative;
-    padding: 0;
-    z-index: 3;
+    z-index: 2;
   }
 
-  /* ✅ Image first, centered, not overlapping */
+  /* ✅ IMAGE: full-width edge-to-edge alignment */
   .cora-hero__image-wrap {
     order: -1;
     position: relative;
-    width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    max-width: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     z-index: 1;
   }
 
@@ -204,51 +215,91 @@
   .cora-hero__image--mobile {
     display: block;
     width: 100%;
-    
     height: auto;
-    margin: 0 auto;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: right center;
   }
 
-  /* ✅ Text content below image */
+  /* ✅ Fade-out gradient overlay at image bottom for smoother transition */
+  .cora-hero__image-wrap::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 160px;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, #ffffff 90%);
+    z-index: 2;
+  }
+
+  /* ✅ CONTENT: stacked below image */
   .cora-hero__content {
     align-items: center;
     text-align: center;
-    max-width: 680px;
+    width: 100%;
+    max-width: 700px;
     margin: 0 auto;
+    position: relative;
+    z-index: 3;
   }
 
+  /* Badge */
   .cora-hero__badge {
-    margin: 0 auto;
+    /* margin: var(--space-md) auto var(--space-xs); */
+    padding: 6px 14px;
+    font-size: var(--text-sm);
+    border-radius: 40px;
   }
 
+  /* Social Proof */
   .cora-hero__social-proof {
     justify-content: center;
-    flex-wrap: wrap;
-    margin-top: var(--space-sm);
+    align-items: center;
+    gap: -6px;
+    /* margin-top: 4px;
+    margin-bottom: var(--space-sm); */
   }
 
   .cora-hero__social-text {
-    margin-left: var(--space-xs);
+    font-size: var(--text-sm);
   }
 
+  /* Heading */
   .cora-hero__heading {
-    font-size: clamp(2rem, 6.5vw, 3.5rem);
+    font-size: clamp(2rem, 7vw, 5rem);
     line-height: 1.2;
+    /* margin: var(--space-xs) 0; */
+    background: var(--gradient-one);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
+  /* Description Card */
   .cora-hero__description-group {
-    margin-top: var(--space-md);
-    align-items: center;
-    text-align: center;
-    width: 90%;
+    background: #f5f5f7;
+    border-radius: 18px;
     padding: 20px;
+    text-align: center;
+    margin: 0 auto 0;
+    width: 95%;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
     gap: var(--space-md);
   }
 
-  /* ✅ Stack CTAs full-width on smaller screens */
+  .cora-hero__description {
+    font-size: var(--text-md);
+    line-height: 1.5;
+    color: var(--color-body);
+    margin: 0 auto;
+  }
+
+  /* Buttons */
   .cora-hero__buttons {
-    flex-direction: column;
+    display: flex;
+    flex-direction: column-reverse;
     gap: var(--space-sm);
     width: 100%;
   }
@@ -256,35 +307,61 @@
   .cora-hero__buttons .btn {
     width: 100%;
     font-size: var(--text-md);
+    padding: 14px 0;
+    border-radius: 50px;
+  }
+
+  /* Tablet (768px–1024px) tweaks */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .cora-hero__image--mobile {
+      max-width: 90%;
+      object-position: right center;
+    }
+
+    .cora-hero__heading {
+      font-size: clamp(2.4rem, 5vw, 5rem);
+    }
+
+    .cora-hero__description-group {
+      width: 85%;
+      padding: 24px; text-align: left;
+    }
   }
 }
 
 /* =========================================================
-   📱 Small Mobile Optimization — up to 600px
+   📱 Small Mobile — up to 480px
    ========================================================= */
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .cora-hero {
     padding: 0;
-      --page-margin: 0px;
-      margin-left: var(--page-margin);
-  margin-right: var(--page-margin);
-  }
-
-  .cora-hero__heading {
-    font-size: clamp(1.8rem, 8vw, 2.6rem);
+    margin: 0;
   }
 
   .cora-hero__image--mobile {
     max-width: 120%;
   }
+  .cora-hero__content {
+    margin-top: -160px;
+  }
+
+  .cora-hero__badge {
+    font-size: 0.85rem;
+    padding: 5px 12px;
+  }
+
+  .cora-hero__heading {
+    font-size: 48px;
+  }
 
   .cora-hero__description-group {
     padding: 16px;
-    width: 100%;
+    width: 94%;
+    text-align: left;
   }
 
   .cora-hero__buttons .btn {
     font-size: var(--text-sm);
-    padding: 14px;
+    padding: 12px 0;
   }
 }

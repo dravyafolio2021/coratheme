@@ -1,25 +1,52 @@
+{%- comment -%}
+===============================================================================
+🧩 Cora Science Healing — Section (Cora v1.0.1)
+-------------------------------------------------------------------------------
+Purpose
+  Split layout: product/therapy image visually anchored to the left (desktop),
+  explanatory copy and CTA on the right. Stacks for mobile/tablet.
+
+Key Behaviors
+  • Desktop: image is absolutely positioned to the left, content right-aligned.
+  • Tablet/Mobile: image moves into normal flow, centered, edge-to-edge (no x-scroll).
+  • Heading supports [highlight]...[/highlight] which receives gradient text.
+  • Button is a standard Cora primary CTA (uses global tokens).
+
+A11y
+  • <section> has a region role + aria-label for landmark navigation.
+  • Descriptive alt text is configurable.
+  • Heading level (h2) is appropriate for in-page sections.
+
+Dependencies
+  • /assets/global.css for tokens (colors, gradients, spacing).
+  • /snippets/icon-chevron.liquid for the CTA arrow.
+===============================================================================
+{%- endcomment -%}
+
 <section id="cora-science-healing" class="cora-science-healing" role="region" aria-label="Science Backed Healing">
   <div class="cora-science-healing__inner container">
-    <!-- Image Column -->
+    {%- comment -%} ■■■ Left Visual Column (image) {%- endcomment -%}
     {% if section.settings.image %}
       <div class="cora-science-healing__image-wrap">
         <img
           src="{{ section.settings.image | img_url: 'master' }}"
           alt="{{ section.settings.image_alt | escape }}"
           class="cora-science-healing__image"
-          loading="lazy" width="100%" height="100%"
+          loading="lazy"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
         >
       </div>
     {% endif %}
 
-    <!-- Text Column -->
+    {%- comment -%} ■■■ Right Content Column (subheading, heading, description, CTA) {%- endcomment -%}
     <div class="cora-science-healing__content">
       {% if section.settings.subheading != blank %}
         <p class="cora-science-healing__subheading">{{ section.settings.subheading }}</p>
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <h2 class="cora-science-healing__heading ">
+        <h2 class="cora-science-healing__heading">
           {{
             section.settings.heading
             | replace: '[highlight]', '<span class="highlight">'
@@ -37,26 +64,26 @@
       {% if section.settings.cta_label != blank %}
         <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
           {{ section.settings.cta_label }}
-          <span class="arrow">
-                  {% render 'icon-chevron' %}
-          </span>
+          <span class="arrow">{% render 'icon-chevron' %}</span>
         </a>
       {% endif %}
     </div>
   </div>
 </section>
 
+{%- comment -%} Keep stylesheet include at bottom for predictable cascade {%- endcomment -%}
 {{ 'cora-science-backed.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+===============================================================================
+SCHEMA — Keep IDs stable to avoid breaking merchant content.
+===============================================================================
+{%- endcomment -%}
 {% schema %}
 {
   "name": "Cora Science Healing",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Left Image"
-    },
+    { "type": "image_picker", "id": "image", "label": "Left Image" },
     {
       "type": "text",
       "id": "image_alt",
@@ -87,19 +114,8 @@
       "label": "Button Label",
       "default": "BUY NOW"
     },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "Button Link"
-    }
+    { "type": "url", "id": "cta_url", "label": "Button Link" }
   ],
-  "presets": [
-    {
-      "name": "Cora Science Healing",
-      "category": "Cora Custom Sections"
-    }
-  ]
+  "presets": [{ "name": "Cora Science Healing", "category": "Cora Custom Sections" }]
 }
 {% endschema %}
-
- 

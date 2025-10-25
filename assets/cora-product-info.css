@@ -1,3 +1,12 @@
+/* ==========================================================================
+   🧩 Cora Product Info — Styles (Cora v1.0.1)
+   --------------------------------------------------------------------------
+   Notes:
+     - Layout uses flex + gap (no bottom-margin stacking).
+     - Gradient text for [highlight] spans only (not the whole heading).
+     - Mobile CTA duplicates desktop CTA intentionally for ergonomic placement.
+   ========================================================================== */
+
 .cora-product-info {
   width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -13,7 +22,9 @@
   margin: 0 auto;
 }
 
-/* Text Block (Subheading + Heading + Desc + CTA) */
+/* -------------------------------
+   TEXT BLOCK (Eyebrow / H / Body / CTA)
+   ------------------------------- */
 .cora-product-info__text-block {
   display: flex;
   flex-direction: column;
@@ -28,7 +39,7 @@
   text-transform: uppercase;
   font-weight: var(--font-weight-semibold);
   color: #a9a7bf;
-  margin-bottom: 0;
+  margin-bottom: 0; /* spacing handled by gap */
 }
 
 .cora-product-info__text-group {
@@ -44,21 +55,22 @@
   font-weight: var(--font-weight-bold);
   color: var(--color-heading);
   line-height: var(--line-snug);
-  word-break: keep-all; /* Prevent random mid-word breaks */
+  word-break: keep-all;   /* prevent awkward mid-word breaks */
   white-space: normal;
   margin-bottom: 0;
 }
 
+/* Gradient only on [highlight] spans */
 .cora-product-info__heading .highlight {
   display: inline;
-  background: var(--gradient-one); /* Use your global gradient */
-  -webkit-background-clip: text; /* Clip gradient to text */
-  -webkit-text-fill-color: transparent; /* Make gradient visible */
+  background: var(--gradient-one);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent; /* Hide solid color */
+  color: transparent;
   line-height: inherit;
   font-weight: inherit;
-  white-space: normal; /* Prevent accidental line breaks */
+  white-space: normal;
 }
 
 .cora-product-info__description {
@@ -68,15 +80,20 @@
   max-width: 680px;
 }
 
-/* CTA */
+/* -------------------------------
+   CTA (Desktop)
+   ------------------------------- */
 .cora-product-info__cta-wrap {
   display: flex;
   justify-content: center;
 }
+
+/* CTA (Mobile-only; appears under image) */
 .cora-product-info__cta-wrap_mobile {
   display: none;
   justify-content: center;
 }
+
 .cora-btn {
   display: inline-flex;
   align-items: center;
@@ -103,14 +120,16 @@
 .cora-btn .arrow {
   margin-left: 8px;
   transition: transform 0.3s ease;
-  color: white;
+  color: var(--color-inverse);
 }
 
 .cora-btn:hover .arrow {
   transform: translateX(4px);
 }
 
-/* Product Image */
+/* -------------------------------
+   IMAGE
+   ------------------------------- */
 .cora-product-info__image-wrap {
   width: 100%;
   max-width: 650px;
@@ -125,9 +144,10 @@
 }
 
 /* ==========================================================================
-   Responsive
+   RESPONSIVE
    ========================================================================== */
 
+/* Tablet */
 @media (max-width: 1024px) {
   .cora-product-info {
     padding: var(--space-3xl) var(--space-xs);
@@ -146,20 +166,22 @@
   }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
   .cora-product-info {
     padding: var(--space-3xl) var(--space-xs);
   }
-.cora-product-info__cta-wrap {
-  display: none;
-  justify-content: center;
-}
-.cora-product-info__cta-wrap_mobile {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 
-}
+  /* Hide desktop CTA, show mobile CTA under image */
+  .cora-product-info__cta-wrap {
+    display: none;
+  }
+  .cora-product-info__cta-wrap_mobile {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .cora-product-info__inner {
     gap: var(--space-lg);
     padding: 0;
@@ -174,12 +196,9 @@
     line-height: 1.6;
   }
 
+  /* Mobile CTA stretches comfortably without causing overflow */
   .cora-btn {
     width: 100%;
-    max-width: 360px;   background-color: var(--color-purple);
-  } .cora-btn--primary {
-  background: var(--color-purple);
-  color: var(--color-inverse);
-  box-shadow: 0 8px 20px rgba(95, 78, 207, 0.25);
-}
+    max-width: 360px;
+  }
 }

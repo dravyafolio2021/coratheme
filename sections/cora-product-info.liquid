@@ -1,14 +1,39 @@
+{%- comment -%}
+===============================================================================
+🧩 Cora Product Info Section — Cora v1.0.1
+-------------------------------------------------------------------------------
+Purpose:
+  Compact, centered content block to introduce the product with an eyebrow,
+  gradient-capable heading, short description, product image, and CTA.
+
+Key behaviors:
+  - Uses [highlight]...[/highlight] shortcode inside heading to apply gradient.
+  - Desktop CTA is under the text; an additional mobile CTA appears below image.
+  - Fully responsive with mobile-first tokens (spacing, typography, colors).
+  - Images include explicit width/height attributes for CLS prevention.
+
+Implementation notes:
+  - Keep schema IDs stable to avoid merchant data loss on updates.
+  - Button URLs default handled at template-level; here we assume links are set.
+  - Uses global tokens (colors, gradients) defined in /assets/global.css.
+===============================================================================
+{%- endcomment -%}
+
 <section id="cora-product-info" class="cora-product-info" role="region" aria-label="Product Overview">
   <div class="cora-product-info__inner container">
-    <!-- Text Block (Subheading + Heading + Description + CTA) -->
-    <div class="cora-product-info__text-block">
-      {% if section.settings.subheading != blank %}
-        <p class="cora-product-info__subheading">{{ section.settings.subheading }}</p>
-      {% endif %}
 
-      {% if section.settings.heading != blank or section.settings.description != blank %}
+    {%- comment -%} =========================
+      TEXT BLOCK: eyebrow + heading + description + (desktop) CTA
+      - Uses a single cluster to keep spacing consistent via flex + gap.
+    ========================== {%- endcomment -%}
+    <div class="cora-product-info__text-block">
+      {%- if section.settings.subheading != blank -%}
+        <p class="cora-product-info__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank or section.settings.description != blank -%}
         <div class="cora-product-info__text-group">
-          {% if section.settings.heading != blank %}
+          {%- if section.settings.heading != blank -%}
             <h2 class="cora-product-info__heading">
               {{
                 section.settings.heading
@@ -16,26 +41,34 @@
                 | replace: '[/highlight]', '</span>'
               }}
             </h2>
-          {% endif %}
+          {%- endif -%}
 
-          {% if section.settings.description != blank %}
+          {%- if section.settings.description != blank -%}
             <p class="cora-product-info__description">{{ section.settings.description }}</p>
-          {% endif %}
+          {%- endif -%}
         </div>
-      {% endif %}
+      {%- endif -%}
 
-      {% if section.settings.cta_label != blank %}
+      {%- comment -%}
+        Desktop-first CTA.
+        Mobile shows a second CTA below the image (see _cta-wrap_mobile).
+      {%- endcomment -%}
+      {%- if section.settings.cta_label != blank -%}
         <div class="cora-product-info__cta-wrap">
           <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
             {{ section.settings.cta_label }}
-            <span class="arrow"> {% render 'icon-chevron' %}</span>
+            <span class="arrow">{% render 'icon-chevron' %}</span>
           </a>
         </div>
-      {% endif %}
+      {%- endif -%}
     </div>
 
-    <!-- Product Image -->
-    {% if section.settings.product_image %}
+    {%- comment -%} =========================
+      PRODUCT IMAGE + (mobile) CTA
+      - Image clustered separately for layout control.
+      - Mobile CTA is duplicated intentionally for UX parity.
+    ========================== {%- endcomment -%}
+    {%- if section.settings.product_image -%}
       <div class="cora-product-info__image-wrap">
         <img
           src="{{ section.settings.product_image | img_url: 'master' }}"
@@ -46,20 +79,32 @@
           height="100%"
         >
       </div>
-      {% if section.settings.cta_label != blank %}
+
+      {%- if section.settings.cta_label != blank -%}
         <div class="cora-product-info__cta-wrap_mobile">
           <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
             {{ section.settings.cta_label }}
-            <span class="arrow"> {% render 'icon-chevron' %}</span>
+            <span class="arrow">{% render 'icon-chevron' %}</span>
           </a>
         </div>
-      {% endif %}
-    {% endif %}
+      {%- endif -%}
+    {%- endif -%}
   </div>
 </section>
 
+{%- comment -%}
+  External stylesheet for this section. Keep this include at the bottom of the
+  section for predictable cascade and easy diffing during code reviews.
+{%- endcomment -%}
 {{ 'cora-product-info.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+===============================================================================
+  SCHEMA — Cora Product Info
+  - Keep IDs stable; avoid renaming existing IDs in shipped versions.
+  - Presets make it discoverable in Theme Editor under "Cora Custom Sections".
+===============================================================================
+{%- endcomment -%}
 {% schema %}
 {
   "name": "Cora Product Info",

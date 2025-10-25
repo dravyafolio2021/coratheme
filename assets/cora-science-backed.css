@@ -92,7 +92,7 @@
   font-family: var(--font-family-body);
   font-size: var(--text-md);
   color: var(--color-body);
-  line-height: var(--line-normal);
+  line-height: 1.2;
   max-width: 520px;
   display: flex;
   flex-direction: column;
@@ -211,7 +211,7 @@
 
   .cora-science-healing__description {
     font-size: var(--text-sm);
-    line-height: 1.2;
+    line-height: 1;
   }
 
   .cora-btn {

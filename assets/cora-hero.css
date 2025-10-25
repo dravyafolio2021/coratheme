@@ -1,6 +1,6 @@
 .cora-hero {
   background: var(--color-bg);
-  padding: 0;
+  padding: 60px 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -316,7 +316,7 @@
     width: 100vw !important;
     max-width: 100vw !important;
     margin: 0 auto !important;
-    left: 50%;
+    left: 48%;
     transform: translateX(-50%);
     padding: 0 !important;
   }

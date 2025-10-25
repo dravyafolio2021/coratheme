@@ -1,0 +1,143 @@
+<header id="cora-header" class="cora-header">
+  <div class="cora-header__inner container">
+
+    <!-- 🅰️ Logo -->
+    <div class="cora-header__logo">
+      <a href="{{ routes.root_url }}" class="cora-header__logo-link">
+        {% if section.settings.logo %}
+          <img
+            src="{{ section.settings.logo | image_url: width: 200 }}"
+            alt="{{ shop.name }}"
+            class="cora-header__logo-image"
+            loading="eager" width="100%" height="100%"
+          >
+        {% else %}
+          <span class="cora-header__logo-text">{{ shop.name }}</span>
+        {% endif %}
+      </a>
+    </div>
+
+    <!-- 🔗 Navigation -->
+    <nav class="cora-header__nav" role="navigation">
+      {% if section.settings.menu != blank %}
+        <ul class="cora-header__menu">
+          {% for link in linklists[section.settings.menu].links %}
+            <li class="cora-header__menu-item">
+              <a href="{{ link.url }}" class="cora-header__menu-link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </nav>
+
+    <!-- ⚙️ Utilities -->
+    <div class="cora-header__utilities">
+      <!-- Currency Selector -->
+      {% if section.settings.show_currency_selector %}
+        {% form 'localization' %}
+          <div class="cora-header__currency">
+            <select name="currency" class="cora-header__select" onchange="this.form.submit()">
+              {% for currency in shop.enabled_currencies %}
+                <option value="{{ currency.iso_code }}" {% if currency.iso_code == cart.currency.iso_code %}selected{% endif %}>
+                  {{ currency.iso_code }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endform %}
+      {% endif %}
+
+      <!-- Account -->
+      {% if section.settings.show_account_icon %}
+        <a href="{{ routes.account_url }}" class="cora-header__icon" aria-label="Account">
+          {% render 'icon-account' %}
+        </a>
+      {% endif %}
+
+      <!-- Cart -->
+      {% if section.settings.show_cart_icon %}
+        <a href="{{ routes.cart_url }}" class="cora-header__icon" aria-label="Cart">
+          {% render 'icon-cart' %}
+        </a>
+      {% endif %}
+
+      <!-- Mobile Toggle -->
+      <button class="cora-header__toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 📱 Mobile Drawer Menu -->
+  <div class="cora-header__drawer">
+    {% if section.settings.menu != blank %}
+      <ul class="cora-header__drawer-menu">
+        {% for link in linklists[section.settings.menu].links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</header>
+
+{{ 'cora-header.css' | asset_url | stylesheet_tag }}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggle = document.querySelector(".cora-header__toggle");
+    const drawer = document.querySelector(".cora-header__drawer");
+
+    if (toggle && drawer) {
+      toggle.addEventListener("click", () => {
+        drawer.classList.toggle("active");
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Cora Header",
+  "tag": "header",
+  "class": "shopify-section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency_selector",
+      "label": "Show Currency Selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "label": "Show Account Icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show Cart Icon",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cora Header",
+      "category": "Cora Custom Sections"
+    }
+  ]
+}
+{% endschema %}

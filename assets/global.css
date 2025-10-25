@@ -138,6 +138,7 @@ body {
   color: var(--color-body);
   background: var(--color-bg);
   margin: 0;
+  overflow-x: hidden;
   line-height: var(--line-normal);
   -webkit-font-smoothing: antialiased;
 }
@@ -162,9 +163,7 @@ body, p, li, span {
   line-height: var(--line-normal);
 }
 
-/* -------------------------------
-   🔘 BUTTONS
-   ------------------------------- */
+
 .btn {
   display: inline-flex;
   align-items: center;

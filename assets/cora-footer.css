@@ -29,6 +29,11 @@
   flex-direction: column;
   gap: var(--space-lg);
 }
+.shopify-section-group-footer-group{
+  background-color: var(--color-purple);
+  /* background-color: #282460; */
+   
+}
 
 .cora-footer__logo {
   font-family: var(--font-family-heading, "Helvetica Neue", sans-serif);

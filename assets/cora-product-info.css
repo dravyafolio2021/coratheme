@@ -150,7 +150,7 @@
 /* Tablet */
 @media (max-width: 1024px) {
   .cora-product-info {
-    padding: var(--space-3xl) var(--space-xs);
+    padding: var(--space-2xl) var(--space-xs);
   }
 
   .cora-product-info__inner {

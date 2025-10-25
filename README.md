@@ -5,7 +5,20 @@ This repository contains a collection of **professionally developed Shopify 2.0 
 The project demonstrates a systematic, scalable, and token-driven approach to theme development using **Liquid**, **CSS**, and **Shopify design standards**.
 
 ---
+## 📽️ Preview & Comparison Video
 
+To help visualize design accuracy and responsiveness, we’ve included a short preview and comparison video.  
+This demonstrates the final implementation against the provided Figma design.
+
+🎬 **Video Reference:** [`PreviewCompareVideo.mp4`](./PreviewCompareVideo.mp4)
+<video width="100%" controls poster="./assets/video-poster.png">
+  <source src="./PreviewCompareVideo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+> _The video showcases all sections (Hero, Product Info, Science, Footer) across desktop and mobile breakpoints, verifying responsiveness and fidelity._
+
+---
 ## 🧭 Project Approach
 
 Our approach was guided by three key principles:

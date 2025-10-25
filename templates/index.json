@@ -9,12 +9,56 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
-      "settings": {}
+    "cora_hero_e6TwLw": {
+      "type": "cora-hero",
+      "name": "Cora Hero Section",
+      "settings": {
+        "hero_image_desktop": "shopify://shop_images/hero_image.png",
+        "hero_image_mobile": "shopify://shop_images/heroMobile.png",
+        "hero_image_alt": "Red light therapy device in use",
+        "badge_text": "Clinician’s Choice",
+        "avatar_1": "shopify://shop_images/Avatar_03.png",
+        "avatar_2": "shopify://shop_images/Avatar_02.png",
+        "avatar_3": "shopify://shop_images/Avatar_01.png",
+        "social_text": "612 clinicians share this on FrontrowMD",
+        "heading": "From Pain to Possible",
+        "description": "Experience targeted pain relief, improved mobility, and faster recovery with clinically-backed red light laser therapy.",
+        "btn_primary_label": "BUY NOW",
+        "btn_primary_url": "",
+        "btn_secondary_label": "LEARN MORE",
+        "btn_secondary_url": ""
+      }
+    },
+    "cora_product_info_TEw7FN": {
+      "type": "cora-product-info",
+      "name": "Cora Product Info",
+      "settings": {
+        "subheading": "WHAT IS RED LIGHT THERAPY?",
+        "heading": "What is the [highlight]MOVE+ Pro?[/highlight]",
+        "description": "The MOVE+ is a clinically backed red light therapy device that uses LED and laser technology to relieve joint pain, reduce inflammation, and improve mobility.",
+        "product_image": "shopify://shop_images/info__image.png",
+        "product_image_alt": "MOVE+ Pro red light therapy device",
+        "cta_label": "BUY NOW",
+        "cta_url": ""
+      }
+    },
+    "cora_science_backed_RTKhHK": {
+      "type": "cora-science-backed",
+      "name": "Cora Science Healing",
+      "settings": {
+        "image": "shopify://shop_images/info__image_two.png",
+        "image_alt": "MOVE+ Pro red light therapy device close-up",
+        "subheading": "WHAT IS RED LIGHT THERAPY?",
+        "heading": "[highlight]Science-Backed[/highlight] Healing",
+        "description": "<p>Light therapy is a powerful, science-backed treatment that uses specific wavelengths of red and near-infrared light to activate your body’s natural healing response.</p><p>When absorbed into the body, these wavelengths energize the mitochondria — the powerhouses of your cells — boosting cellular function, improving blood flow, and helping your body repair itself faster.</p>",
+        "cta_label": "BUY NOW",
+        "cta_url": ""
+      }
     }
   },
   "order": [
-    "main"
+    "cora_hero_e6TwLw",
+    "cora_product_info_TEw7FN",
+    "cora_science_backed_RTKhHK"
   ]
 }

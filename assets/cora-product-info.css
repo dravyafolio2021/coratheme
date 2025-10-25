@@ -19,6 +19,7 @@
   align-items: center;
   gap: var(--space-lg);
   max-width: 900px;
+  padding:0px;
   margin: 0 auto;
 }
 
@@ -132,7 +133,7 @@
    ------------------------------- */
 .cora-product-info__image-wrap {
   width: 100%;
-  max-width: 650px;
+  max-width: 850px;
 }
 
 .cora-product-info__image {

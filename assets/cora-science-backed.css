@@ -162,7 +162,7 @@
   }
 
   .cora-science-healing__description {
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 
@@ -183,7 +183,7 @@
 
   .cora-science-healing__content {
     flex: none;
-    align-items: flex-start;
+    align-items: center;
     text-align: left;
     padding-left: 0;
     gap: 16px;

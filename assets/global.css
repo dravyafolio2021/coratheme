@@ -150,8 +150,8 @@ h4,
 h5,
 h6 {
   color: var(--color-heading);
-  /* font-family: var(--font-family-heading); */
-  font-family: Helvetica Neue;
+  font-family: var(--font-family-heading);
+  /* font-family: Helvetica Neue; */
   margin: 0;
   line-height: var(--line-snug);
 }

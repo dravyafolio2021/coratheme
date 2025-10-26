@@ -1,80 +1,109 @@
-<section id="cora-product-hero" class="cora-product-hero" role="region" aria-label="Product Hero">
+<section
+  id="cora-product-hero-{{ section.id }}"
+  class="cora-product-hero"
+  role="region"
+  aria-label="Product Hero"
+>
   <div class="cora-product-hero__inner container">
-    
-    <!-- Left Side: Product Image -->
-    {% if section.settings.main_image %}
-      <div class="cora-product-hero__image-wrap">
-        <img
-          src="{{ section.settings.main_image | image_url: width: 1000 }}"
-          alt="{{ section.settings.main_image_alt | escape }}"
-          class="cora-product-hero__image"
-          loading="lazy"
-        >
-      </div>
-    {% endif %}
 
-    <!-- Right Side: Content -->
-    <div class="cora-product-hero__content">
-      
-      <!-- Rating / Social Proof -->
-      {% if section.settings.rating_text != blank %}
-        <p class="cora-product-hero__rating">{{ section.settings.rating_text }}</p>
+    <!-- ================= IMAGE + NUTRITION CTA ================= -->
+    <div class="cora-product-hero__gallery Imagegallery">
+      {% if section.settings.main_image %}
+        <figure class="cora-product-hero__image-wrap">
+          <img
+            src="{{ section.settings.main_image | image_url: width: 1000 }}"
+            alt="{{ section.settings.main_image_alt | escape }}"
+            class="cora-product-hero__image"
+            loading="lazy" height="100%" width="100%"
+          >
+        </figure>
       {% endif %}
 
-      <!-- Heading -->
+      {% if section.settings.cta_label != blank %}
+        <a
+          href="{{ section.settings.cta_url }}"
+          class="btn cora-btn cora-btn--secondary nutritional-btn"
+          aria-label="View nutritional labels"
+        >
+          View Nutritional Labels
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- ================= CONTENT ================= -->
+    <div class="cora-product-hero__content">
+      
       {% if section.settings.title != blank %}
         <h1 class="cora-product-hero__title">{{ section.settings.title }}</h1>
       {% endif %}
 
-      <!-- Subtitle -->
-      {% if section.settings.subtitle != blank %}
-        <p class="cora-product-hero__subtitle">{{ section.settings.subtitle }}</p>
+      {% if section.settings.rating_text != blank %}
+        <p class="cora-product-hero__rating">{{ section.settings.rating_text }}</p>
       {% endif %}
 
-      <!-- Feature Icons -->
-      {% if section.blocks.size > 0 %}
-        <ul class="cora-product-hero__features">
-          {% for block in section.blocks %}
-            {% if block.type == 'feature' %}
-              <li class="feature-item">
-                {% if block.settings.icon_svg != blank %}
-                  <span class="feature-icon">{{ block.settings.icon_svg }}</span>
-                {% endif %}
-                <span class="feature-text">{{ block.settings.feature_text }}</span>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      {% endif %}
-
-      <!-- Price Section -->
-      <div class="cora-product-hero__price">
+      <!-- PRICING SECTION -->
+      <div class="cora-product-hero__pricing">
         {% if section.settings.old_price != blank %}
           <span class="old-price">{{ section.settings.old_price }}</span>
         {% endif %}
         {% if section.settings.new_price != blank %}
           <span class="new-price">{{ section.settings.new_price }}</span>
         {% endif %}
+        {% if section.settings.badge_text != blank %}
+          <span class="cora-product-hero__badge">{{ section.settings.badge_text }}</span>
+        {% endif %}
       </div>
 
-      <!-- Badge -->
-      {% if section.settings.badge_text != blank %}
-        <p class="cora-product-hero__badge">{{ section.settings.badge_text }}</p>
+      {% if section.settings.subtitle != blank %}
+        <p class="cora-product-hero__subtitle">{{ section.settings.subtitle }}</p>
       {% endif %}
 
-      <!-- CTA -->
+      <!-- FEATURE LIST -->
+      {% assign features = section.blocks | where: 'type', 'feature' %}
+      {% if features.size > 0 %}
+        <ul class="cora-product-hero__features">
+          {% for block in features %}
+            <li class="feature-item">
+              {% if block.settings.icon_svg != blank %}
+                <span class="feature-icon">{{ block.settings.icon_svg }}</span>
+              {% endif %}
+              <span class="feature-text">{{ block.settings.feature_text }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <!-- MAIN CTA -->
       {% if section.settings.cta_label != blank %}
         <a href="{{ section.settings.cta_url }}" class="btn cora-btn cora-btn--primary">
           {{ section.settings.cta_label }}
         </a>
       {% endif %}
 
-      <!-- Note -->
+      <!-- MINI TRUST ICONS -->
+      {% assign trust_icons = section.blocks | where: 'type', 'trust_icon' %}
+      {% if trust_icons.size > 0 %}
+        <div class="cora-product-hero__trust-icons">
+          {% for block in trust_icons %}
+            <div class="trust-icon-item">
+              {% if block.settings.icon_svg != blank %}
+                <div class="trust-icon__svg">{{ block.settings.icon_svg }}</div>
+              {% endif %}
+              <div class="trust-icon__text">
+                <p class="trust-icon__title">{{ block.settings.title }}</p>
+                {% if block.settings.subtitle != blank %}
+                  <p class="trust-icon__subtitle">{{ block.settings.subtitle }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
       {% if section.settings.note != blank %}
         <p class="cora-product-hero__note">{{ section.settings.note }}</p>
       {% endif %}
 
-      <!-- Guarantee -->
       {% if section.settings.guarantee_text != blank %}
         <div class="cora-product-hero__guarantee">
           <span class="icon">💰</span>
@@ -91,102 +120,38 @@
 {
   "name": "Cora Product Hero",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "main_image",
-      "label": "Main Product Image"
-    },
-    {
-      "type": "text",
-      "id": "main_image_alt",
-      "label": "Main Image Alt Text",
-      "default": "Product Image"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Product Title",
-      "default": "Zenmies 10-in-1 Alpha Gummies"
-    },
-    {
-      "type": "text",
-      "id": "rating_text",
-      "label": "Rating Text",
-      "default": "⭐ 4.9/5. Loved by 300k+ customers"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "default": "Feeling drained or struggling to stay motivated in and out of the Gym?"
-    },
-    {
-      "type": "text",
-      "id": "old_price",
-      "label": "Old Price",
-      "default": "$59.99"
-    },
-    {
-      "type": "text",
-      "id": "new_price",
-      "label": "New Price",
-      "default": "$47.49"
-    },
-    {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "default": "Subscribe & Save 50% for Life"
-    },
-    {
-      "type": "url",
-      "id": "cta_url",
-      "label": "CTA Button URL"
-    },
-    {
-      "type": "text",
-      "id": "cta_label",
-      "label": "CTA Button Label",
-      "default": "TRY IT NOW ($47.48)"
-    },
-    {
-      "type": "textarea",
-      "id": "note",
-      "label": "Subscription Note",
-      "default": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime."
-    },
-    {
-      "type": "textarea",
-      "id": "guarantee_text",
-      "label": "Guarantee Text",
-      "default": "Try Zenmies risk-free for 90 days. If not satisfied, we will refund you — no questions asked."
-    }
+    { "type": "image_picker", "id": "main_image", "label": "Main Product Image" },
+    { "type": "text", "id": "main_image_alt", "label": "Main Image Alt Text", "default": "Product Image" },
+    { "type": "text", "id": "title", "label": "Product Title", "default": "Zenmies 10-in-1 Alpha Gummies" },
+    { "type": "text", "id": "rating_text", "label": "Rating Text", "default": "⭐ 4.9/5. Loved by 300k+ customers" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Feeling drained or struggling to stay motivated in and out of the Gym?" },
+    { "type": "text", "id": "old_price", "label": "Old Price", "default": "$59.99" },
+    { "type": "text", "id": "new_price", "label": "New Price", "default": "$47.49" },
+    { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "Subscribe & Save 50% for Life" },
+    { "type": "url", "id": "cta_url", "label": "CTA Button URL" },
+    { "type": "text", "id": "cta_label", "label": "CTA Button Label", "default": "TRY IT NOW ($47.48)" },
+    { "type": "textarea", "id": "note", "label": "Subscription Note", "default": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime." },
+    { "type": "textarea", "id": "guarantee_text", "label": "Guarantee Text", "default": "Try Zenmies risk-free for 90 days. If not satisfied, we will refund you — no questions asked." }
   ],
   "blocks": [
     {
       "type": "feature",
       "name": "Feature Item",
       "settings": [
-        {
-          "type": "textarea",
-          "id": "icon_svg",
-          "label": "Feature Icon (Paste SVG Code)",
-          "info": "Paste your SVG code directly here. Example: <svg ...>...</svg>"
-        },
-        {
-          "type": "text",
-          "id": "feature_text",
-          "label": "Feature Text",
-          "default": "Boosts Natural Testosterone & Vitality"
-        }
+        { "type": "textarea", "id": "icon_svg", "label": "Feature Icon (SVG)" },
+        { "type": "text", "id": "feature_text", "label": "Feature Text", "default": "Boosts Natural Testosterone & Vitality" }
+      ]
+    },
+    {
+      "type": "trust_icon",
+      "name": "Trust Icon",
+      "settings": [
+        { "type": "textarea", "id": "icon_svg", "label": "Trust Icon SVG" },
+        { "type": "text", "id": "title", "label": "Main Text", "default": "Fast Free Shipping" },
+        { "type": "text", "id": "subtitle", "label": "Subtext (optional)", "default": "Delivery" }
       ]
     }
   ],
-  "presets": [
-    {
-      "name": "Cora Product Hero",
-      "category": "Zenmies"
-    }
-  ]
+  "presets": [{ "name": "Cora Product Hero", "category": "Zenmies" }]
 }
 {% endschema %}

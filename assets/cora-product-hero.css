@@ -3,96 +3,96 @@
    ========================================================================= */
 
 .cora-product-hero {
-  background: var(--color-bg);
-  padding: var(--space-4xl) var(--space-md);
-  font-family: var(--font-family-body);
+  background: #fff;
+  padding: 80px 20px;
+  font-family: var(--font-family-body, "Lato", sans-serif);
   overflow: hidden;
 }
 
 .cora-product-hero__inner {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: var(--space-3xl);
+  gap: 48px;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* ============ Left Image ============ */
-.cora-product-hero__image-wrap {
-  flex: 1;
-  max-width: 100%;
+/* ================= IMAGE AREA ================= */
+.Imagegallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 500px;
 }
+
+.cora-product-hero__image-wrap {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .cora-product-hero__image {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
+  border-radius: 10px;
 }
 
-/* ============ Content ============ */
+.nutritional-btn {
+  background-color: #DED4F5;
+  color: #6F43D5;
+  font-weight: 600;
+  border-radius: 40px;
+  text-align: center;
+  padding: 14px 28px;
+  font-size: 1rem;
+  transition: 0.25s ease;
+}
+.nutritional-btn:hover {
+  background-color: #c8b8f2;
+  transform: translateY(-2px);
+}
+
+/* ================= CONTENT AREA ================= */
 .cora-product-hero__content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  text-align: left;
-  z-index: 2;
-}
-.pricingsection{
-  display: flex;
-  width: 100% ;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
   gap: 12px;
-}
-
-.cora-product-hero__rating {
-  color: #888;
-  font-size: var(--text-sm);
-  font-weight: 500;
+  text-align: left;
 }
 
 .cora-product-hero__title {
   font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
-  color: var(--color-heading);
+  color: #160E26;
+}
+
+.cora-product-hero__rating {
+  color: #6b6679;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .cora-product-hero__subtitle {
-  color: var(--color-body);
-  font-size: var(--text-lg);
-  line-height: 1.5;
+  color: #3c3847;
+  font-size: 1.05rem;
+  line-height: 1.6;
   max-width: 550px;
 }
 
-/* ============ Features ============ */
-.cora-product-hero__features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: var(--space-md);
-  margin: var(--space-sm) 0;
-  padding: 0;
-  list-style: none;
-}
-
-.feature-item {
+/* ================= PRICING ================= */
+.pricingsection {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: var(--color-heading);
-  font-size: var(--text-md);
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.feature-icon svg {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-/* ============ Pricing ============ */
 .cora-product-hero__price {
   display: flex;
   align-items: baseline;
@@ -102,130 +102,83 @@
 .old-price {
   text-decoration: line-through;
   color: #aaa;
-  font-size: 36px;
-}
-.new-price {
-  font-weight: 700;
-  color:  rgb(0, 0, 0);
-  font-size: 36px;
+  font-size: 1.6rem;
 }
 
-/* ============ Badge ============ */
+.new-price {
+  font-weight: 800;
+  color: #000;
+  font-size: 1.6rem;
+}
+
 .cora-product-hero__badge {
   background: #FFDADB;
   color: #EB1313;
   padding: 8px 16px;
   border-radius: 40px;
-  font-size: var(--text-sm);
-  font-weight: 600;
-  width: fit-content;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
 }
 
-/* ============ Button ============ */
+/* ================= FEATURES ================= */
+.cora-product-hero__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #160E26;
+  font-size: 1rem;
+}
+
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: #6F43D5;
+}
+
+/* ================= CTA BUTTON ================= */
 .cora-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 14px 36px;
+  padding: 16px 40px;
   border-radius: 50px;
-  font-size: var(--text-md);
+  font-size: 1rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.25s ease;
+  cursor: pointer;
 }
+
 .cora-btn--primary {
-  background: black;
-  color: var(--color-inverse);
-  box-shadow: 0 6px 20px rgba(95, 78, 207, 0.25);
+  background: #160E26;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+
 .cora-btn--primary:hover {
+  background: #6F43D5;
   transform: translateY(-2px);
-  filter: brightness(1.05);
 }
 
-/* ============ Note & Guarantee ============ */
-.cora-product-hero__note {
-  color: #6F43D5;
-  font-size: var(--text-sm);
-  max-width: 500px;
-  text-align: center;
-}
-
-.cora-product-hero__guarantee {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-heading);
-}
-
-/* ==========================================================================
-   📱 Responsive
-   ========================================================================== */
-
-@media (max-width: 1024px) {
-  .cora-product-hero__inner {
-    flex-direction: column;
-    text-align: start;
-  }
-
-  .cora-product-hero__content {
-    align-items: center;
-  }
-
-  .cora-product-hero__features {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    text-align: left;
-  }
-
-  .cora-product-hero__badge {
-    margin: 0 auto;
-  }
-  .pricingsection{
-  display: flex;
-  width: 100% ;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-}
-
-@media (max-width: 600px) {
-  .cora-product-hero {
-    padding: var(--space-3xl) var(--space-sm);
-  }
-
-  .cora-product-hero__title {
-    font-size: 1.8rem;
-  }
-
-  .cora-product-hero__subtitle {
-    font-size: var(--text-md);
-  }
-
-  .cora-product-hero__features {
-    grid-template-columns: 1fr;
-  }
-
-  .cora-btn {
-    width: 100%;
-  }
-}
-
-
-
-/* ==========================================================================
-   🧩 Trust Icon Row (below CTA)
-   ========================================================================== */
+/* ================= TRUST ICONS ================= */
 .cora-product-hero__trust-icons {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 24px;
+  gap: 12px;
   margin-top: 28px;
- 
+  
 }
 
 .trust-icon-item {
@@ -234,7 +187,8 @@
   gap: 10px;
   color: #160E26;
   position: relative;
- }
+  padding-right: 24px;
+}
 
 .trust-icon-item:not(:last-child)::after {
   content: "";
@@ -247,14 +201,9 @@
   background: #e0ddee;
 }
 
-.nutritional-btn{
-  background-color: #DED4F5;
-  color: #6F43D5;
-  width: 100%;
-}
 .trust-icon__svg svg {
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   fill: #160E26;
   flex-shrink: 0;
 }
@@ -268,7 +217,6 @@
 .trust-icon__title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #160E26;
 }
 
 .trust-icon__subtitle {
@@ -276,25 +224,144 @@
   color: #5f5a6b;
 }
 
-@media (max-width: 768px) {
-  .cora-product-hero__trust-icons {
+/* ================= NOTE + GUARANTEE ================= */
+.cora-product-hero__note {
+  color: #6F43D5;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 550px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cora-product-hero__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #160E26;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   📱 Responsive
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .cora-product-hero__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .cora-product-hero__content {
+    align-items: center;
+  }
+
+  .pricingsection {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 8px;
   }
-  .trust-icon-item {
-    padding-right: 0;
-  }
-  .trust-icon-item:not(:last-child)::after {
-    display: none;
+
+  .cora-product-hero__features {
+    grid-template-columns: 1fr;
   }
 }
 
-.Imagegallery{
+@media (max-width: 768px) {
+  .cora-product-hero__trust-icons {
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .trust-icon-item {
+    padding-right: 0;
+  }
+
+  .trust-icon-item:not(:last-child)::after {
+    display: none;
+  }
+
+.cora-product-hero {
+  background: #fff;
+  padding: 80px 0px;
+  font-family: var(--font-family-body, "Lato", sans-serif);
+  overflow: hidden;
+}
+.container{
+  padding: 0;
+}
+}
+
+@media (max-width: 600px) {
+  .cora-product-hero {
+    padding: 60px 16px;
+  }
+
+  .cora-product-hero__title {
+    font-size: 1.8rem;
+  }
+
+  .cora-btn {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .trust-icon__svg svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+/* ==========================================================================
+   🛡️ Guarantee Section (Satisfaction Badge)
+   ========================================================================== */
+.cora-product-hero__guarantee {
   display: flex;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 24px;
+  text-align: left;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.guarantee__icon img {
+  width: 70px;
+  height: auto;
+  display: block;
+}
+
+.guarantee__content {
+  display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 24px;
-  max-width: 500px;
+  gap: 4px;
+}
+
+.guarantee__title {
+  font-weight: 700;
+  color: #160E26;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.guarantee__desc {
+  font-size: 0.9rem;
+  color: #77727f;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .cora-product-hero__guarantee {
+    flex-direction: column;
+    text-align: center;
+  }
+  .guarantee__icon img {
+    width: 60px;
+  }
 }

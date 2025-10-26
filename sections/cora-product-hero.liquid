@@ -104,12 +104,28 @@
         <p class="cora-product-hero__note">{{ section.settings.note }}</p>
       {% endif %}
 
-      {% if section.settings.guarantee_text != blank %}
-        <div class="cora-product-hero__guarantee">
-          <span class="icon">💰</span>
-          <span>{{ section.settings.guarantee_text }}</span>
-        </div>
+    {% if section.settings.guarantee_title != blank or section.settings.guarantee_desc != blank %}
+  <div class="cora-product-hero__guarantee">
+    {% if section.settings.guarantee_icon %}
+      <div class="guarantee__icon">
+        <img
+          src="{{ section.settings.guarantee_icon | image_url: width: 80 }}"
+          alt="Satisfaction Guarantee"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+    <div class="guarantee__content">
+      {% if section.settings.guarantee_title != blank %}
+        <p class="guarantee__title">{{ section.settings.guarantee_title }}</p>
       {% endif %}
+      {% if section.settings.guarantee_desc != blank %}
+        <p class="guarantee__desc">{{ section.settings.guarantee_desc }}</p>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
     </div>
   </div>
 </section>
@@ -131,7 +147,23 @@
     { "type": "url", "id": "cta_url", "label": "CTA Button URL" },
     { "type": "text", "id": "cta_label", "label": "CTA Button Label", "default": "TRY IT NOW ($47.48)" },
     { "type": "textarea", "id": "note", "label": "Subscription Note", "default": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime." },
-    { "type": "textarea", "id": "guarantee_text", "label": "Guarantee Text", "default": "Try Zenmies risk-free for 90 days. If not satisfied, we will refund you — no questions asked." }
+{
+  "type": "image_picker",
+  "id": "guarantee_icon",
+  "label": "Guarantee Icon (Badge Image)"
+},
+{
+  "type": "text",
+  "id": "guarantee_title",
+  "label": "Guarantee Title",
+  "default": "Zenmies risk free for 90 days."
+},
+{
+  "type": "textarea",
+  "id": "guarantee_desc",
+  "label": "Guarantee Description",
+  "default": "If you are not satisfied we’ll refund you, no questions asked. Reclaim your masculinity, risk-free."
+}
   ],
   "blocks": [
     {

@@ -493,6 +493,93 @@
         "star_color": "#FBBF24"
       }
     },
+    "cora_compare_table_BWg8GM": {
+      "type": "cora-compare-table",
+      "blocks": {
+        "row_W9P7gW": {
+          "type": "row",
+          "settings": {
+            "feature": "3rd-Party Lab Tested",
+            "col1_svg": "",
+            "col2_svg": "",
+            "col3_svg": "",
+            "col1_value": "",
+            "col2_value": "",
+            "col3_value": ""
+          }
+        },
+        "row_c8CYwA": {
+          "type": "row",
+          "settings": {
+            "feature": "3rd-Party Lab Tested",
+            "col1_svg": "",
+            "col2_svg": "",
+            "col3_svg": "",
+            "col1_value": "",
+            "col2_value": "",
+            "col3_value": ""
+          }
+        },
+        "row_eTMWQk": {
+          "type": "row",
+          "settings": {
+            "feature": "3rd-Party Lab Tested",
+            "col1_svg": "",
+            "col2_svg": "",
+            "col3_svg": "",
+            "col1_value": "",
+            "col2_value": "",
+            "col3_value": ""
+          }
+        },
+        "row_9W4FFr": {
+          "type": "row",
+          "settings": {
+            "feature": "3rd-Party Lab Tested",
+            "col1_svg": "",
+            "col2_svg": "",
+            "col3_svg": "",
+            "col1_value": "",
+            "col2_value": "",
+            "col3_value": ""
+          }
+        },
+        "row_U3ax98": {
+          "type": "row",
+          "settings": {
+            "feature": "3rd-Party Lab Tested",
+            "col1_svg": "",
+            "col2_svg": "",
+            "col3_svg": "",
+            "col1_value": "",
+            "col2_value": "",
+            "col3_value": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_W9P7gW",
+        "row_c8CYwA",
+        "row_eTMWQk",
+        "row_9W4FFr",
+        "row_U3ax98"
+      ],
+      "name": "Cora Compare Table",
+      "settings": {
+        "heading": "Achieve Interstellar Levels Of Testosterone Naturally With [highlight]Zenmies[/highlight]",
+        "heading_color": "#160E26",
+        "highlight_color": "#6B45E6",
+        "bg_color": "#FFFFFF",
+        "overlay_color": "rgba(255,255,255,0)",
+        "col1_title": "Zenmies",
+        "col2_title": "TRT",
+        "col3_title": "Other Supplements",
+        "cta_text": "TRY IT NOW",
+        "cta_link": "",
+        "cta_bg": "#6B45E6",
+        "cta_color": "#FFFFFF"
+      }
+    },
     "cora_video_testimonials_WxkRAw": {
       "type": "cora-video-testimonials",
       "blocks": {
@@ -572,6 +659,146 @@
         "cta_label": "TRY IT NOW",
         "cta_url": ""
       }
+    },
+    "cora_faq_jQRkWq": {
+      "type": "cora-faq",
+      "blocks": {
+        "faq_AjK3YG": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+          }
+        },
+        "faq_ixkyqE": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+          }
+        },
+        "faq_Nngitb": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+          }
+        },
+        "faq_zqLxU7": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_AjK3YG",
+        "faq_ixkyqE",
+        "faq_Nngitb",
+        "faq_zqLxU7"
+      ],
+      "name": "Cora FAQ",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "heading_color": "#160e26",
+        "bg_color": "#f9f8fc",
+        "overlay_color": "rgba(255,255,255,0)",
+        "question_color": "#160e26",
+        "answer_color": "#5b5668",
+        "card_bg": "#ebe8f2"
+      }
+    },
+    "cora_launch_kit_gqbcnY": {
+      "type": "cora-launch-kit",
+      "blocks": {
+        "item_Kwjymk": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        },
+        "item_Bn48aE": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        },
+        "item_kqwtkh": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        },
+        "item_zAaFbe": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        },
+        "item_PChMRy": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        },
+        "item_4whtBG": {
+          "type": "item",
+          "settings": {
+            "label": "Cure Natural T Support",
+            "original_price": "$118",
+            "price": "$59/mo",
+            "show_free": false,
+            "free_text": "Free"
+          }
+        }
+      },
+      "block_order": [
+        "item_Kwjymk",
+        "item_Bn48aE",
+        "item_kqwtkh",
+        "item_zAaFbe",
+        "item_PChMRy",
+        "item_4whtBG"
+      ],
+      "name": "Cora Launch Kit",
+      "settings": {
+        "heading": "Your Launch Kit Includes:",
+        "heading_color": "#160E26",
+        "left_image": "shopify://shop_images/2132_2.png",
+        "left_image_alt": "Launch Kit",
+        "watermark": "shopify://shop_images/9165182_Artboard_1_5_15293032-e9be-46a6-bcbf-efdcd6d303bb.png",
+        "watermark_opacity": 0.6,
+        "bullet_color": "#6B45E6",
+        "item_color": "#3C3847",
+        "price_color": "#160E26",
+        "free_bg": "#160E26",
+        "free_fg": "#FFFFFF",
+        "cta_label": "TRY IT NOW",
+        "cta_url": "",
+        "cta_bg": "#160E26",
+        "cta_fg": "#FFFFFF"
+      }
     }
   },
   "order": [
@@ -582,7 +809,10 @@
     "cora_product_tabs_NmNbkL",
     "cora_ingredients_grid_VCYbmQ",
     "results_grid_xLmTwN",
+    "cora_compare_table_BWg8GM",
     "cora_video_testimonials_WxkRAw",
-    "performance_graph_xKWQWW"
+    "performance_graph_xKWQWW",
+    "cora_faq_jQRkWq",
+    "cora_launch_kit_gqbcnY"
   ]
 }

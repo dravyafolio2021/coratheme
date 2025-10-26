@@ -338,13 +338,13 @@
         "cta_radius": 40
       }
     },
-    "cora_product_tabs_hR8BEA": {
+    "cora_product_tabs_NmNbkL": {
       "type": "cora-product-tabs",
       "blocks": {
-        "tab_XnFKx4": {
+        "tab_Adqyd8": {
           "type": "tab",
           "settings": {
-            "tab_title": "Product Details 1",
+            "tab_title": "What to expect",
             "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
             "heading_color": "#ffffff",
             "heading_font_size": 24,
@@ -370,10 +370,10 @@
             "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
           }
         },
-        "tab_jLjHYH": {
+        "tab_fcczkP": {
           "type": "tab",
           "settings": {
-            "tab_title": "Product Details 2",
+            "tab_title": "A",
             "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
             "heading_color": "#ffffff",
             "heading_font_size": 24,
@@ -399,7 +399,7 @@
             "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
           }
         },
-        "tab_zYnigf": {
+        "tab_jUr4Qq": {
           "type": "tab",
           "settings": {
             "tab_title": "Product Details 3",
@@ -430,9 +430,9 @@
         }
       },
       "block_order": [
-        "tab_XnFKx4",
-        "tab_jLjHYH",
-        "tab_zYnigf"
+        "tab_Adqyd8",
+        "tab_fcczkP",
+        "tab_jUr4Qq"
       ],
       "name": "Cora Product Tabs",
       "settings": {}
@@ -444,6 +444,6 @@
     "main",
     "cora_product_hero_eVrDBJ",
     "cora_ingredients_grid_VCYbmQ",
-    "cora_product_tabs_hR8BEA"
+    "cora_product_tabs_NmNbkL"
   ]
 }

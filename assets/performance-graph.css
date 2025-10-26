@@ -1,0 +1,128 @@
+.performance-graph {
+  padding: 70px 20px;
+  color: #160E26;
+  text-align: center;
+  position: relative;
+}
+
+.performance-graph__wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.performance-graph__heading {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
+.performance-graph__chart {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto 30px;
+}
+
+.performance-graph__image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.performance-graph__center {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.performance-graph__circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.performance-graph__circle-text {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.performance-graph__desc {
+  max-width: 780px;
+  margin: 20px auto 50px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.performance-graph__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.performance-graph__guarantee img {
+  width: 90px;
+  height: auto;
+}
+
+.performance-graph__cta {
+  max-width: 500px;
+  text-align: left;
+}
+
+.performance-graph__cta h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.performance-graph__cta p {
+  margin-top: 8px;
+  font-size: 0.95rem;
+  color: #3c3847;
+}
+
+.performance-graph__button {
+  display: inline-block;
+  margin-top: 16px;
+  background: #160E26;
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.performance-graph__button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .performance-graph__footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .performance-graph__cta {
+    text-align: center;
+  }
+
+  .performance-graph__circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .performance-graph__circle-text {
+    font-size: 1rem;
+  }
+}

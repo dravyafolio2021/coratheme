@@ -1,0 +1,121 @@
+{% comment %}
+  ✅ Cora Compare Table (Zenmies)
+  Optimized responsive comparison table with highlight column.
+{% endcomment %}
+
+<section
+  id="cora-compare-table-{{ section.id }}"
+  class="cora-compare-table"
+  style="
+    {% if section.settings.bg_image != blank %}
+      background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');
+      background-size: cover;
+      background-position: center;
+    {% else %}
+      background-color: {{ section.settings.bg_color }};
+    {% endif %}
+  "
+>
+  {% if section.settings.overlay_color != blank %}
+    <div class="cora-compare__overlay" style="background: {{ section.settings.overlay_color }};"></div>
+  {% endif %}
+
+  <div class="cora-compare__inner">
+    <!-- Heading -->
+    {% if section.settings.heading != blank %}
+      <h2 class="cora-compare__heading" style="color: {{ section.settings.heading_color }};">
+        {{ section.settings.heading | replace: '[highlight]', '<span style="color:' | append: section.settings.highlight_color | append: ';">' | replace: '[/highlight]', '</span>' }}
+      </h2>
+    {% endif %}
+
+    <div class="cora-compare__table-wrap">
+      <table class="cora-compare__table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="highlight">
+              {% if section.settings.col1_image != blank %}
+                <img src="{{ section.settings.col1_image | image_url: width: 120 }}" alt="{{ section.settings.col1_title | escape }}">
+              {% endif %}
+              {{ section.settings.col1_title }}
+            </th>
+            <th>{{ section.settings.col2_title }}</th>
+            <th>{{ section.settings.col3_title }}</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for block in section.blocks %}
+            <tr>
+              <td>{{ block.settings.feature }}</td>
+              <td class="highlight">{{ block.settings.col1_value }}</td>
+              <td>{{ block.settings.col2_value }}</td>
+              <td>{{ block.settings.col3_value }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if section.settings.cta_text != blank %}
+      <a
+        href="{{ section.settings.cta_link }}"
+        class="cora-compare__btn"
+        style="background: {{ section.settings.cta_bg }}; color: {{ section.settings.cta_color }};"
+      >
+        {{ section.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{{ 'cora-compare-table.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Cora Compare Table",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Achieve Interstellar Levels Of Testosterone Naturally With [highlight]Zenmies[/highlight]" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
+    { "type": "color", "id": "highlight_color", "label": "Highlight Text Color", "default": "#6b45e6" },
+
+    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "color", "id": "overlay_color", "label": "Overlay Color (use rgba for transparency)", "default": "rgba(255,255,255,0)" },
+
+    { "type": "text", "id": "col1_title", "label": "Column 1 Title", "default": "Zenmies" },
+    { "type": "image_picker", "id": "col1_image", "label": "Column 1 Image" },
+    { "type": "text", "id": "col2_title", "label": "Column 2 Title", "default": "TRT" },
+    { "type": "text", "id": "col3_title", "label": "Column 3 Title", "default": "Other Supplements" },
+
+    { "type": "text", "id": "cta_text", "label": "CTA Text", "default": "TRY IT NOW" },
+    { "type": "url", "id": "cta_link", "label": "CTA Link" },
+    { "type": "color", "id": "cta_bg", "label": "Button Background", "default": "#6b45e6" },
+    { "type": "color", "id": "cta_color", "label": "Button Text Color", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Table Row",
+      "settings": [
+        { "type": "text", "id": "feature", "label": "Feature", "default": "3rd-Party Lab Tested" },
+        { "type": "text", "id": "col1_value", "label": "Zenmies Value", "default": "✔" },
+        { "type": "text", "id": "col2_value", "label": "TRT Value", "default": "✖" },
+        { "type": "text", "id": "col3_value", "label": "Other Value", "default": "✖" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cora Compare Table", "category": "Zenmies",
+      "blocks": [
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" },
+        { "type": "row" }
+      ]
+    }
+  ]
+}
+{% endschema %}

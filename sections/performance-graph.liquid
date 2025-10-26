@@ -1,0 +1,92 @@
+{% comment %}
+✅ Performance Graph (Zenmies)
+Optimized version using an uploaded SVG/PNG background graph instead of drawn paths.
+{% endcomment %}
+
+<section id="performance-graph-{{ section.id }}" class="performance-graph" style="background: {{ section.settings.bg_color }}">
+  <div class="performance-graph__wrapper container">
+
+    <!-- Heading -->
+    {% if section.settings.heading != blank %}
+      <h2 class="performance-graph__heading" style="color: {{ section.settings.heading_color }}">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <!-- Graph Image -->
+    {% if section.settings.graph_image != blank %}
+      <div class="performance-graph__chart">
+        <img 
+          src="{{ section.settings.graph_image | image_url: width: 900 }}" 
+          alt="Performance Graph" 
+          loading="lazy"  width="100%" height="100%"
+          class="performance-graph__image"
+        >
+
+        <!-- Circle Label -->
+        <div class="performance-graph__center">
+          <div class="performance-graph__circle" style="background: {{ section.settings.circle_bg }}">
+            <span class="performance-graph__circle-text">
+              {{ section.settings.circle_text }}
+            </span>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Description -->
+    {% if section.settings.description != blank %}
+      <p class="performance-graph__desc" style="color: {{ section.settings.text_color }}">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    <!-- Guarantee + CTA -->
+    <div class="performance-graph__footer">
+      {% if section.settings.badge_image != blank %}
+        <div class="performance-graph__guarantee">
+          <img src="{{ section.settings.badge_image | image_url: width: 100 }}" alt="Guarantee Badge" loading="lazy">
+        </div>
+      {% endif %}
+
+      <div class="performance-graph__cta">
+        <h3>{{ section.settings.cta_heading }}</h3>
+        <p>{{ section.settings.cta_text }}</p>
+        <a href="{{ section.settings.cta_url | default: '#' }}" class="performance-graph__button">
+          {{ section.settings.cta_label }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'performance-graph.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Performance Graph",
+  "class": "cora-section performance-graph",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Achieve Interstellar Levels Of Testosterone Naturally With Zenmies" },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#F4EEFB" },
+
+    { "type": "image_picker", "id": "graph_image", "label": "Graph Image (SVG/PNG)" },
+
+    { "type": "color", "id": "circle_bg", "label": "Circle Background", "default": "#000000" },
+    { "type": "text", "id": "circle_text", "label": "Circle Label Text", "default": "+60% Increase in T" },
+
+    { "type": "color", "id": "text_color", "label": "Paragraph Text Color", "default": "#3c3847" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Zenmies Natural T supports the optimization of male sex hormones, including Total Testosterone, Free Testosterone, and more. Most users report feeling a difference in energy levels after just a few days." },
+
+    { "type": "image_picker", "id": "badge_image", "label": "Guarantee Badge" },
+    { "type": "text", "id": "cta_heading", "label": "CTA Heading", "default": "See A Massive Difference In 90 Days Or Your Money Back" },
+    { "type": "textarea", "id": "cta_text", "label": "CTA Subtext", "default": "We make sure every customer actually gets results or we refund you 100% of your investment. You’ll feel the difference with Zenmies that we bear all the risk." },
+    { "type": "text", "id": "cta_label", "label": "Button Label", "default": "TRY IT NOW" },
+    { "type": "url", "id": "cta_url", "label": "Button Link" }
+  ],
+  "presets": [
+    { "name": "Performance Graph", "category": "Zenmies" }
+  ]
+}
+{% endschema %}

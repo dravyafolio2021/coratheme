@@ -1,0 +1,124 @@
+.cora-footer {
+  background: var(--cora-footer-bg, #110E16);
+  color: var(--cora-footer-text, #fff);
+  padding: 60px 20px 30px;
+  font-family: "Inter", sans-serif;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.cora-footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+  gap: clamp(24px, 3vw, 60px);
+  align-items: flex-start;
+}
+
+/* Brand Column */
+.cora-footer__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.cora-footer__form {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #3a383e;
+  margin-top: 20px;
+}
+
+.cora-footer__input {
+  flex: 1;
+  padding: 14px 16px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.cora-footer__submit {
+  background: #fff;
+  color: #160e26;
+  border: none;
+  padding: 12px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Socials */
+.cora-footer__socials {
+  display: flex;
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.cora-footer__socials a:hover svg {
+  opacity: 0.8;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+/* Columns */
+.cora-footer__title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.cora-footer__col ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cora-footer__col a {
+  color: #d9d8dd;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.cora-footer__col a:hover { opacity: 0.8; }
+
+/* Disclaimer Text */
+.cora-footer__col p {
+  font-size: 0.95rem;
+  color: #d2d0d6;
+  line-height: 1.6;
+}
+
+/* Bottom Bar */
+.cora-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #bfbec3;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cora-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cora-footer__grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .cora-footer__form { justify-content: center; }
+  .cora-footer__socials { justify-content: center; }
+}

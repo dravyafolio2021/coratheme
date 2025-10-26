@@ -677,6 +677,13 @@
             "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
           }
         },
+        "faq_yagBjg": {
+          "type": "faq",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+          }
+        },
         "faq_Nngitb": {
           "type": "faq",
           "settings": {
@@ -695,6 +702,7 @@
       "block_order": [
         "faq_AjK3YG",
         "faq_ixkyqE",
+        "faq_yagBjg",
         "faq_Nngitb",
         "faq_zqLxU7"
       ],
@@ -727,48 +735,48 @@
           "settings": {
             "label": "Cure Natural T Support",
             "original_price": "$118",
-            "price": "$59/mo",
-            "show_free": false,
+            "price": "",
+            "show_free": true,
             "free_text": "Free"
           }
         },
-        "item_kqwtkh": {
+        "item_4mKRy8": {
           "type": "item",
           "settings": {
             "label": "Cure Natural T Support",
             "original_price": "$118",
-            "price": "$59/mo",
-            "show_free": false,
+            "price": "",
+            "show_free": true,
             "free_text": "Free"
           }
         },
-        "item_zAaFbe": {
+        "item_Fdg4k7": {
           "type": "item",
           "settings": {
             "label": "Cure Natural T Support",
             "original_price": "$118",
-            "price": "$59/mo",
-            "show_free": false,
+            "price": "",
+            "show_free": true,
             "free_text": "Free"
           }
         },
-        "item_PChMRy": {
+        "item_a9ipD9": {
           "type": "item",
           "settings": {
             "label": "Cure Natural T Support",
             "original_price": "$118",
-            "price": "$59/mo",
-            "show_free": false,
+            "price": "",
+            "show_free": true,
             "free_text": "Free"
           }
         },
-        "item_4whtBG": {
+        "item_4HQEYe": {
           "type": "item",
           "settings": {
             "label": "Cure Natural T Support",
             "original_price": "$118",
-            "price": "$59/mo",
-            "show_free": false,
+            "price": "",
+            "show_free": true,
             "free_text": "Free"
           }
         }
@@ -776,10 +784,10 @@
       "block_order": [
         "item_Kwjymk",
         "item_Bn48aE",
-        "item_kqwtkh",
-        "item_zAaFbe",
-        "item_PChMRy",
-        "item_4whtBG"
+        "item_4mKRy8",
+        "item_Fdg4k7",
+        "item_a9ipD9",
+        "item_4HQEYe"
       ],
       "name": "Cora Launch Kit",
       "settings": {

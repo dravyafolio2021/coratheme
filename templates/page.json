@@ -810,6 +810,85 @@
     },
     "cora_reviews_Xa63VY": {
       "type": "cora-reviews",
+      "blocks": {
+        "gallery_image_aQT3cb": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39762.png"
+          }
+        },
+        "gallery_image_pNFzGq": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_rTgk9r": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_9TiqDb": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_XQbPzr": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_pwyCrP": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_36amXw": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_cY7HrM": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "gallery_image_3TdLNj": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_39754.png"
+          }
+        },
+        "review_3M6rQH": {
+          "type": "review",
+          "settings": {
+            "name": "Zarc. C",
+            "rating": 5,
+            "date": "4 Months ago",
+            "review": "Didn’t feel much for the first couple of weeks but noticed subtle changes around day 18. Takes patience!",
+            "verified": true,
+            "recommend": true
+          }
+        }
+      },
+      "block_order": [
+        "gallery_image_aQT3cb",
+        "gallery_image_pNFzGq",
+        "gallery_image_rTgk9r",
+        "gallery_image_9TiqDb",
+        "gallery_image_XQbPzr",
+        "gallery_image_pwyCrP",
+        "gallery_image_36amXw",
+        "gallery_image_cY7HrM",
+        "gallery_image_3TdLNj",
+        "review_3M6rQH"
+      ],
       "name": "Cora Reviews",
       "settings": {
         "heading": "Customer Reviews",

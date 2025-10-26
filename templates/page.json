@@ -807,6 +807,27 @@
         "cta_bg": "#160E26",
         "cta_fg": "#FFFFFF"
       }
+    },
+    "cora_reviews_Xa63VY": {
+      "type": "cora-reviews",
+      "name": "Cora Reviews",
+      "settings": {
+        "heading": "Customer Reviews",
+        "heading_color": "#160E26",
+        "avg_rating": "4.8",
+        "total_reviews": "817",
+        "star_color": "#6B45E6",
+        "cta_label": "WRITE A REVIEW",
+        "cta_url": "",
+        "show_cta_button": true,
+        "more_label": "SEE MORE REVIEWS",
+        "more_url": "",
+        "rating_5": 2967,
+        "rating_4": 706,
+        "rating_3": 67,
+        "rating_2": 173,
+        "rating_1": 0
+      }
     }
   },
   "order": [
@@ -821,6 +842,7 @@
     "cora_video_testimonials_WxkRAw",
     "performance_graph_xKWQWW",
     "cora_faq_jQRkWq",
-    "cora_launch_kit_gqbcnY"
+    "cora_launch_kit_gqbcnY",
+    "cora_reviews_Xa63VY"
   ]
 }

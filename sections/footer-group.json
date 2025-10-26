@@ -11,15 +11,25 @@
   "type": "footer",
   "name": "t:general.footer",
   "sections": {
-    "footer": {
-      "type": "footer",
+    "cora_footer_hnU9bH": {
+      "type": "cora-footer",
+      "name": "Cora Footer",
       "settings": {
-        "menu": "",
-        "show_payment_icons": true
+        "brand_name": "Zenmies",
+        "text_color": "#FFFFFF",
+        "bg_color": "#110E16",
+        "info_menu": "footer",
+        "legal_menu": "main-menu",
+        "instagram_url": "",
+        "twitter_url": "",
+        "form_action": "#",
+        "email_placeholder": "Email",
+        "disclaimer_text": "These statements have not been evaluated by the FDA or MHRA. These products are not intended to diagnose, treat, cure or prevent any disease.",
+        "copyright_text": "All Rights Reserved. These Statements Have Not Been Evaluated By The Food And Drug Administration."
       }
     }
   },
   "order": [
-    "footer"
+    "cora_footer_hnU9bH"
   ]
 }

@@ -18,7 +18,7 @@
         "open_in_new_tab": false,
         "link_aria": "Promotional offer link",
         "bg_color": "rgba(104, 65, 217, 1)",
-        "text_color": "#FFFFFF",
+        "text_color": "#ffffff",
         "font_size": 18,
         "padding_y": 14,
         "max_width": 1400,
@@ -35,7 +35,7 @@
         "logo_text": "Zenmies",
         "logo_image": "shopify://shop_images/Zenmies_logo.png",
         "logo_alt": "Zenmies Logo",
-        "logo_color": "#6841D9",
+        "logo_color": "#6841d9",
         "main_menu": "",
         "is_sticky": true
       }
@@ -373,7 +373,7 @@
         "tab_fcczkP": {
           "type": "tab",
           "settings": {
-            "tab_title": "A",
+            "tab_title": "FAQ's",
             "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
             "heading_color": "#ffffff",
             "heading_font_size": 24,
@@ -402,7 +402,7 @@
         "tab_jUr4Qq": {
           "type": "tab",
           "settings": {
-            "tab_title": "Product Details 3",
+            "tab_title": "Review",
             "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
             "heading_color": "#ffffff",
             "heading_font_size": 24,

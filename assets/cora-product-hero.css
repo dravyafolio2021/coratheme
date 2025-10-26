@@ -123,7 +123,9 @@
 
 /* ================= FEATURES ================= */
 .cora-product-hero__features {
-  display: grid;
+     flex-direction: column;
+    display: flex
+;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 14px;
   margin-top: 8px;

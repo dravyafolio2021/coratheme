@@ -17,6 +17,13 @@
   line-height: 1.4;
 }
 
+.results-bento__heading .highlight {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  line-height: 1.4;
+}
 /* Bento Grid Layout */
 .results-bento__grid {
   display: grid;
@@ -37,6 +44,7 @@
 /* Hero Image */
 .results-bento__image {
   grid-area: image;
+  max-height: 460px;
 }
 .results-bento__image img {
   width: 100%;
@@ -50,7 +58,7 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   border-radius: 16px;
   font-size: 0.95rem;
 }
@@ -106,4 +114,9 @@
     max-height: 320px;
     object-fit: cover;
   }
+  .results-bento {
+  padding: 70px 0px;
+  background: #fff;
+  color: #160E26;
+}
 }

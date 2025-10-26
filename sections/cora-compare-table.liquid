@@ -1,8 +1,3 @@
-{% comment %}
-  ✅ Cora Compare Table (Zenmies)
-  Optimized responsive comparison table with highlight column.
-{% endcomment %}
-
 <section
   id="cora-compare-table-{{ section.id }}"
   class="cora-compare-table"
@@ -23,11 +18,19 @@
   <div class="cora-compare__inner">
     <!-- Heading -->
     {% if section.settings.heading != blank %}
+      {% assign highlight_color = section.settings.highlight_color | default: '#6B45E6' %}
+      {% assign open_tag = '<span class="highlight" style="color:' | append: highlight_color | append: ';">' %}
+      {% assign close_tag = '</span>' %}
+      {% assign formatted_heading = section.settings.heading
+        | replace: '[highlight]', open_tag
+        | replace: '[/highlight]', close_tag
+      %}
       <h2 class="cora-compare__heading" style="color: {{ section.settings.heading_color }};">
-        {{ section.settings.heading | replace: '[highlight]', '<span style="color:' | append: section.settings.highlight_color | append: ';">' | replace: '[/highlight]', '</span>' }}
+        {{ formatted_heading }}
       </h2>
     {% endif %}
 
+    <!-- Table -->
     <div class="cora-compare__table-wrap">
       <table class="cora-compare__table">
         <thead>
@@ -35,7 +38,10 @@
             <th></th>
             <th class="highlight">
               {% if section.settings.col1_image != blank %}
-                <img src="{{ section.settings.col1_image | image_url: width: 120 }}" alt="{{ section.settings.col1_title | escape }}">
+                <img
+                  src="{{ section.settings.col1_image | image_url: width: 120 }}"
+                  alt="{{ section.settings.col1_title | escape }}"
+                >
               {% endif %}
               {{ section.settings.col1_title }}
             </th>
@@ -48,9 +54,33 @@
           {% for block in section.blocks %}
             <tr>
               <td>{{ block.settings.feature }}</td>
-              <td class="highlight">{{ block.settings.col1_value }}</td>
-              <td>{{ block.settings.col2_value }}</td>
-              <td>{{ block.settings.col3_value }}</td>
+
+              <!-- Zenmies Column -->
+              <td class="highlight">
+                {% if block.settings.col1_svg != blank %}
+                  <div class="icon-svg">{{ block.settings.col1_svg }}</div>
+                {% else %}
+                  {{ block.settings.col1_value }}
+                {% endif %}
+              </td>
+
+              <!-- TRT Column -->
+              <td>
+                {% if block.settings.col2_svg != blank %}
+                  <div class="icon-svg">{{ block.settings.col2_svg }}</div>
+                {% else %}
+                  {{ block.settings.col2_value }}
+                {% endif %}
+              </td>
+
+              <!-- Other Supplements -->
+              <td>
+                {% if block.settings.col3_svg != blank %}
+                  <div class="icon-svg">{{ block.settings.col3_svg }}</div>
+                {% else %}
+                  {{ block.settings.col3_value }}
+                {% endif %}
+              </td>
             </tr>
           {% endfor %}
         </tbody>
@@ -74,14 +104,25 @@
 {% schema %}
 {
   "name": "Cora Compare Table",
+  "class": "cora-section cora-compare-table",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Achieve Interstellar Levels Of Testosterone Naturally With [highlight]Zenmies[/highlight]" },
-    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
-    { "type": "color", "id": "highlight_color", "label": "Highlight Text Color", "default": "#6b45e6" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Achieve Interstellar Levels Of Testosterone Naturally With [highlight]Zenmies[/highlight]"
+    },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
+    { "type": "color", "id": "highlight_color", "label": "Highlight Text Color", "default": "#6B45E6" },
 
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
-    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
-    { "type": "color", "id": "overlay_color", "label": "Overlay Color (use rgba for transparency)", "default": "rgba(255,255,255,0)" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#FFFFFF" },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color (use rgba for transparency)",
+      "default": "rgba(255,255,255,0)"
+    },
 
     { "type": "text", "id": "col1_title", "label": "Column 1 Title", "default": "Zenmies" },
     { "type": "image_picker", "id": "col1_image", "label": "Column 1 Image" },
@@ -90,8 +131,8 @@
 
     { "type": "text", "id": "cta_text", "label": "CTA Text", "default": "TRY IT NOW" },
     { "type": "url", "id": "cta_link", "label": "CTA Link" },
-    { "type": "color", "id": "cta_bg", "label": "Button Background", "default": "#6b45e6" },
-    { "type": "color", "id": "cta_color", "label": "Button Text Color", "default": "#ffffff" }
+    { "type": "color", "id": "cta_bg", "label": "Button Background", "default": "#6B45E6" },
+    { "type": "color", "id": "cta_color", "label": "Button Text Color", "default": "#FFFFFF" }
   ],
   "blocks": [
     {
@@ -99,15 +140,19 @@
       "name": "Table Row",
       "settings": [
         { "type": "text", "id": "feature", "label": "Feature", "default": "3rd-Party Lab Tested" },
-        { "type": "text", "id": "col1_value", "label": "Zenmies Value", "default": "✔" },
-        { "type": "text", "id": "col2_value", "label": "TRT Value", "default": "✖" },
-        { "type": "text", "id": "col3_value", "label": "Other Value", "default": "✖" }
+        { "type": "textarea", "id": "col1_svg", "label": "Zenmies SVG (Paste SVG Code Here)" },
+        { "type": "textarea", "id": "col2_svg", "label": "TRT SVG (Paste SVG Code Here)" },
+        { "type": "textarea", "id": "col3_svg", "label": "Other Supplements SVG (Paste SVG Code Here)" },
+        { "type": "text", "id": "col1_value", "label": "Zenmies Text Fallback" },
+        { "type": "text", "id": "col2_value", "label": "TRT Text Fallback" },
+        { "type": "text", "id": "col3_value", "label": "Other Supplements Text Fallback" }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Cora Compare Table", "category": "Zenmies",
+      "name": "Cora Compare Table",
+      "category": "Zenmies",
       "blocks": [
         { "type": "row" },
         { "type": "row" },

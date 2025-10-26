@@ -26,11 +26,12 @@
 
 .cora-footer__form {
   display: flex;
-  align-items: center;
+  align-items: center; margin-top: 12px;
   border-radius: 8px;
+  padding: 6px 12px;
   overflow: hidden;
   background: #3a383e;
-  margin-top: 20px;
+    
 }
 
 .cora-footer__input {
@@ -99,12 +100,12 @@
 
 /* Bottom Bar */
 .cora-footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(170, 170, 170);
   margin-top: 40px;
   padding-top: 20px;
   text-align: center;
   font-size: 0.9rem;
-  color: #bfbec3;
+  color: #d0d0d0;
 }
 
 /* Responsive */
@@ -112,6 +113,12 @@
   .cora-footer__grid {
     grid-template-columns: 1fr 1fr;
   }
+  .cora-footer {
+  background: var(--cora-footer-bg, #110E16);
+  color: var(--cora-footer-text, #fff);
+  padding: 60px 0px;
+  font-family: "Inter", sans-serif;
+}
 }
 
 @media (max-width: 600px) {

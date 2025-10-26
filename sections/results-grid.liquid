@@ -1,14 +1,16 @@
-{% comment %}
-✅ Results Bento (Zenmies)
-Dynamic, asymmetric grid layout with hero image and testimonial cards.
-{% endcomment %}
-
 <section id="results-bento-{{ section.id }}" class="results-bento">
   <div class="results-bento__wrapper">
     <!-- Heading -->
     {% if section.settings.heading != blank %}
-      <h2 class="results-bento__heading" style="color: {{ section.settings.heading_color }}">
-        {{ section.settings.heading }}
+      {% assign highlight_color = section.settings.highlight_color | default: '#6B45E6' %}
+      {% assign open_tag = '<span class="highlight" style="color:' | append: highlight_color | append: ';">' %}
+      {% assign close_tag = '</span>' %}
+      {% assign heading_html = section.settings.heading
+        | replace: '[highlight]', open_tag
+        | replace: '[/highlight]', close_tag
+      %}
+      <h2 class="results-bento__heading" style="color: {{ section.settings.heading_color }};">
+        {{ heading_html }}
       </h2>
     {% endif %}
 
@@ -25,7 +27,8 @@ Dynamic, asymmetric grid layout with hero image and testimonial cards.
       {% for block in section.blocks %}
         <div class="results-bento__item results-bento__card" style="background: {{ section.settings.card_bg }}">
           <div class="results-bento__card-header">
-            <p class="results-bento__name">{{ block.settings.name }}
+            <p class="results-bento__name">
+              {{ block.settings.name }}
               {% if block.settings.verified %}
                 <span class="verified">✔ Verified Buyer</span>
               {% endif %}
@@ -55,7 +58,14 @@ Dynamic, asymmetric grid layout with hero image and testimonial cards.
   "name": "Results Bento",
   "class": "cora-section results-bento",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Section Heading", "default": "See How 247,353+ Men Over 30 Are Burning Fat, Building Strength, And Getting Results That Show" },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "See How 247,353+ Men Over 30 Are Burning Fat, Building Strength, And Getting Results That Show"
+    },
+    { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#6B45E6" },
+
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
     { "type": "image_picker", "id": "main_image", "label": "Main Image (Hero Left)" },
     { "type": "color", "id": "card_bg", "label": "Card Background", "default": "#F4F1FB" },
@@ -69,12 +79,15 @@ Dynamic, asymmetric grid layout with hero image and testimonial cards.
         { "type": "text", "id": "name", "label": "Name", "default": "Zarc. C" },
         { "type": "checkbox", "id": "verified", "label": "Verified Buyer", "default": true },
         { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "default": 5 },
-        { "type": "textarea", "id": "review", "label": "Review Text", "default": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has." }
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review Text",
+          "default": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has."
+        }
       ]
     }
   ],
-  "presets": [
-    { "name": "Cora Results Grid", "category": "Zenmies" }
-  ]
+  "presets": [{ "name": "Cora Results Grid", "category": "Zenmies" }]
 }
 {% endschema %}

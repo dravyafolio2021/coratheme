@@ -1,0 +1,98 @@
+/* ==========================================================================
+   🟣 Cora Promo Bar Styles — v1.1.0 (with marquee + token fix)
+   ========================================================================== */
+
+.cora-promo {
+  background: var(--promo-bg);
+  color: var(--promo-color);
+  overflow: hidden;
+  width: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+}
+
+/* Inner container */
+.cora-promo__inner {
+  margin: 0 auto;
+  max-width: var(--promo-max-width, 1400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--promo-padding-y) 16px;
+  text-align: center;
+}
+
+/* Marquee effect container */
+.cora-promo__marquee {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: coraScroll 15s linear infinite;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.cora-promo__text {
+  font-size: clamp(14px, 2.2vw, var(--promo-font-size));
+  color: var(--promo-color);
+  display: inline-block;
+  padding-right: 2rem;
+  letter-spacing: 0.04em;
+}
+
+.cora-promo__text.clone {
+  padding-left: 2rem;
+}
+
+/* Marquee animation */
+@keyframes coraScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Typography Modifiers */
+.cora-promo__inner.is-uppercase .cora-promo__text {
+  text-transform: uppercase;
+}
+.cora-promo__inner.is-bold .cora-promo__text {
+  font-weight: 700;
+}
+
+/* Full width */
+.cora-promo--fullbleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Link styling */
+.cora-promo__link {
+  color: inherit;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Focus state */
+.cora-promo__link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .cora-promo__inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .cora-promo__text {
+    letter-spacing: 0.02em;
+  }
+}

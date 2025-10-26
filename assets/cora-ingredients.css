@@ -1,0 +1,88 @@
+.cora-ingredients {
+  background: #f7f5fb;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  padding: 48px 24px;
+}
+
+.cora-ingredients__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+}
+
+.cora-ingredients__heading {
+  line-height: 1.2;
+}
+
+.cora-ingredients__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.cora-ingredient-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+}
+
+.cora-ingredient-card__image {
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cora-ingredient-card__overlay {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+  height: 100%;
+}
+
+.cora-ingredient-card__title,
+.cora-ingredient-card__desc {
+  line-height: 1.4;
+  word-break: normal;
+}
+
+.cora-trust__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.cora-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #160e26;
+  font-size: 0.95rem;
+}
+
+.cora-ingredients__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 36px;
+  transition: all 0.3s ease;
+}
+
+.cora-ingredients__cta:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .cora-ingredients {
+    padding: 32px 16px;
+  }
+}

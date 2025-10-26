@@ -1,135 +1,109 @@
-<header id="cora-header" class="cora-header">
+{% comment %}
+  ==========================================================================
+  🧭 Cora Header — v1.0.0
+  ==========================================================================
+  A clean, responsive Shopify header inspired by Zenmies' design.
+  - Center navigation
+  - Left-aligned logo text
+  - Right-aligned account and cart icons
+  - Sticky on scroll (optional)
+  - Glass-like shadow for modern depth
+  ==========================================================================
+{% endcomment %}
+
+<header
+  id="cora-header-{{ section.id }}"
+  class="cora-header {% if section.settings.is_sticky %}cora-header--sticky{% endif %}"
+  role="banner"
+>
   <div class="cora-header__inner container">
-
-    <!-- 🅰️ Logo -->
+    <!-- Left: Logo -->
     <div class="cora-header__logo">
-      <a href="{{ routes.root_url }}" class="cora-header__logo-link">
-        {% if section.settings.logo %}
+      {% if section.settings.logo_text != blank %}
+        <a href="/" class="cora-header__brand" style="color: {{ section.settings.logo_color }};">
+          {{ section.settings.logo_text }}
+        </a>
+      {% elsif section.settings.logo_image != blank %}
+        <a href="/" class="cora-header__brand">
           <img
-            src="{{ section.settings.logo | image_url: width: 200 }}"
-            alt="{{ shop.name }}"
-            class="cora-header__logo-image"
-            loading="eager" width="100%" height="100%"
+            src="{{ section.settings.logo_image | img_url: '200x' }}"
+            alt="{{ section.settings.logo_alt | default: 'Site logo' }}"
+            class="cora-header__logo-img"
+            width="120"
+            height="auto"
+            loading="lazy"
           >
-        {% else %}
-          <span class="cora-header__logo-text">{{ shop.name }}</span>
-        {% endif %}
-      </a>
+        </a>
+      {% else %}
+        <a href="/" class="cora-header__brand">Your Brand</a>
+      {% endif %}
     </div>
 
-    <!-- 🔗 Navigation -->
-    <nav class="cora-header__nav" role="navigation">
-      {% if section.settings.menu != blank %}
-        <ul class="cora-header__menu">
-          {% for link in linklists[section.settings.menu].links %}
-            <li class="cora-header__menu-item">
-              <a href="{{ link.url }}" class="cora-header__menu-link">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %}
-    </nav>
-
-    <!-- ⚙️ Utilities -->
-    <div class="cora-header__utilities">
-      <!-- Currency Selector -->
-      {% if section.settings.show_currency_selector %}
-        {% form 'localization' %}
-          <div class="cora-header__currency">
-            <select name="currency" class="cora-header__select" onchange="this.form.submit()">
-              {% for currency in shop.enabled_currencies %}
-                <option value="{{ currency.iso_code }}" {% if currency.iso_code == cart.currency.iso_code %}selected{% endif %}>
-                  {{ currency.iso_code }}
-                </option>
-              {% endfor %}
-            </select>
-          </div>
-        {% endform %}
-      {% endif %}
-
-      <!-- Account -->
-      {% if section.settings.show_account_icon %}
-        <a href="{{ routes.account_url }}" class="cora-header__icon" aria-label="Account">
-          {% render 'icon-account' %}
-        </a>
-      {% endif %}
-
-      <!-- Cart -->
-      {% if section.settings.show_cart_icon %}
-        <a href="{{ routes.cart_url }}" class="cora-header__icon" aria-label="Cart">
-          {% render 'icon-cart' %}
-        </a>
-      {% endif %}
-
-      <!-- Mobile Toggle -->
-      <button class="cora-header__toggle" aria-label="Toggle menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-    </div>
-  </div>
-
-  <!-- 📱 Mobile Drawer Menu -->
-  <div class="cora-header__drawer">
-    {% if section.settings.menu != blank %}
-      <ul class="cora-header__drawer-menu">
-        {% for link in linklists[section.settings.menu].links %}
-          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+    <!-- Center: Navigation Menu -->
+    <nav class="cora-header__nav" role="navigation" aria-label="Main Menu">
+      <ul class="cora-header__menu">
+        {% for link in linklists[section.settings.main_menu].links %}
+          <li class="cora-header__menu-item">
+            <a href="{{ link.url }}" class="cora-header__menu-link">{{ link.title }}</a>
+          </li>
         {% endfor %}
       </ul>
-    {% endif %}
+    </nav>
+
+    <!-- Right: Icons -->
+    <div class="cora-header__icons">
+      <a href="/account" class="cora-header__icon" aria-label="Account">
+        {% render 'icon-account' %}
+      </a>
+      <a href="/cart" class="cora-header__icon" aria-label="Cart">
+        {% render 'icon-cart' %}
+      </a>
+      <!-- Mobile Menu Toggle -->
+      <button class="cora-header__menu-toggle" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
 {{ 'cora-header.css' | asset_url | stylesheet_tag }}
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.querySelector(".cora-header__toggle");
-    const drawer = document.querySelector(".cora-header__drawer");
-
-    if (toggle && drawer) {
-      toggle.addEventListener("click", () => {
-        drawer.classList.toggle("active");
-      });
-    }
-  });
-</script>
-
 {% schema %}
 {
   "name": "Cora Header",
-  "tag": "header",
-  "class": "shopify-section-header",
   "settings": [
     {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "Zenmies"
+    },
+    {
       "type": "image_picker",
-      "id": "logo",
+      "id": "logo_image",
       "label": "Logo Image"
     },
     {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo Alt Text",
+      "default": "Zenmies Logo"
+    },
+    {
+      "type": "color",
+      "id": "logo_color",
+      "label": "Logo Text Color",
+      "default": "#6841D9"
+    },
+    {
       "type": "link_list",
-      "id": "menu",
-      "label": "Navigation Menu",
-      "default": "main-menu"
+      "id": "main_menu",
+      "label": "Main Menu"
     },
     {
       "type": "checkbox",
-      "id": "show_currency_selector",
-      "label": "Show Currency Selector",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_account_icon",
-      "label": "Show Account Icon",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_cart_icon",
-      "label": "Show Cart Icon",
+      "id": "is_sticky",
+      "label": "Enable Sticky Header",
       "default": true
     }
   ],

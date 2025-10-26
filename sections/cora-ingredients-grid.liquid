@@ -1,0 +1,252 @@
+{% comment %}
+  ✅ Cora Ingredients Grid (Zenmies)
+  Highly customizable responsive ingredient showcase with trust badges and CTA.
+  Version: v1.0.0
+{% endcomment %}
+
+<section id="cora-ingredients-{{ section.id }}" class="cora-ingredients">
+  <div class="cora-ingredients__inner">
+    {% if section.settings.heading != blank %}
+      <h2
+        class="cora-ingredients__heading"
+        style="
+          color: {{ section.settings.heading_color }};
+          font-size: {{ section.settings.heading_size }}px;
+          font-weight: {{ section.settings.heading_weight }};
+          text-align: {{ section.settings.heading_align }};
+        "
+      >
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <!-- Ingredients Grid -->
+    <div class="cora-ingredients__grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'ingredient' %}
+          <div class="cora-ingredient-card">
+            <div
+              class="cora-ingredient-card__image"
+              style="                background-image: url('{{ block.settings.image | image_url: width: 600 }}');"
+            >
+              <div
+                class="cora-ingredient-card__overlay"
+                style="background: {{ section.settings.overlay_color }};"
+              >
+                <h3
+                  class="cora-ingredient-card__title"
+                  style="
+                    color: {{ section.settings.title_color }};
+                    font-size: {{ section.settings.title_size }}px;
+                    font-weight: {{ section.settings.title_weight }};
+                  "
+                >
+                  {{ block.settings.title }}
+                </h3>
+                <p
+                  class="cora-ingredient-card__desc"
+                  style="
+                    color: {{ section.settings.desc_color }};
+                    font-size: {{ section.settings.desc_size }}px;
+                    font-weight: {{ section.settings.desc_weight }};
+                  "
+                >
+                  {{ block.settings.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Trust Badges -->
+    {% if section.blocks.size > 0 %}
+      <div class="cora-trust__grid">
+        {% for block in section.blocks %}
+          {% if block.type == 'trust_badge' %}
+            <div class="cora-trust__item">
+              <div class="cora-trust__icon">{{ block.settings.icon_svg }}</div>
+              <p class="cora-trust__label">{{ block.settings.label }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- CTA -->
+    {% if section.settings.cta_text != blank %}
+      <a
+        href="{{ section.settings.cta_link }}"
+        class="cora-ingredients__cta"
+        style="
+          background: {{ section.settings.cta_bg }};
+          color: {{ section.settings.cta_color }};
+          border-radius: {{ section.settings.cta_radius }}px;
+        "
+      >
+        {{ section.settings.cta_text }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+{{ 'cora-ingredients.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Cora Ingredients ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Unlock The Power Of 10 Ancient Performance Boosters"
+    },
+    { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "default": 28,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading Weight",
+      "default": "700",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+
+    { "type": "color", "id": "overlay_color", "label": "Image Overlay Color", "default": "rgba(0,0,0,0.4)" },
+    { "type": "color", "id": "title_color", "label": "Ingredient Title Color", "default": "#ffffff" },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Ingredient Title Size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "title_weight",
+      "label": "Ingredient Title Weight",
+      "default": "600",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ]
+    },
+
+    { "type": "color", "id": "desc_color", "label": "Description Color", "default": "#f1f1f1" },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Description Font Size",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "default": 14,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "desc_weight",
+      "label": "Description Weight",
+      "default": "400",
+      "options": [
+        { "value": "400", "label": "Normal" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ]
+    },
+
+    { "type": "text", "id": "cta_text", "label": "Button Text", "default": "TRY IT NOW" },
+    { "type": "url", "id": "cta_link", "label": "Button Link" },
+    { "type": "color", "id": "cta_bg", "label": "Button Background", "default": "#6b45e6" },
+    { "type": "color", "id": "cta_color", "label": "Button Text Color", "default": "#ffffff" },
+    {
+      "type": "range",
+      "id": "cta_radius",
+      "label": "Button Border Radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient Card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Ingredient Image" },
+        { "type": "text", "id": "title", "label": "Ingredient Title", "default": "Shilajit" },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Ingredient Description",
+          "default": "Lorem Ipsum is simply dummy text"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "settings": [
+        { "type": "textarea", "id": "icon_svg", "label": "SVG Icon" },
+        { "type": "text", "id": "label", "label": "Badge Label", "default": "Made in USA" }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Cora Ingredients Grid (Zenmies)",
+       "category": "Zenmies",
+      "blocks": [
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "ingredient" },
+        { "type": "trust_badge" },
+        { "type": "trust_badge" },
+        { "type": "trust_badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}

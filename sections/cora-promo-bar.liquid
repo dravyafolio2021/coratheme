@@ -1,0 +1,152 @@
+{% comment %}
+  ==========================================================================
+  🟣 Cora Promo Bar — v1.1.0 (with marquee + token fix)
+  ==========================================================================
+  A responsive, customizable, full-width promo bar with smooth scrolling text.
+  - CSS-only marquee animation (no JS)
+  - Uses theme color tokens for background + text
+  - Fully configurable from Theme Editor
+  ==========================================================================
+{% endcomment %}
+
+<section
+  id="cora-promo-{{ section.id }}"
+  class="cora-promo {% if section.settings.full_bleed %}cora-promo--fullbleed{% endif %}"
+  role="region"
+  aria-label="{{ section.settings.aria_label | default: 'Site announcement' }}"
+  style="
+    --promo-bg: {{ section.settings.bg_color }};
+    --promo-color: {{ section.settings.text_color }};
+    --promo-font-size: {{ section.settings.font_size }}px;
+    --promo-padding-y: {{ section.settings.padding_y }}px;
+    --promo-max-width: {{ section.settings.max_width }}px;
+  "
+>
+  <div class="cora-promo__inner {% if section.settings.uppercase %}is-uppercase{% endif %} {% if section.settings.bold %}is-bold{% endif %}">
+    {% if section.settings.link != blank %}
+      <a
+        href="{{ section.settings.link }}"
+        class="cora-promo__link"
+        {% if section.settings.open_in_new_tab %}target="_blank" rel="noopener noreferrer"{% endif %}
+        aria-label="{{ section.settings.link_aria }}"
+      >
+        <div class="cora-promo__marquee">
+          <span class="cora-promo__text">{{ section.settings.text }}</span>
+          <span class="cora-promo__text clone">{{ section.settings.text }}</span>
+        </div>
+      </a>
+    {% else %}
+      <div class="cora-promo__marquee">
+        <span class="cora-promo__text">{{ section.settings.text }}</span>
+        <span class="cora-promo__text clone">{{ section.settings.text }}</span>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{{ 'cora-promo-bar.css' | asset_url | stylesheet_tag }}
+
+{% schema %}
+{
+  "name": "Cora Promo Bar",
+  "tag": "section",
+  "class": "cora-promo-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Message",
+      "default": "SEE RESULTS IN 30 DAYS OR GET YOUR MONEY BACK"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Optional link (makes the whole bar clickable)"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open link in a new tab",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "link_aria",
+      "label": "Accessible label for link (optional)",
+      "default": "Promotional offer link"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "rgba(104, 65, 217, 1)"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Base font size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Max content width",
+      "default": 1400
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "Uppercase text",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "bold",
+      "label": "Bold text",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_bleed",
+      "label": "Edge-to-edge (full-bleed)",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "ARIA label (for screen readers)",
+      "default": "Site announcement"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cora Promo Bar (Marquee)",
+      "category": "Zenmies"
+    }
+  ]
+}
+{% endschema %}

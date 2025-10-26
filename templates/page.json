@@ -9,6 +9,37 @@
  */
 {
   "sections": {
+    "cora_promo_bar_3TUiCc": {
+      "type": "cora-promo-bar",
+      "name": "Cora Promo Bar (Marquee)",
+      "settings": {
+        "text": "SEE RESULTS IN 30 DAYS OR GET YOUR MONEY BACK",
+        "link": "",
+        "open_in_new_tab": false,
+        "link_aria": "Promotional offer link",
+        "bg_color": "rgba(104, 65, 217, 1)",
+        "text_color": "#FFFFFF",
+        "font_size": 18,
+        "padding_y": 14,
+        "max_width": 1400,
+        "uppercase": true,
+        "bold": true,
+        "full_bleed": true,
+        "aria_label": "Site announcement"
+      }
+    },
+    "cora_header_CHHPXG": {
+      "type": "cora-header",
+      "name": "Cora Header",
+      "settings": {
+        "logo_text": "Zenmies",
+        "logo_image": "shopify://shop_images/Zenmies_logo.png",
+        "logo_alt": "Zenmies Logo",
+        "logo_color": "#6841D9",
+        "main_menu": "",
+        "is_sticky": true
+      }
+    },
     "main": {
       "type": "page",
       "disabled": true,
@@ -408,6 +439,8 @@
     }
   },
   "order": [
+    "cora_promo_bar_3TUiCc",
+    "cora_header_CHHPXG",
     "main",
     "cora_product_hero_eVrDBJ",
     "cora_ingredients_grid_VCYbmQ",

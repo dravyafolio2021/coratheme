@@ -885,11 +885,109 @@
         "avg_rating": "4.8",
         "total_reviews": "817",
         "star_color": "#6b45e6",
+        "custom_svg": "",
         "cta_label": "WRITE A REVIEW",
         "cta_url": "",
         "show_cta_button": true,
         "more_label": "SEE MORE REVIEWS",
         "more_url": ""
+      }
+    },
+    "cora_review_list_xe8cQP": {
+      "type": "cora-review-list",
+      "blocks": {
+        "review_UdGxbf": {
+          "type": "review",
+          "settings": {
+            "name": "Zarc. C",
+            "avatar_image": "shopify://shop_images/1.png",
+            "rating": 5,
+            "date": "4 Months ago",
+            "date_sort": "2025-06-01",
+            "review": "Didn’t feel much for the first couple of weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner? it takes patience, which not everyone has.",
+            "verified": true,
+            "recommend": true,
+            "helpful_count": 0
+          }
+        },
+        "review_gydDHV": {
+          "type": "review",
+          "settings": {
+            "name": "Zarc. C",
+            "avatar_image": "shopify://shop_images/1.png",
+            "rating": 5,
+            "date": "4 Months ago",
+            "date_sort": "2025-06-01",
+            "review": "Didn’t feel much for the first couple of weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner? it takes patience, which not everyone has.",
+            "verified": true,
+            "recommend": true,
+            "helpful_count": 0
+          }
+        },
+        "review_g4EzqC": {
+          "type": "review",
+          "settings": {
+            "name": "Zarc. C",
+            "avatar_image": "shopify://shop_images/1.png",
+            "rating": 5,
+            "date": "4 Months ago",
+            "date_sort": "2025-06-01",
+            "review": "Didn’t feel much for the first couple of weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner? it takes patience, which not everyone has.",
+            "verified": true,
+            "recommend": true,
+            "helpful_count": 0
+          }
+        },
+        "review_mEFwkY": {
+          "type": "review",
+          "settings": {
+            "name": "Zarc. C",
+            "avatar_image": "shopify://shop_images/1.png",
+            "rating": 5,
+            "date": "4 Months ago",
+            "date_sort": "2025-06-01",
+            "review": "Didn’t feel much for the first couple of weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner? it takes patience, which not everyone has.",
+            "verified": true,
+            "recommend": true,
+            "helpful_count": 0
+          }
+        }
+      },
+      "block_order": [
+        "review_UdGxbf",
+        "review_gydDHV",
+        "review_g4EzqC",
+        "review_mEFwkY"
+      ],
+      "name": "Cora Review List",
+      "settings": {
+        "heading": "Customer Reviews",
+        "show_toolbar": true,
+        "show_search": true,
+        "search_placeholder": "Search",
+        "show_sort": true,
+        "sort_latest_label": "Sort by: Latest",
+        "sort_oldest_label": "Sort by: Oldest",
+        "sort_rating_label": "Rating",
+        "show_rating_filter": true,
+        "filter_rating_all_label": "All ratings",
+        "show_media_toggle": true,
+        "media_toggle_label": "Photos and Videos",
+        "show_helpful": true,
+        "helpful_label": "Helpful",
+        "verified_label": "Verified Buyer",
+        "recommend_label": "Would recommend",
+        "show_more_button": true,
+        "more_label": "SEE MORE REVIEWS",
+        "items_per_page": 5,
+        "primary_color": "#6B45E6",
+        "star_color": "#F6B100",
+        "text_color": "#160E26",
+        "muted_color": "#6b6b6b",
+        "border_color": "#e5e3ed",
+        "chip_bg": "#e6e3f2",
+        "button_bg": "#160E26",
+        "button_text": "#ffffff"
       }
     }
   },
@@ -906,6 +1004,7 @@
     "performance_graph_xKWQWW",
     "cora_faq_jQRkWq",
     "cora_launch_kit_gqbcnY",
-    "cora_reviews_Xa63VY"
+    "cora_reviews_Xa63VY",
+    "cora_review_list_xe8cQP"
   ]
 }

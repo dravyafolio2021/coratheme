@@ -864,17 +864,6 @@
           "settings": {
             "image": "shopify://shop_images/Rectangle_39754.png"
           }
-        },
-        "review_3M6rQH": {
-          "type": "review",
-          "settings": {
-            "name": "Zarc. C",
-            "rating": 5,
-            "date": "4 Months ago",
-            "review": "Didn’t feel much for the first couple of weeks but noticed subtle changes around day 18. Takes patience!",
-            "verified": true,
-            "recommend": true
-          }
         }
       },
       "block_order": [
@@ -886,8 +875,7 @@
         "gallery_image_pwyCrP",
         "gallery_image_36amXw",
         "gallery_image_cY7HrM",
-        "gallery_image_3TdLNj",
-        "review_3M6rQH"
+        "gallery_image_3TdLNj"
       ],
       "name": "Cora Reviews",
       "settings": {

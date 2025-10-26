@@ -436,6 +436,122 @@
         "cta_color": "#ffffff",
         "cta_radius": 40
       }
+    },
+    "results_grid_xLmTwN": {
+      "type": "results-grid",
+      "blocks": {
+        "testimonial_x7TCM4": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Zarc. C",
+            "verified": true,
+            "rating": 5,
+            "review": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has."
+          }
+        },
+        "testimonial_Vh6YC9": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Zarc. C",
+            "verified": true,
+            "rating": 5,
+            "review": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has."
+          }
+        },
+        "testimonial_iCjDCz": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Zarc. C",
+            "verified": true,
+            "rating": 5,
+            "review": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has."
+          }
+        },
+        "testimonial_YzXBi9": {
+          "type": "testimonial",
+          "settings": {
+            "name": "Zarc. C",
+            "verified": true,
+            "rating": 5,
+            "review": "Didn’t feel much for the first couple weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner—it takes patience, which not everyone has."
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_x7TCM4",
+        "testimonial_Vh6YC9",
+        "testimonial_iCjDCz",
+        "testimonial_YzXBi9"
+      ],
+      "name": "Cora Results Grid",
+      "settings": {
+        "heading": "See How 247,353+ Men Over 30 Are Burning Fat, Building Strength, And Getting Results That Show",
+        "highlight_color": "#6B45E6",
+        "heading_color": "#160E26",
+        "main_image": "shopify://shop_images/Test_02.png",
+        "card_bg": "#F4F1FB",
+        "star_color": "#FBBF24"
+      }
+    },
+    "cora_video_testimonials_WxkRAw": {
+      "type": "cora-video-testimonials",
+      "blocks": {
+        "video_card_6cEQ4g": {
+          "type": "video_card",
+          "settings": {
+            "image": "shopify://shop_images/Test_01.png",
+            "video_url": "",
+            "top_label": "RESULTS",
+            "bottom_text": "Muscle Mass"
+          }
+        },
+        "video_card_Ce6XnR": {
+          "type": "video_card",
+          "settings": {
+            "image": "shopify://shop_images/Test_03.png",
+            "video_url": "",
+            "top_label": "RESULTS",
+            "bottom_text": "Muscle Mass"
+          }
+        },
+        "video_card_VjyVeX": {
+          "type": "video_card",
+          "settings": {
+            "image": "shopify://shop_images/Test_02.png",
+            "video_url": "",
+            "top_label": "RESULTS",
+            "bottom_text": "Muscle Mass"
+          }
+        },
+        "video_card_K6aNrt": {
+          "type": "video_card",
+          "settings": {
+            "image": "shopify://shop_images/Test.png",
+            "video_url": "",
+            "top_label": "RESULTS",
+            "bottom_text": "Muscle Mass"
+          }
+        }
+      },
+      "block_order": [
+        "video_card_6cEQ4g",
+        "video_card_Ce6XnR",
+        "video_card_VjyVeX",
+        "video_card_K6aNrt"
+      ],
+      "name": "Cora Video Testimonials ",
+      "settings": {
+        "heading": "4 Reasons Why Men Love Zenmies",
+        "heading_color": "#160e26",
+        "highlight_color": "#6b45e6",
+        "accent_color": "#6B45E6",
+        "bg_color": "#f9f8fc",
+        "overlay_color": "rgba(255,255,255,0.0)",
+        "label_bg": "#6b45e6",
+        "label_color": "#ffffff",
+        "bottom_color": "#ffffff",
+        "play_icon_color": "#6b45e6"
+      }
     }
   },
   "order": [
@@ -444,6 +560,8 @@
     "main",
     "cora_product_hero_eVrDBJ",
     "cora_product_tabs_NmNbkL",
-    "cora_ingredients_grid_VCYbmQ"
+    "cora_ingredients_grid_VCYbmQ",
+    "results_grid_xLmTwN",
+    "cora_video_testimonials_WxkRAw"
   ]
 }

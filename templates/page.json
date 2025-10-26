@@ -179,6 +179,7 @@
         "cta_url": "",
         "cta_label": "TRY IT NOW ($47.48)",
         "note": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime.",
+        "guarantee_icon": "shopify://shop_images/100.png",
         "guarantee_title": "Zenmies risk free for 90 days.",
         "guarantee_desc": "If you are not satisfied we’ll refund you, no questions asked. Reclaim your masculinity, risk-free."
       }
@@ -486,11 +487,11 @@
       "name": "Cora Results Grid",
       "settings": {
         "heading": "See How 247,353+ Men Over 30 Are Burning Fat, Building Strength, And Getting Results That Show",
-        "highlight_color": "#6B45E6",
-        "heading_color": "#160E26",
+        "highlight_color": "#6b45e6",
+        "heading_color": "#160e26",
         "main_image": "shopify://shop_images/Test_02.png",
-        "card_bg": "#F4F1FB",
-        "star_color": "#FBBF24"
+        "card_bg": "#f4f1fb",
+        "star_color": "#fbbf24"
       }
     },
     "cora_compare_table_BWg8GM": {
@@ -567,17 +568,17 @@
       "name": "Cora Compare Table",
       "settings": {
         "heading": "Achieve Interstellar Levels Of Testosterone Naturally With [highlight]Zenmies[/highlight]",
-        "heading_color": "#160E26",
-        "highlight_color": "#6B45E6",
-        "bg_color": "#FFFFFF",
-        "overlay_color": "rgba(255,255,255,0)",
+        "heading_color": "#160e26",
+        "highlight_color": "#6b45e6",
+        "bg_color": "#ffffff",
+        "overlay_color": "rgba(0,0,0,0)",
         "col1_title": "Zenmies",
         "col2_title": "TRT",
         "col3_title": "Other Supplements",
         "cta_text": "TRY IT NOW",
         "cta_link": "",
-        "cta_bg": "#6B45E6",
-        "cta_color": "#FFFFFF"
+        "cta_bg": "#6b45e6",
+        "cta_color": "#ffffff"
       }
     },
     "cora_video_testimonials_WxkRAw": {
@@ -631,9 +632,9 @@
         "heading": "4 Reasons Why Men Love Zenmies",
         "heading_color": "#160e26",
         "highlight_color": "#6b45e6",
-        "accent_color": "#6B45E6",
+        "accent_color": "#6b45e6",
         "bg_color": "#f9f8fc",
-        "overlay_color": "rgba(255,255,255,0.0)",
+        "overlay_color": "rgba(0,0,0,0)",
         "label_bg": "#6b45e6",
         "label_color": "#ffffff",
         "bottom_color": "#ffffff",
@@ -645,9 +646,9 @@
       "name": "Performance Graph",
       "settings": {
         "heading": "Achieve Interstellar Levels Of Testosterone Naturally With Zenmies",
-        "accent_color": "#6B45E6",
-        "heading_color": "#160E26",
-        "bg_color": "#F4EEFB",
+        "accent_color": "#6b45e6",
+        "heading_color": "#160e26",
+        "bg_color": "#f4eefb",
         "graph_image": "shopify://shop_images/graph.png",
         "circle_bg": "#000000",
         "circle_text": "+60% Increase in T",
@@ -711,7 +712,7 @@
         "heading": "Frequently Asked Questions",
         "heading_color": "#160e26",
         "bg_color": "#f9f8fc",
-        "overlay_color": "rgba(255,255,255,0)",
+        "overlay_color": "rgba(0,0,0,0)",
         "question_color": "#160e26",
         "answer_color": "#5b5668",
         "card_bg": "#ebe8f2"
@@ -792,20 +793,20 @@
       "name": "Cora Launch Kit",
       "settings": {
         "heading": "Your Launch Kit Includes:",
-        "heading_color": "#160E26",
+        "heading_color": "#160e26",
         "left_image": "shopify://shop_images/2132_2.png",
         "left_image_alt": "Launch Kit",
         "watermark": "shopify://shop_images/9165182_Artboard_1_5_15293032-e9be-46a6-bcbf-efdcd6d303bb.png",
         "watermark_opacity": 0.6,
-        "bullet_color": "#6B45E6",
-        "item_color": "#3C3847",
-        "price_color": "#160E26",
-        "free_bg": "#160E26",
-        "free_fg": "#FFFFFF",
+        "bullet_color": "#6b45e6",
+        "item_color": "#3c3847",
+        "price_color": "#160e26",
+        "free_bg": "#160e26",
+        "free_fg": "#ffffff",
         "cta_label": "TRY IT NOW",
         "cta_url": "",
-        "cta_bg": "#160E26",
-        "cta_fg": "#FFFFFF"
+        "cta_bg": "#160e26",
+        "cta_fg": "#ffffff"
       }
     },
     "cora_reviews_Xa63VY": {
@@ -880,20 +881,15 @@
       "name": "Cora Reviews",
       "settings": {
         "heading": "Customer Reviews",
-        "heading_color": "#160E26",
+        "heading_color": "#160e26",
         "avg_rating": "4.8",
         "total_reviews": "817",
-        "star_color": "#6B45E6",
+        "star_color": "#6b45e6",
         "cta_label": "WRITE A REVIEW",
         "cta_url": "",
         "show_cta_button": true,
         "more_label": "SEE MORE REVIEWS",
-        "more_url": "",
-        "rating_5": 2967,
-        "rating_4": 706,
-        "rating_3": 67,
-        "rating_2": 173,
-        "rating_1": 0
+        "more_url": ""
       }
     }
   },

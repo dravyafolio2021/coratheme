@@ -1,81 +1,85 @@
 {% comment %}
-  Cora Launch Kit — Zenmies
-  Two-column layout: image (left), benefits/price list (right) + CTA.
-  - Single-open CSS, no JS.
-  - No text margins (spacing via gap/padding only).
+  ✅ Zenmies — Cora Launch Kit
+  Refined responsive section with:
+  • Left product image
+  • Right structured feature list
+  • Proper price alignment & Free badges
+  • CTA button at bottom
 {% endcomment %}
 
 <section id="cora-launch-kit-{{ section.id }}" class="cora-launch-kit">
-  <div class="cora-launch-kit__inner container">
+  <div class="container launchKit">
     {% if section.settings.heading != blank %}
-      <h2 class="cora-lk__heading" style="color: {{ section.settings.heading_color }};">
+      <h2 class="cora-lk__heading zhead style="color: {{ section.settings.heading_color }};">
         {{ section.settings.heading }}
       </h2>
     {% endif %}
 
     <div class="cora-lk__grid">
-      {%- if section.settings.left_image -%}
-        <figure class="cora-lk__media">
+      {% if section.settings.left_image %}
+        <div class="cora-lk__media">
           <img
-            src="{{ section.settings.left_image | image_url: width: 1200 }}"
+            src="{{ section.settings.left_image | image_url: width: 900 }}"
             alt="{{ section.settings.left_image_alt | escape }}"
-            width="{{ section.settings.left_image.width }}"
-            height="{{ section.settings.left_image.height }}"
             loading="lazy"
+            height="100%"
+            width="100%"
           >
-        </figure>
-      {%- endif -%}
+        </div>
+      {% endif %}
 
-      <div
-        class="cora-lk__listwrap"
-        style="
-          --lk-bullet: {{ section.settings.bullet_color }};
-          --lk-title: {{ section.settings.item_color }};
-          --lk-price: {{ section.settings.price_color }};
-          --lk-free-bg: {{ section.settings.free_bg }};
-          --lk-free-fg: {{ section.settings.free_fg }};
-        "
-      >
-        {% if section.settings.watermark != blank %}
+      <div class="cora-lk__content">
+        {% if section.settings.watermark %}
           <div
             class="cora-lk__watermark"
-            style="--wm-opacity: {{ section.settings.watermark_opacity | default: 0.12 }}; background-image:url('{{ section.settings.watermark | image_url: width: 1200 }}');"
-            aria-hidden="true"
+            style="
+              --wm-opacity: {{ section.settings.watermark_opacity | default: 0.1 }};
+              background-image: url('{{ section.settings.watermark | image_url: width: 1000 }}');
+            "
           ></div>
         {% endif %}
 
-        <ul class="cora-lk__list" role="list">
+        <ul
+          class="cora-lk__list"
+          style="
+            --bullet: {{ section.settings.bullet_color }};
+            --title: {{ section.settings.item_color }};
+            --price: {{ section.settings.price_color }};
+            --free-bg: {{ section.settings.free_bg }};
+            --free-fg: {{ section.settings.free_fg }};
+          "
+        >
           {% for block in section.blocks %}
-            {% case block.type %}
-              {% when 'item' %}
-                <li class="cora-lk__row" {{ block.shopify_attributes }}>
-                  <span class="cora-lk__dot" aria-hidden="true"></span>
-                  <span class="cora-lk__title" style="color: var(--lk-title);">
-                    {{ block.settings.label }}
-                  </span>
+            {% if block.type == 'item' %}
+              <li class="cora-lk__item zbody" {{ block.shopify_attributes }}>
+                <span class="cora-lk__dot"></span>
+                <span class="cora-lk__title zbody">{{ block.settings.label }}</span>
 
-                  <span class="cora-lk__price" style="color: var(--lk-price);">
-                    {%- if block.settings.original_price != blank -%}
-                      <s class="cora-lk__price--strike">{{ block.settings.original_price }}</s>
-                    {%- endif -%}
-                    {%- if block.settings.price != blank -%}
-                      {{ block.settings.price }}
-                    {%- endif -%}
-                    {%- if block.settings.show_free and block.settings.free_text != blank -%}
-                      <span class="cora-lk__free">{{ block.settings.free_text }}</span>
-                    {%- endif -%}
-                  </span>
-                </li>
-            {% endcase %}
+                <span class="cora-lk__price zbody">
+                  {% if block.settings.original_price != blank %}
+                    <s>{{ block.settings.original_price }}</s>
+                  {% endif %}
+                  {% if block.settings.price != blank %}
+                    {{ block.settings.price }}
+                  {% endif %}
+                  {% if block.settings.show_free %}
+                    <span class="cora-lk__free zbody">{{ block.settings.free_text }}</span>
+                  {% endif %}
+                </span>
+              </li>
+            {% endif %}
           {% endfor %}
         </ul>
 
-        {% if section.settings.cta_label != blank %}
+        {% if section.settings.cta_label %}
           <div class="cora-lk__cta">
             <a
               href="{{ section.settings.cta_url | default: '#' }}"
               class="cora-lk__btn"
-              style="--lk-cta-bg: {{ section.settings.cta_bg }}; --lk-cta-fg: {{ section.settings.cta_fg }};"
+              style="
+                --cta-bg: {{ section.settings.cta_bg }};
+                --cta-fg: {{ section.settings.cta_fg }};
+              "
             >
               {{ section.settings.cta_label }}
             </a>
@@ -91,23 +95,27 @@
 {% schema %}
 {
   "name": "Cora Launch Kit",
-  "class": "cora-section cora-launch-kit",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Your Launch Kit Includes:" },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
-
     { "type": "image_picker", "id": "left_image", "label": "Left Image" },
     { "type": "text", "id": "left_image_alt", "label": "Left Image Alt", "default": "Launch Kit" },
-
     { "type": "image_picker", "id": "watermark", "label": "Watermark (behind list)" },
-    { "type": "range", "id": "watermark_opacity", "label": "Watermark Opacity", "min": 0, "max": 0.9, "step": 0.1, "default": 0.1 },
+    {
+      "type": "range",
+      "id": "watermark_opacity",
+      "label": "Watermark Opacity",
+      "min": 0,
+      "max": 1,
+      "step": 0.1,
+      "default": 0.1
+    },
 
     { "type": "color", "id": "bullet_color", "label": "Bullet Color", "default": "#6B45E6" },
     { "type": "color", "id": "item_color", "label": "Item Text Color", "default": "#3C3847" },
     { "type": "color", "id": "price_color", "label": "Price Text Color", "default": "#160E26" },
     { "type": "color", "id": "free_bg", "label": "Free Badge BG", "default": "#160E26" },
     { "type": "color", "id": "free_fg", "label": "Free Badge Text", "default": "#FFFFFF" },
-
     { "type": "text", "id": "cta_label", "label": "CTA Label", "default": "TRY IT NOW" },
     { "type": "url", "id": "cta_url", "label": "CTA Link" },
     { "type": "color", "id": "cta_bg", "label": "CTA Background", "default": "#160E26" },
@@ -119,8 +127,8 @@
       "name": "Line Item",
       "settings": [
         { "type": "text", "id": "label", "label": "Item Label", "default": "Cure Natural T Support" },
-        { "type": "text", "id": "original_price", "label": "Original Price (optional)", "default": "$43" },
-        { "type": "text", "id": "price", "label": "Price (e.g. $59/mo)", "default": "$59/mo" },
+        { "type": "text", "id": "original_price", "label": "Original Price", "default": "$118" },
+        { "type": "text", "id": "price", "label": "Current Price", "default": "$59/mo" },
         { "type": "checkbox", "id": "show_free", "label": "Show Free Badge", "default": false },
         { "type": "text", "id": "free_text", "label": "Free Text", "default": "Free" }
       ]
@@ -129,14 +137,7 @@
   "presets": [
     {
       "name": "Cora Launch Kit",
-      "category": "Zenmies", 
-      "blocks": [
-        { "type": "item", "settings": { "label": "Cure Natural T Support", "original_price": "$118", "price": "$59/mo" } },
-        { "type": "item", "settings": { "label": "Mars Men Travel Tin", "show_free": true } },
-        { "type": "item", "settings": { "label": "Galactic Testosterone Guide", "show_free": true, "free_text": "Free" } },
-        { "type": "item", "settings": { "label": "Ladder Workout App (30 Day Program)", "show_free": true, "free_text": "Free" } },
-        { "type": "item", "settings": { "label": "Shipping On First Order", "show_free": true, "free_text": "Free" } }
-      ]
+      "category": "Zenmies"
     }
   ]
 }

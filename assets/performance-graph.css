@@ -1,6 +1,6 @@
 .performance-graph {
   padding: 70px 20px;
-  color: #160E26;
+  color: #160e26;
   text-align: center;
   position: relative;
 }
@@ -8,19 +8,26 @@
 .performance-graph__wrapper {
   max-width: 1000px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
 }
 
 .performance-graph__heading {
   font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.4;
-  margin-bottom: 30px;
+max-width: 600px;
 }
-
+#shopify-section-template--18801022927008__performance_graph_Kpgj3K {
+  background-color: #F4EEFB;
+}
 .performance-graph__chart {
   position: relative;
   max-width: 800px;
-  margin: 0 auto 30px;
+  margin: 0 auto 0;
 }
 
 .performance-graph__image {
@@ -55,7 +62,7 @@
 
 .performance-graph__desc {
   max-width: 780px;
-  margin: 20px auto 50px;
+  margin: 20px auto 20px;
   font-size: 0.95rem;
   line-height: 1.6;
 }
@@ -69,18 +76,18 @@
 }
 
 .performance-graph__guarantee img {
-  width: 90px;
+  width: 180px;
   height: auto;
 }
 
 .performance-graph__cta {
-  max-width: 500px;
+  max-width: 600px;
   text-align: left;
 }
 
 .performance-graph__cta h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 40px;
+  font-weight: 500;
 }
 
 .performance-graph__cta p {
@@ -92,7 +99,7 @@
 .performance-graph__button {
   display: inline-block;
   margin-top: 16px;
-  background: #160E26;
+  background: #160e26;
   color: #fff;
   border-radius: 50px;
   padding: 12px 28px;
@@ -112,15 +119,57 @@
     flex-direction: column;
     text-align: center;
   }
+  .performance-graph {
+  padding: 40px 0;
+  color: #160e26;
+  text-align: center;
+  position: relative;
+}
+.performance-graph__wrapper {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+}
+.performance-graph__guarantee img {
+  width: 100px;
+  height: auto;
+}
 
   .performance-graph__cta {
     text-align: center;
+  }
+  .performance-graph__cta h3 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .performance-graph__cta p {
+    margin-top: 8px;
+    font-size: 20px;
+    color: #3c3847;
   }
 
   .performance-graph__circle {
     width: 140px;
     height: 140px;
   }
+.performance-graph__button {
+  display: inline-block;
+  margin-top: 16px;
+  width: 100%;
+  background: #160e26;
+  color: #fff;
+  border-radius: 50px;
+  padding: 12px 28px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
 
   .performance-graph__circle-text {
     font-size: 1rem;

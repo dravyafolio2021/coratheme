@@ -8,7 +8,7 @@
   <div class="cora-ingredients__inner">
     {% if section.settings.heading != blank %}
       <h2
-        class="cora-ingredients__heading"
+        class="cora-ingredients__heading zhead"
         style="
           color: {{ section.settings.heading_color }};
           font-size: {{ section.settings.heading_size }}px;
@@ -34,21 +34,19 @@
                 style="background: {{ section.settings.overlay_color }};"
               >
                 <h3
-                  class="cora-ingredient-card__title"
+                  class="cora-ingredient-card__title zhead"
                   style="
                     color: {{ section.settings.title_color }};
-                    font-size: {{ section.settings.title_size }}px;
-                    font-weight: {{ section.settings.title_weight }};
+                     font-weight: {{ section.settings.title_weight }};
                   "
                 >
                   {{ block.settings.title }}
                 </h3>
                 <p
-                  class="cora-ingredient-card__desc"
+                  class="cora-ingredient-card__desc zbody"
                   style="
                     color: {{ section.settings.desc_color }};
-                    font-size: {{ section.settings.desc_size }}px;
-                    font-weight: {{ section.settings.desc_weight }};
+                     font-weight: {{ section.settings.desc_weight }};
                   "
                 >
                   {{ block.settings.description }}
@@ -140,16 +138,7 @@
 
     { "type": "color", "id": "overlay_color", "label": "Image Overlay Color", "default": "rgba(0,0,0,0.4)" },
     { "type": "color", "id": "title_color", "label": "Ingredient Title Color", "default": "#ffffff" },
-    {
-      "type": "range",
-      "id": "title_size",
-      "label": "Ingredient Title Size",
-      "min": 12,
-      "max": 32,
-      "step": 1,
-      "default": 20,
-      "unit": "px"
-    },
+     
     {
       "type": "select",
       "id": "title_weight",
@@ -164,16 +153,7 @@
     },
 
     { "type": "color", "id": "desc_color", "label": "Description Color", "default": "#f1f1f1" },
-    {
-      "type": "range",
-      "id": "desc_size",
-      "label": "Description Font Size",
-      "min": 10,
-      "max": 22,
-      "step": 1,
-      "default": 14,
-      "unit": "px"
-    },
+    
     {
       "type": "select",
       "id": "desc_weight",

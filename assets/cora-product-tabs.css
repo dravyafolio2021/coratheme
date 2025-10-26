@@ -1,16 +1,18 @@
 /* ==========================================================================
    Cora Product Tabs (Zenmies)
-   ========================================================================= */
+   - Active tab color via --tab-active (default #6F43D5)
+   - No text margins; use gaps/padding only
+   ========================================================================== */
 
 :root {
-  --zen-purple: #6b45e6;
   --zen-bg: #160e26;
   --zen-white: #ffffff;
   --zen-muted: #c6c3d5;
 }
 
-/* Container */
+/* Wrapper */
 .cora-product-tabs__wrapper {
+  --tab-active: #6F43D5;
   background: var(--zen-bg);
   color: var(--zen-white);
   border-radius: 28px;
@@ -18,39 +20,31 @@
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Inputs */
-.cora-tab-input {
-  display: none;
-}
+/* Radios hidden */
+.cora-tab-input { position: absolute; opacity: 0; pointer-events: none; }
 
-/* Tab Nav */
+/* Nav */
 .cora-tabs__nav {
-  display: flex;
-  border-bottom: none;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 8px;
   background: #d6d4df;
-}
-
+ }
 .cora-tab-label {
-  flex: 1;
   text-align: center;
   font-weight: 700;
   font-size: 1rem;
-  padding: 16px 12px;
+  padding: 14px 10px;
   background: #d6d4df;
   color: #555;
   cursor: pointer;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
-  transition: all 0.3s ease;
+  transition: background .25s ease, color .25s ease;
+  user-select: none;
 }
 
-/* Active Tab */
-.cora-tab-input:checked + .cora-tab-label {
-  background: var(--zen-purple);
-  color: var(--zen-white);
-}
-
-/* Tab Content */
+/* Panels shell */
 .cora-tabs__content {
   position: relative;
   background: var(--zen-bg);
@@ -59,120 +53,83 @@
   border-bottom-right-radius: 24px;
 }
 
-/* Hide panels by default */
-.cora-tab-panel {
-  display: none;
-  animation: fadeIn 0.4s ease;
+/* Hidden by default */
+.cora-tab-panel { display: none; animation: fadeIn .3s ease; }
+
+/* =========
+   Active label & panel mapping
+   (Supports up to 8 tabs; add more rules if needed)
+   ========= */
+.cora-tab-input:nth-of-type(1):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(1),
+.cora-tab-input:nth-of-type(2):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(2),
+.cora-tab-input:nth-of-type(3):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(3),
+.cora-tab-input:nth-of-type(4):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(4),
+.cora-tab-input:nth-of-type(5):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(5),
+.cora-tab-input:nth-of-type(6):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(6),
+.cora-tab-input:nth-of-type(7):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(7),
+.cora-tab-input:nth-of-type(8):checked ~ .cora-tabs__nav .cora-tab-label:nth-of-type(8) {
+  background: var(--tab-active);
+  color: var(--zen-white);
+  box-shadow: inset 0 -2px 0 rgba(0,0,0,0.15);
+  z-index: 1;
 }
 
-/* Show active tab panel */
-.cora-tab-input:nth-of-type(1):checked
-  ~ .cora-tabs__content
-  .cora-tab-panel:nth-of-type(1),
-.cora-tab-input:nth-of-type(2):checked
-  ~ .cora-tabs__content
-  .cora-tab-panel:nth-of-type(2),
-.cora-tab-input:nth-of-type(3):checked
-  ~ .cora-tabs__content
-  .cora-tab-panel:nth-of-type(3) {
+/* Show the matching panel */
+.cora-tab-input:nth-of-type(1):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(1),
+.cora-tab-input:nth-of-type(2):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(2),
+.cora-tab-input:nth-of-type(3):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(3),
+.cora-tab-input:nth-of-type(4):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(4),
+.cora-tab-input:nth-of-type(5):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(5),
+.cora-tab-input:nth-of-type(6):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(6),
+.cora-tab-input:nth-of-type(7):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(7),
+.cora-tab-input:nth-of-type(8):checked ~ .cora-tabs__content .cora-tab-panel:nth-of-type(8) {
   display: block;
 }
+
+/* Panel content */
+.cora-panel__heading { margin: 0; }
 
 /* Timeline */
 .cora-timeline__line {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
-.cora-timeline__line .rule {
-  height: 2px;
-  background: #fff;
-  flex: 1;
-}
-.cora-timeline__line .dot {
-  width: 10px;
-  height: 10px;
-  background: #fff;
-  border-radius: 50%;
-}
+.cora-timeline__line .rule { height: 2px; background: #fff; flex: 1; }
+.cora-timeline__line .dot { width: 10px; height: 10px; background: #fff; border-radius: 50%; }
 
 /* Grid */
 .cora-timeline__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  gap: 28px;
 }
 
 /* Item */
-.cora-timeline__item {
-  display: grid;
-  gap: 12px;
-}
-.cora-timeline__head {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.cora-timeline__icon svg {
-  width: 28px;
-  height: 28px;
-  color: #fff;
-}
-.cora-timeline__title .day {
-  font-weight: 700;
-  margin-right: 8px;
-}
-.cora-timeline__title .label {
-  font-weight: 500;
-}
+.cora-timeline__item { display: grid; gap: 12px; }
+.cora-timeline__head { display: flex; align-items: center; gap: 12px; }
+.cora-timeline__icon svg { width: 28px; height: 28px; color: #fff; }
+.cora-timeline__title .day { font-weight: 700; margin-right: 8px; }
+.cora-timeline__title .label { font-weight: 500; }
 
-/* List */
-.cora-timeline__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+/* Rich list */
+.cora-timeline__list { margin: 0; padding: 0; }
+.cora-timeline__list ul { margin: 0; padding-left: 18px; }
 .cora-timeline__list li {
-  position: relative;
-  padding-left: 18px;
-  margin-bottom: 8px;
   color: var(--zen-muted);
   line-height: 1.6;
   font-size: 0.95rem;
   word-break: normal;
   white-space: normal;
 }
-.cora-timeline__list li::before {
-  content: "";
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  left: 0;
-  top: 8px;
-}
 
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+/* Anim */
+@keyframes fadeIn { from {opacity:0; transform: translateY(8px);} to {opacity:1; transform: none;} }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .cora-timeline__grid {
-    grid-template-columns: 1fr;
-  }
-  .cora-tab-label {
-    font-size: 14px;
-    padding: 12px 8px;
-  }
+  .cora-tabs__nav { grid-auto-flow: row; grid-template-columns: 1fr 1fr; }
+  .cora-tab-label { font-size: 14px; padding: 12px 8px; }
+  .cora-timeline__grid { grid-template-columns: 1fr; gap: 20px; }
 }

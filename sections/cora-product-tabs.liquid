@@ -1,40 +1,56 @@
 {% comment %}
   ✅ Cora Product Tabs (Zenmies)
-  Responsive and customizable tabbed section with milestone + heading color controls.
-  Version: v1.0.3
+  - Active tab color: #6F43D5
+  - Radios first, then labels (nav), then panels (content)
+  - No margins on text; spacing via gap/padding only
+  - Responsive & accessible without JS
+  Version: v1.0.4
 {% endcomment %}
 
 <section class="cora-product-tabs" id="cora-product-tabs-{{ section.id }}">
-  <div class="cora-product-tabs__wrapper">
+  <div class="cora-product-tabs__wrapper" style="--tab-active:#6F43D5;">
+    {%- comment -%}
+      1) Radios (hidden): must come BEFORE nav & panels to drive state via CSS
+    {%- endcomment -%}
     {% for block in section.blocks %}
       <input
         type="radio"
         name="cora-tabs-{{ section.id }}"
         id="cora-tab-{{ section.id }}-{{ forloop.index }}"
         class="cora-tab-input"
-        {% if forloop.first %}
-          checked
-        {% endif %}
+        {% if forloop.first %}checked{% endif %}
       >
     {% endfor %}
 
-    <div class="cora-tabs__nav">
+    {%- comment -%}
+      2) Tabs Nav: labels only (index-aligned to radios)
+    {%- endcomment -%}
+    <div class="cora-tabs__nav" role="tablist" aria-label="Product details tabs">
       {% for block in section.blocks %}
         <label
           for="cora-tab-{{ section.id }}-{{ forloop.index }}"
           class="cora-tab-label"
+          role="tab"
+          aria-controls="cora-tab-panel-{{ section.id }}-{{ forloop.index }}"
         >
           {{ block.settings.tab_title }}
         </label>
       {% endfor %}
     </div>
 
+    {%- comment -%}
+      3) Panels: index-aligned to radios
+    {%- endcomment -%}
     <div class="cora-tabs__content">
       {% for block in section.blocks %}
-        <div class="cora-tab-panel">
+        <div
+          class="cora-tab-panel"
+          id="cora-tab-panel-{{ section.id }}-{{ forloop.index }}"
+          role="tabpanel"
+        >
           {% if block.settings.panel_heading != blank %}
             <h3
-              class="cora-panel__heading"
+              class="cora-panel__heading zhead"
               style="
                 color: {{ block.settings.heading_color | default: '#ffffff' }};
                 font-size: {{ block.settings.heading_font_size | append: 'px' }};
@@ -61,31 +77,27 @@
               {% assign title_color_key = 'm' | append: i | append: '_title_color' %}
               {% assign bullets_key = 'm' | append: i | append: '_bullets' %}
 
-              {% if block.settings[day_key] != blank %}
-                <div class="cora-timeline__item">
+              {% if block.settings[day_key] != blank or block.settings[title_key] != blank or block.settings[bullets_key] != blank or block.settings[icon_key] != blank %}
+                <div class="cora-timeline__item" {{ block.shopify_attributes }}>
                   <div class="cora-timeline__head">
                     <div class="cora-timeline__icon">
                       {{ block.settings[icon_key] }}
                     </div>
                     <div class="cora-timeline__title">
-                      <span
-                        class="day"
-                        style="color: {{ block.settings[day_color_key] | default: '#ffffff' }};"
-                      >
-                        {{ block.settings[day_key] }}
-                      </span>
-                      <span
-                        class="label"
-                        style="color: {{ block.settings[title_color_key] | default: '#c6c3d5' }};"
-                      >
-                        {{ block.settings[title_key] }}
-                      </span>
+                      {% if block.settings[day_key] != blank %}
+                        <span class="day" style="color: {{ block.settings[day_color_key] | default: '#ffffff' }};">{{ block.settings[day_key] }}</span>
+                      {% endif %}
+                      {% if block.settings[title_key] != blank %}
+                        <span class="label" style="color: {{ block.settings[title_color_key] | default: '#c6c3d5' }};">{{ block.settings[title_key] }}</span>
+                      {% endif %}
                     </div>
                   </div>
 
-                  <div class="cora-timeline__list">
-                    {{ block.settings[bullets_key] }}
-                  </div>
+                  {% if block.settings[bullets_key] != blank %}
+                    <div class="cora-timeline__list">
+                      {{ block.settings[bullets_key] }}
+                    </div>
+                  {% endif %}
                 </div>
               {% endif %}
             {% endfor %}
@@ -109,51 +121,21 @@
       "name": "Tab",
       "settings": [
         { "type": "text", "id": "tab_title", "label": "Tab Title", "default": "Product Details" },
-        {
-          "type": "text",
-          "id": "panel_heading",
-          "label": "Panel Heading",
-          "default": "What Happens After You Boost Testosterone with Zenmies"
-        },
-        {
-          "type": "color",
-          "id": "heading_color",
-          "label": "Heading Color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "range",
-          "id": "heading_font_size",
-          "label": "Heading Font Size",
-          "default": 24,
-          "min": 14,
-          "max": 48,
-          "step": 1,
-          "unit": "px"
-        },
-        {
-          "type": "select",
-          "id": "heading_font_weight",
-          "label": "Heading Font Weight",
-          "default": "600",
-          "options": [
-            { "value": "400", "label": "Normal (400)" },
-            { "value": "500", "label": "Medium (500)" },
-            { "value": "600", "label": "Semi Bold (600)" },
-            { "value": "700", "label": "Bold (700)" }
-          ]
-        },
-        {
-          "type": "select",
-          "id": "heading_alignment",
-          "label": "Heading Alignment",
-          "default": "center",
-          "options": [
-            { "value": "left", "label": "Left" },
-            { "value": "center", "label": "Center" },
-            { "value": "right", "label": "Right" }
-          ]
-        },
+
+        { "type": "text", "id": "panel_heading", "label": "Panel Heading", "default": "What Happens After You Boost Testosterone with Zenmies" },
+        { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#ffffff" },
+        { "type": "range", "id": "heading_font_size", "label": "Heading Font Size", "default": 24, "min": 14, "max": 48, "step": 1, "unit": "px" },
+        { "type": "select", "id": "heading_font_weight", "label": "Heading Font Weight", "default": "600", "options": [
+          { "value": "400", "label": "Normal (400)" },
+          { "value": "500", "label": "Medium (500)" },
+          { "value": "600", "label": "Semi Bold (600)" },
+          { "value": "700", "label": "Bold (700)" }
+        ]},
+        { "type": "select", "id": "heading_alignment", "label": "Heading Alignment", "default": "center", "options": [
+          { "value": "left", "label": "Left" },
+          { "value": "center", "label": "Center" },
+          { "value": "right", "label": "Right" }
+        ]},
 
         { "type": "header", "content": "Milestone 1" },
         { "type": "text", "id": "m1_day", "label": "Day Label", "default": "DAY 7" },
@@ -161,12 +143,7 @@
         { "type": "text", "id": "m1_title", "label": "Title", "default": "Ignition" },
         { "type": "color", "id": "m1_title_color", "label": "Title Color", "default": "#c6c3d5" },
         { "type": "textarea", "id": "m1_icon", "label": "SVG Icon" },
-        {
-          "type": "richtext",
-          "id": "m1_bullets",
-          "label": "Bullets / Description",
-          "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-        },
+        { "type": "richtext", "id": "m1_bullets", "label": "Bullets / Description", "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>" },
 
         { "type": "header", "content": "Milestone 2" },
         { "type": "text", "id": "m2_day", "label": "Day Label", "default": "DAY 30" },
@@ -174,12 +151,7 @@
         { "type": "text", "id": "m2_title", "label": "Title", "default": "Ignition" },
         { "type": "color", "id": "m2_title_color", "label": "Title Color", "default": "#c6c3d5" },
         { "type": "textarea", "id": "m2_icon", "label": "SVG Icon" },
-        {
-          "type": "richtext",
-          "id": "m2_bullets",
-          "label": "Bullets / Description",
-          "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-        },
+        { "type": "richtext", "id": "m2_bullets", "label": "Bullets / Description", "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>" },
 
         { "type": "header", "content": "Milestone 3" },
         { "type": "text", "id": "m3_day", "label": "Day Label", "default": "DAY 90" },
@@ -187,12 +159,7 @@
         { "type": "text", "id": "m3_title", "label": "Title", "default": "Liftoff" },
         { "type": "color", "id": "m3_title_color", "label": "Title Color", "default": "#c6c3d5" },
         { "type": "textarea", "id": "m3_icon", "label": "SVG Icon" },
-        {
-          "type": "richtext",
-          "id": "m3_bullets",
-          "label": "Bullets / Description",
-          "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-        }
+        { "type": "richtext", "id": "m3_bullets", "label": "Bullets / Description", "default": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>" }
       ]
     }
   ],

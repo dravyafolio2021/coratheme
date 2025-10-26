@@ -14,7 +14,7 @@
 .cora-faq__inner {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -62,13 +62,16 @@
   opacity: 0.8;
 }
 
+#shopify-section-template--18801022927008__cora_faq_WiwLH6{
+  background-color: #f9f8fc ;
+}
 /* Answer Container */
 .cora-faq__answer {
   max-height: 0;
   overflow: hidden;
   font-size: 0.95rem;
   line-height: 1.6;
-  background: #fff;
+  background: #ebe8f2;
   padding: 0 22px;
   transition: all 0.4s ease;
   border-top: 1px solid rgba(0, 0, 0, 0.05);

@@ -3,7 +3,9 @@
   font-family: "Helvetica Neue", Arial, sans-serif;
   padding: 48px 24px;
 }
-
+#shopify-section-template--18801022927008__cora_ingredients_grid_7x8qUh {
+  background: #f7f5fb;
+}
 .cora-ingredients__inner {
   display: flex;
   flex-direction: column;
@@ -13,6 +15,7 @@
 
 .cora-ingredients__heading {
   line-height: 1.2;
+  max-width: 600px;
 }
 
 .cora-ingredients__grid {
@@ -41,17 +44,22 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   gap: 4px;
   height: 100%;
 }
 
-.cora-ingredient-card__title,
-.cora-ingredient-card__desc {
+.cora-ingredient-card__title {
   line-height: 1.4;
+  font-size: 32px;
   word-break: normal;
 }
 
+.cora-ingredient-card__desc {
+  font-size: 20px;
+  line-height: 1.2;
+  word-break: normal;
+}
 .cora-trust__grid {
   display: flex;
   flex-wrap: wrap;
@@ -83,6 +91,28 @@
 
 @media (max-width: 768px) {
   .cora-ingredients {
-    padding: 32px 16px;
+    padding: 32px 0px;
+  }
+  .cora-ingredients {
+    background: #f7f5fb;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    padding: 96px 12px;
+  }
+  .cora-ingredients__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+  .cora-ingredient-card__title {
+    line-height: 1.4;
+    font-size: 24px;
+    word-break: normal;
+  }
+
+  .cora-ingredient-card__desc {
+    font-size: 16px;
+    line-height: 1.4;
+    word-break: normal;
   }
 }

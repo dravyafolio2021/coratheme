@@ -26,14 +26,13 @@
   <div class="cora-video__inner">
     <!-- Heading -->
     {% if section.settings.heading != blank %}
-      <h2 class="cora-video__heading" style="color: {{ section.settings.heading_color }};">
-        {{
-          section.settings.heading
-          | replace: '[highlight]', '<span style="color:'
-          | append: section.settings.highlight_color
-          | append: ';">'
-          | replace: '[/highlight]', '</span>'
-        }}
+      {% assign words = section.settings.heading | split: ' ' %}
+      {% assign last_word = words | last %}
+      {% assign first_part = section.settings.heading | remove_last: last_word | strip %}
+
+      <h2 class="cora-video__heading zhead" style="color: {{ section.settings.heading_color }};">
+        {{ first_part }}
+        <span style="color: {{ section.settings.accent_color }};">{{ last_word }}</span>
       </h2>
     {% endif %}
 
@@ -91,6 +90,7 @@
     },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
     { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#6b45e6" },
+    { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#6B45E6" },
 
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f9f8fc" },
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" },

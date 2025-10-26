@@ -77,14 +77,18 @@
 .results-bento__name {
   font-weight: 700;
   font-size: 1rem;
+  display: flex;
+  align-items: center; /* vertically centers text + icon */
+  gap: 6px; /* spacing between name, icon, and label */
+  flex-wrap: wrap; /
 }
 
 .verified {
   font-size: 0.75rem;
   background: #2B91F6;
   color: #fff;
-  padding: 2px 6px;
-  border-radius: 4px;
+  padding: 2px 16px;
+  border-radius: 499px;
   margin-left: 6px;
 }
 

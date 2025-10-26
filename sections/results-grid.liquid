@@ -30,7 +30,8 @@
             <p class="results-bento__name">
               {{ block.settings.name }}
               {% if block.settings.verified %}
-                <span class="verified">✔ Verified Buyer</span>
+                {% render 'icon-verified' %}
+                <span class="verified"> Verified Buyer</span>
               {% endif %}
             </p>
             <div class="results-bento__stars" style="--star-color: {{ section.settings.star_color }}">

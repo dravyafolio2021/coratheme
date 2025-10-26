@@ -5,19 +5,41 @@
   aria-label="Product Hero"
 >
   <div class="cora-product-hero__inner container">
-
     <!-- ================= IMAGE + NUTRITION CTA ================= -->
     <div class="cora-product-hero__gallery Imagegallery">
-      {% if section.settings.main_image %}
-        <figure class="cora-product-hero__image-wrap">
+      <!-- ================= PRODUCT IMAGE GALLERY ================= -->
+      <div class="cora-product-gallery">
+        <!-- Main Image -->
+        <div class="cora-product-gallery__main">
           <img
+            id="mainProductImage-{{ section.id }}"
             src="{{ section.settings.main_image | image_url: width: 1000 }}"
             alt="{{ section.settings.main_image_alt | escape }}"
-            class="cora-product-hero__image"
-            loading="lazy" height="100%" width="100%"
+            class="cora-product-gallery__image"
+            loading="lazy"
           >
-        </figure>
-      {% endif %}
+        </div>
+
+        <!-- Thumbnails -->
+        {% assign gallery_images = section.blocks | where: 'type', 'gallery_image' %}
+        {% if gallery_images.size > 0 %}
+          <div class="cora-product-gallery__thumbnails">
+            {% for block in gallery_images %}
+              <img
+                src="{{ block.settings.image | image_url: width: 200 }}"
+                alt="{{ block.settings.image_alt | escape }}"
+                class="cora-product-gallery__thumbnail {% if forloop.first %}active{% endif %}"
+                loading="lazy"
+                onclick="
+                  document.getElementById('mainProductImage-{{ section.id }}').src='{{ block.settings.image | image_url: width: 1000 }}';
+                  document.querySelectorAll('#cora-product-hero-{{ section.id }} .cora-product-gallery__thumbnail').forEach(el => el.classList.remove('active'));
+                  this.classList.add('active');
+                "
+              >
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
 
       {% if section.settings.cta_label != blank %}
         <a
@@ -32,7 +54,6 @@
 
     <!-- ================= CONTENT ================= -->
     <div class="cora-product-hero__content">
-      
       {% if section.settings.title != blank %}
         <h1 class="cora-product-hero__title">{{ section.settings.title }}</h1>
       {% endif %}
@@ -104,28 +125,28 @@
         <p class="cora-product-hero__note">{{ section.settings.note }}</p>
       {% endif %}
 
-    {% if section.settings.guarantee_title != blank or section.settings.guarantee_desc != blank %}
-  <div class="cora-product-hero__guarantee">
-    {% if section.settings.guarantee_icon %}
-      <div class="guarantee__icon">
-        <img
-          src="{{ section.settings.guarantee_icon | image_url: width: 80 }}"
-          alt="Satisfaction Guarantee"
-          loading="lazy"
-        >
-      </div>
-    {% endif %}
-    <div class="guarantee__content">
-      {% if section.settings.guarantee_title != blank %}
-        <p class="guarantee__title">{{ section.settings.guarantee_title }}</p>
+      <!-- GUARANTEE SECTION -->
+      {% if section.settings.guarantee_title != blank or section.settings.guarantee_desc != blank %}
+        <div class="cora-product-hero__guarantee">
+          {% if section.settings.guarantee_icon %}
+            <div class="guarantee__icon">
+              <img
+                src="{{ section.settings.guarantee_icon | image_url: width: 80 }}"
+                alt="Satisfaction Guarantee"
+                loading="lazy"
+              >
+            </div>
+          {% endif %}
+          <div class="guarantee__content">
+            {% if section.settings.guarantee_title != blank %}
+              <p class="guarantee__title">{{ section.settings.guarantee_title }}</p>
+            {% endif %}
+            {% if section.settings.guarantee_desc != blank %}
+              <p class="guarantee__desc">{{ section.settings.guarantee_desc }}</p>
+            {% endif %}
+          </div>
+        </div>
       {% endif %}
-      {% if section.settings.guarantee_desc != blank %}
-        <p class="guarantee__desc">{{ section.settings.guarantee_desc }}</p>
-      {% endif %}
-    </div>
-  </div>
-{% endif %}
-
     </div>
   </div>
 </section>
@@ -140,30 +161,36 @@
     { "type": "text", "id": "main_image_alt", "label": "Main Image Alt Text", "default": "Product Image" },
     { "type": "text", "id": "title", "label": "Product Title", "default": "Zenmies 10-in-1 Alpha Gummies" },
     { "type": "text", "id": "rating_text", "label": "Rating Text", "default": "⭐ 4.9/5. Loved by 300k+ customers" },
-    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Feeling drained or struggling to stay motivated in and out of the Gym?" },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Feeling drained or struggling to stay motivated in and out of the Gym?"
+    },
     { "type": "text", "id": "old_price", "label": "Old Price", "default": "$59.99" },
     { "type": "text", "id": "new_price", "label": "New Price", "default": "$47.49" },
     { "type": "text", "id": "badge_text", "label": "Badge Text", "default": "Subscribe & Save 50% for Life" },
     { "type": "url", "id": "cta_url", "label": "CTA Button URL" },
     { "type": "text", "id": "cta_label", "label": "CTA Button Label", "default": "TRY IT NOW ($47.48)" },
-    { "type": "textarea", "id": "note", "label": "Subscription Note", "default": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime." },
-{
-  "type": "image_picker",
-  "id": "guarantee_icon",
-  "label": "Guarantee Icon (Badge Image)"
-},
-{
-  "type": "text",
-  "id": "guarantee_title",
-  "label": "Guarantee Title",
-  "default": "Zenmies risk free for 90 days."
-},
-{
-  "type": "textarea",
-  "id": "guarantee_desc",
-  "label": "Guarantee Description",
-  "default": "If you are not satisfied we’ll refund you, no questions asked. Reclaim your masculinity, risk-free."
-}
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Subscription Note",
+      "default": "By default, you will receive a 30-day supply every 30 days. You can easily adjust or cancel anytime."
+    },
+    { "type": "image_picker", "id": "guarantee_icon", "label": "Guarantee Icon (Badge Image)" },
+    {
+      "type": "text",
+      "id": "guarantee_title",
+      "label": "Guarantee Title",
+      "default": "Zenmies risk free for 90 days."
+    },
+    {
+      "type": "textarea",
+      "id": "guarantee_desc",
+      "label": "Guarantee Description",
+      "default": "If you are not satisfied we’ll refund you, no questions asked. Reclaim your masculinity, risk-free."
+    }
   ],
   "blocks": [
     {
@@ -171,9 +198,32 @@
       "name": "Feature Item",
       "settings": [
         { "type": "textarea", "id": "icon_svg", "label": "Feature Icon (SVG)" },
-        { "type": "text", "id": "feature_text", "label": "Feature Text", "default": "Boosts Natural Testosterone & Vitality" }
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text",
+          "default": "Boosts Natural Testosterone & Vitality"
+        }
       ]
     },
+    {
+  "type": "gallery_image",
+  "name": "Gallery Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Gallery Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt Text",
+      "default": "Product Gallery Image"
+    }
+  ]
+},
+
     {
       "type": "trust_icon",
       "name": "Trust Icon",

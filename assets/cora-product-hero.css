@@ -299,7 +299,7 @@
 
 @media (max-width: 600px) {
   .cora-product-hero {
-    padding: 60px 16px;
+    padding: 60px 0px;
   }
 
   .cora-product-hero__title {
@@ -363,5 +363,69 @@
   }
   .guarantee__icon img {
     width: 60px;
+  }
+}
+/* ==========================================================================
+   🖼️ Product Gallery (Main Image + Thumbnails)
+   ========================================================================== */
+.cora-product-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.cora-product-gallery__main {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cora-product-gallery__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.cora-product-gallery__thumbnails {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+   flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+ }
+ 
+.cora-product-gallery__thumbnails::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.cora-product-gallery__thumbnail {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  cursor: pointer;
+  object-fit: cover;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.cora-product-gallery__thumbnail:hover {
+  opacity: 0.8;
+}
+
+.cora-product-gallery__thumbnail.active {
+  border-color: #6F43D5;
+  box-shadow: 0 0 0 2px #DED4F5;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .cora-product-gallery__thumbnail {
+    width: 60px;
+    height: 60px;
   }
 }

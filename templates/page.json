@@ -552,6 +552,26 @@
         "bottom_color": "#ffffff",
         "play_icon_color": "#6b45e6"
       }
+    },
+    "performance_graph_xKWQWW": {
+      "type": "performance-graph",
+      "name": "Performance Graph",
+      "settings": {
+        "heading": "Achieve Interstellar Levels Of Testosterone Naturally With Zenmies",
+        "accent_color": "#6B45E6",
+        "heading_color": "#160E26",
+        "bg_color": "#F4EEFB",
+        "graph_image": "shopify://shop_images/graph.png",
+        "circle_bg": "#000000",
+        "circle_text": "+60% Increase in T",
+        "text_color": "#3c3847",
+        "description": "Zenmies Natural T supports the optimization of male sex hormones, including Total Testosterone, Free Testosterone, and more. Most users report feeling a difference in energy levels after just a few days.",
+        "badge_image": "shopify://shop_images/100.png",
+        "cta_heading": "See A Massive Difference In 90 Days Or Your Money Back",
+        "cta_text": "We make sure every customer actually gets results or we refund you 100% of your investment. You’ll feel the difference with Zenmies that we bear all the risk.",
+        "cta_label": "TRY IT NOW",
+        "cta_url": ""
+      }
     }
   },
   "order": [
@@ -562,6 +582,7 @@
     "cora_product_tabs_NmNbkL",
     "cora_ingredients_grid_VCYbmQ",
     "results_grid_xLmTwN",
-    "cora_video_testimonials_WxkRAw"
+    "cora_video_testimonials_WxkRAw",
+    "performance_graph_xKWQWW"
   ]
 }

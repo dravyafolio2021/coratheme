@@ -1,0 +1,342 @@
+{% comment %}
+  Cora Review List — Responsive, customizable review widget
+  - Search, sort (Latest/Oldest/Rating), rating filter, Photos/Videos toggle
+  - Blocks = reviews (each review fully customizable)
+  - Optional images per review (up to 3)
+  - Client-side filtering + pagination (no external JS)
+{% endcomment %}
+
+<section
+  id="cora-review-list-{{ section.id }}"
+  class="cora-revlist"
+  style="--cl-text: {{ section.settings.text_color }}; --cl-muted: {{ section.settings.muted_color }}; --cl-primary: {{ section.settings.primary_color }}; --cl-star: {{ section.settings.star_color }}; --cl-border: {{ section.settings.border_color }}; --cl-chip: {{ section.settings.chip_bg }}; --cl-btn: {{ section.settings.button_bg }}; --cl-btn-text: {{ section.settings.button_text }};"
+>
+  <div class="cora-revlist__inner container">
+    {% if section.settings.heading != blank %}
+      <h2 class="cora-revlist__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% assign review_blocks = section.blocks | where: 'type', 'review' %}
+    {% assign total_reviews = review_blocks.size %}
+
+    <!-- Toolbar -->
+    {% if section.settings.show_toolbar %}
+      <div class="cora-revlist__toolbar" data-toolbar>
+        {% if section.settings.show_search %}
+          <label class="cora-revlist__search">
+            <input
+              type="search"
+              placeholder="{{ section.settings.search_placeholder | default: 'Search' }}"
+              data-review-search
+            >
+          </label>
+        {% endif %}
+
+        <div class="cora-revlist__toolbar-right">
+          {% if section.settings.show_sort %}
+            <div class="cora-revlist__select">
+              <select data-review-sort aria-label="Sort">
+                <option value="latest">{{ section.settings.sort_latest_label }}</option>
+                <option value="oldest">{{ section.settings.sort_oldest_label }}</option>
+                <option value="rating">{{ section.settings.sort_rating_label }}</option>
+              </select>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_rating_filter %}
+            <div class="cora-revlist__select">
+              <select data-review-rating aria-label="Rating filter">
+                <option value="all">{{ section.settings.filter_rating_all_label }}</option>
+                <option value="5">5 ★</option>
+                <option value="4">4 ★ & up</option>
+                <option value="3">3 ★ & up</option>
+                <option value="2">2 ★ & up</option>
+                <option value="1">1 ★ & up</option>
+              </select>
+            </div>
+          {% endif %}
+
+          {% if section.settings.show_media_toggle %}
+            <label class="cora-revlist__toggle">
+              <input type="checkbox" data-review-media>
+              <span>{{ section.settings.media_toggle_label }}</span>
+            </label>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Review List -->
+    <div
+      class="cora-revlist__list"
+      data-review-list
+      data-page-size="{{ section.settings.items_per_page | default: 5 }}"
+    >
+      {% for block in review_blocks %}
+        {% assign has_media = false %}
+        {% if block.settings.image_1 or block.settings.image_2 or block.settings.image_3 %}
+          {% assign has_media = true %}
+        {% endif %}
+        <article
+          class="cora-revlist__item"
+          data-review-item
+          data-rating="{{ block.settings.rating | default: 5 }}"
+          data-date="{{ block.settings.date_sort | default: block.settings.date }}"
+          data-has-media="{{ has_media }}"
+          data-search-text="{{ block.settings.name | escape }} {{ block.settings.review | escape }}"
+          {{ block.shopify_attributes }}
+        >
+          <header class="cora-revlist__header">
+            <div class="cora-revlist__avatar">
+              {% if block.settings.avatar_image != blank %}
+                <img
+                  src="{{ block.settings.avatar_image | image_url: width: 64 }}"
+                  alt="{{ block.settings.name | escape }}"
+                  loading="lazy" height="100%" width="100%"
+                >
+              {% else %}
+                <span class="avatar-initial">{{ block.settings.name | slice: 0, 1 | upcase }}</span>
+              {% endif %}
+            </div>
+            <div class="cora-revlist__meta">
+              <div class="cora-revlist__name-row">
+                <span class="cora-revlist__name">{{ block.settings.name }}</span>
+                {% if block.settings.verified %}
+                  <span class="cora-revlist__badge">
+                    {{ section.settings.verified_label }}
+                  </span>
+                {% endif %}
+              </div>
+              <div class="cora-revlist__stars" aria-label="{{ block.settings.rating }} out of 5">
+                {% assign r = block.settings.rating | plus: 0 %}
+                {% for i in (1..5) %}
+                  {% if i <= r %}★{% else %}☆{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div class="cora-revlist__date">
+              <span>{{ block.settings.date }}</span>
+            </div>
+          </header>
+
+          <div class="cora-revlist__body">
+            <p class="cora-revlist__text">{{ block.settings.review }}</p>
+
+            {% if has_media %}
+              <div class="cora-revlist__media">
+                {% if block.settings.image_1 -%}
+                  <a href="{{ block.settings.image_1 | image_url }}" target="_blank" rel="noopener"
+                    ><img height="100%" width="100%" src="{{ block.settings.image_1 | image_url: width: 240 }}" alt="Review media 1" loading="lazy"
+                  ></a>
+                {%- endif %}
+                {% if block.settings.image_2 -%}
+                  <a href="{{ block.settings.image_2 | image_url }}" target="_blank" rel="noopener"
+                    ><img height="100%" width="100%" src="{{ block.settings.image_2 | image_url: width: 240 }}" alt="Review media 2" loading="lazy"
+                  ></a>
+                {%- endif %}
+                {% if block.settings.image_3 -%}
+                  <a href="{{ block.settings.image_3 | image_url }}" target="_blank" rel="noopener"
+                    ><img height="100%" width="100%" src="{{ block.settings.image_3 | image_url: width: 240 }}" alt="Review media 3" loading="lazy"
+                  ></a>
+                {%- endif %}
+              </div>
+            {% endif %}
+
+            {% if block.settings.recommend %}
+              <p class="cora-revlist__recommend">❤️ {{ section.settings.recommend_label }}</p>
+            {% endif %}
+          </div>
+
+          <footer class="cora-revlist__footer">
+            {% if section.settings.show_helpful %}
+              <button type="button" class="cora-revlist__helpful" data-helpful>
+                {{ section.settings.helpful_label }}
+                <span class="count" data-helpful-count>{{ block.settings.helpful_count | default: 0 }}</span>
+              </button>
+            {% endif %}
+          </footer>
+        </article>
+      {% endfor %}
+    </div>
+
+    {% if section.settings.show_more_button %}
+      <div class="cora-revlist__more">
+        <button type="button" class="cora-revlist__more-btn" data-review-more>{{ section.settings.more_label }}</button>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{{ 'cora-reviews-list.css' | asset_url | stylesheet_tag }}
+
+<script>
+  (() => {
+    const root = document.getElementById('cora-review-list-{{ section.id }}');
+    if (!root) return;
+
+    const listEl = root.querySelector('[data-review-list]');
+    const searchEl = root.querySelector('[data-review-search]');
+    const sortEl = root.querySelector('[data-review-sort]');
+    const ratingEl = root.querySelector('[data-review-rating]');
+    const mediaEl = root.querySelector('[data-review-media]');
+    const moreBtn = root.querySelector('[data-review-more]');
+
+    const pageSize = parseInt(listEl?.dataset.pageSize || '5', 10);
+    let page = 1;
+
+    const items = Array.from(root.querySelectorAll('[data-review-item]')).map((el) => ({
+      el,
+      rating: parseInt(el.dataset.rating || '5', 10),
+      date: el.dataset.date || '',
+      hasMedia: el.dataset.hasMedia === 'true',
+      text: (el.dataset.searchText || '').toLowerCase(),
+    }));
+
+    function applyFilters() {
+      const q = (searchEl?.value || '').toLowerCase();
+      const ratingVal = ratingEl ? ratingEl.value : 'all';
+      const mediaOnly = mediaEl ? mediaEl.checked : false;
+
+      let filtered = items.filter((it) => it.text.includes(q));
+      if (ratingVal !== 'all') {
+        const minR = parseInt(ratingVal, 10);
+        filtered = filtered.filter((it) => it.rating >= minR);
+      }
+      if (mediaOnly) {
+        filtered = filtered.filter((it) => it.hasMedia);
+      }
+
+      const sortBy = sortEl ? sortEl.value : 'latest';
+      if (sortBy === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      } else if (sortBy === 'oldest') {
+        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      } else {
+        // latest
+        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+
+      // pagination
+      items.forEach((it) => (it.el.style.display = 'none'));
+      const visible = filtered.slice(0, page * pageSize);
+      visible.forEach((it) => (it.el.style.display = ''));
+
+      if (moreBtn) moreBtn.style.display = filtered.length > visible.length ? '' : 'none';
+    }
+
+    searchEl && searchEl.addEventListener('input', applyFilters);
+    sortEl &&
+      sortEl.addEventListener('change', () => {
+        page = 1;
+        applyFilters();
+      });
+    ratingEl &&
+      ratingEl.addEventListener('change', () => {
+        page = 1;
+        applyFilters();
+      });
+    mediaEl &&
+      mediaEl.addEventListener('change', () => {
+        page = 1;
+        applyFilters();
+      });
+    moreBtn &&
+      moreBtn.addEventListener('click', () => {
+        page += 1;
+        applyFilters();
+      });
+
+    // Helpful button (client-side bump)
+    root.querySelectorAll('[data-helpful]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const countEl = btn.querySelector('[data-helpful-count]');
+        const n = parseInt(countEl?.textContent || '0', 10) + 1;
+        if (countEl) countEl.textContent = n;
+      });
+    });
+
+    applyFilters();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Cora Review List",
+  "class": "cora-section cora-revlist",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Customer Reviews" },
+
+    { "type": "checkbox", "id": "show_toolbar", "label": "Show toolbar", "default": true },
+    { "type": "checkbox", "id": "show_search", "label": "Show search", "default": true },
+    { "type": "text", "id": "search_placeholder", "label": "Search placeholder", "default": "Search" },
+    { "type": "checkbox", "id": "show_sort", "label": "Show sort dropdown", "default": true },
+    { "type": "text", "id": "sort_latest_label", "label": "Sort: Latest label", "default": "Sort by: Latest" },
+    { "type": "text", "id": "sort_oldest_label", "label": "Sort: Oldest label", "default": "Sort by: Oldest" },
+    { "type": "text", "id": "sort_rating_label", "label": "Sort: Rating label", "default": "Rating" },
+    { "type": "checkbox", "id": "show_rating_filter", "label": "Show rating filter", "default": true },
+    { "type": "text", "id": "filter_rating_all_label", "label": "Rating filter 'All' label", "default": "All ratings" },
+    { "type": "checkbox", "id": "show_media_toggle", "label": "Show Photos/Videos toggle", "default": true },
+    { "type": "text", "id": "media_toggle_label", "label": "Media toggle label", "default": "Photos and Videos" },
+
+    { "type": "checkbox", "id": "show_helpful", "label": "Show Helpful button", "default": true },
+    { "type": "text", "id": "helpful_label", "label": "Helpful label", "default": "Helpful" },
+    { "type": "text", "id": "verified_label", "label": "Verified badge text", "default": "Verified Buyer" },
+    { "type": "text", "id": "recommend_label", "label": "Recommend text", "default": "Would recommend" },
+
+    { "type": "checkbox", "id": "show_more_button", "label": "Show 'See more' button", "default": true },
+    { "type": "text", "id": "more_label", "label": "See more button label", "default": "SEE MORE REVIEWS" },
+    {
+      "type": "range",
+      "id": "items_per_page",
+      "label": "Items per click",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 5
+    },
+
+    { "type": "color", "id": "primary_color", "label": "Primary brand color", "default": "#6B45E6" },
+    { "type": "color", "id": "star_color", "label": "Star color", "default": "#F6B100" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#160E26" },
+    { "type": "color", "id": "muted_color", "label": "Muted text color", "default": "#6b6b6b" },
+    { "type": "color", "id": "border_color", "label": "Border color", "default": "#e5e3ed" },
+    { "type": "color", "id": "chip_bg", "label": "Avatar background", "default": "#e6e3f2" },
+
+    { "type": "color", "id": "button_bg", "label": "Button background", "default": "#160E26" },
+    { "type": "color", "id": "button_text", "label": "Button text", "default": "#ffffff" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Reviewer name", "default": "Zarc. C" },
+        { "type": "image_picker", "id": "avatar_image", "label": "Avatar (optional)" },
+        { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "default": 5 },
+        { "type": "text", "id": "date", "label": "Date (shown)", "default": "4 Months ago" },
+        {
+          "type": "text",
+          "id": "date_sort",
+          "label": "Date (ISO for sort)",
+          "info": "YYYY-MM-DD for correct sorting",
+          "default": "2025-06-01"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review text",
+          "default": "Didn’t feel much for the first couple of weeks and was about to give up, but around day 18 I noticed some subtle changes. Wish it had kicked in sooner? it takes patience, which not everyone has."
+        },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true },
+        { "type": "checkbox", "id": "recommend", "label": "Show 'Would recommend'", "default": true },
+        { "type": "number", "id": "helpful_count", "label": "Helpful count (initial)", "default": 0 },
+
+        { "type": "image_picker", "id": "image_1", "label": "Photo 1" },
+        { "type": "image_picker", "id": "image_2", "label": "Photo 2" },
+        { "type": "image_picker", "id": "image_3", "label": "Photo 3" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Cora Review List", "category": "Zenmies" }]
+}
+{% endschema %}

@@ -183,6 +183,105 @@
         "guarantee_desc": "If you are not satisfied we’ll refund you, no questions asked. Reclaim your masculinity, risk-free."
       }
     },
+    "cora_product_tabs_NmNbkL": {
+      "type": "cora-product-tabs",
+      "blocks": {
+        "tab_Adqyd8": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "What to expect",
+            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
+            "heading_color": "#ffffff",
+            "heading_font_size": 24,
+            "heading_font_weight": "600",
+            "heading_alignment": "center",
+            "m1_day": "DAY 7",
+            "m1_day_color": "#ffffff",
+            "m1_title": "Ignition",
+            "m1_title_color": "#c6c3d5",
+            "m1_icon": "",
+            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m2_day": "DAY 30",
+            "m2_day_color": "#ffffff",
+            "m2_title": "Ignition",
+            "m2_title_color": "#c6c3d5",
+            "m2_icon": "",
+            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m3_day": "DAY 90",
+            "m3_day_color": "#ffffff",
+            "m3_title": "Liftoff",
+            "m3_title_color": "#c6c3d5",
+            "m3_icon": "",
+            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
+          }
+        },
+        "tab_fcczkP": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "FAQ's",
+            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
+            "heading_color": "#ffffff",
+            "heading_font_size": 24,
+            "heading_font_weight": "600",
+            "heading_alignment": "center",
+            "m1_day": "DAY 30",
+            "m1_day_color": "#ffffff",
+            "m1_title": "Ignition",
+            "m1_title_color": "#c6c3d5",
+            "m1_icon": "",
+            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m2_day": "DAY 30",
+            "m2_day_color": "#ffffff",
+            "m2_title": "Ignition",
+            "m2_title_color": "#c6c3d5",
+            "m2_icon": "",
+            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m3_day": "DAY 90",
+            "m3_day_color": "#ffffff",
+            "m3_title": "Liftoff",
+            "m3_title_color": "#c6c3d5",
+            "m3_icon": "",
+            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
+          }
+        },
+        "tab_jUr4Qq": {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Review",
+            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
+            "heading_color": "#ffffff",
+            "heading_font_size": 24,
+            "heading_font_weight": "600",
+            "heading_alignment": "center",
+            "m1_day": "DAY 90",
+            "m1_day_color": "#ffffff",
+            "m1_title": "Ignition",
+            "m1_title_color": "#c6c3d5",
+            "m1_icon": "",
+            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m2_day": "DAY 30",
+            "m2_day_color": "#ffffff",
+            "m2_title": "Ignition",
+            "m2_title_color": "#c6c3d5",
+            "m2_icon": "",
+            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
+            "m3_day": "DAY 90",
+            "m3_day_color": "#ffffff",
+            "m3_title": "Liftoff",
+            "m3_title_color": "#c6c3d5",
+            "m3_icon": "",
+            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_Adqyd8",
+        "tab_fcczkP",
+        "tab_jUr4Qq"
+      ],
+      "name": "Cora Product Tabs",
+      "settings": {}
+    },
     "cora_ingredients_grid_VCYbmQ": {
       "type": "cora-ingredients-grid",
       "blocks": {
@@ -337,105 +436,6 @@
         "cta_color": "#ffffff",
         "cta_radius": 40
       }
-    },
-    "cora_product_tabs_NmNbkL": {
-      "type": "cora-product-tabs",
-      "blocks": {
-        "tab_Adqyd8": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "What to expect",
-            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
-            "heading_color": "#ffffff",
-            "heading_font_size": 24,
-            "heading_font_weight": "600",
-            "heading_alignment": "center",
-            "m1_day": "DAY 7",
-            "m1_day_color": "#ffffff",
-            "m1_title": "Ignition",
-            "m1_title_color": "#c6c3d5",
-            "m1_icon": "",
-            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m2_day": "DAY 30",
-            "m2_day_color": "#ffffff",
-            "m2_title": "Ignition",
-            "m2_title_color": "#c6c3d5",
-            "m2_icon": "",
-            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m3_day": "DAY 90",
-            "m3_day_color": "#ffffff",
-            "m3_title": "Liftoff",
-            "m3_title_color": "#c6c3d5",
-            "m3_icon": "",
-            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-          }
-        },
-        "tab_fcczkP": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "FAQ's",
-            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
-            "heading_color": "#ffffff",
-            "heading_font_size": 24,
-            "heading_font_weight": "600",
-            "heading_alignment": "center",
-            "m1_day": "DAY 30",
-            "m1_day_color": "#ffffff",
-            "m1_title": "Ignition",
-            "m1_title_color": "#c6c3d5",
-            "m1_icon": "",
-            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m2_day": "DAY 30",
-            "m2_day_color": "#ffffff",
-            "m2_title": "Ignition",
-            "m2_title_color": "#c6c3d5",
-            "m2_icon": "",
-            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m3_day": "DAY 90",
-            "m3_day_color": "#ffffff",
-            "m3_title": "Liftoff",
-            "m3_title_color": "#c6c3d5",
-            "m3_icon": "",
-            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-          }
-        },
-        "tab_jUr4Qq": {
-          "type": "tab",
-          "settings": {
-            "tab_title": "Review",
-            "panel_heading": "What Happens After You Boost Testosterone with Zenmies",
-            "heading_color": "#ffffff",
-            "heading_font_size": 24,
-            "heading_font_weight": "600",
-            "heading_alignment": "center",
-            "m1_day": "DAY 90",
-            "m1_day_color": "#ffffff",
-            "m1_title": "Ignition",
-            "m1_title_color": "#c6c3d5",
-            "m1_icon": "",
-            "m1_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m2_day": "DAY 30",
-            "m2_day_color": "#ffffff",
-            "m2_title": "Ignition",
-            "m2_title_color": "#c6c3d5",
-            "m2_icon": "",
-            "m2_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>",
-            "m3_day": "DAY 90",
-            "m3_day_color": "#ffffff",
-            "m3_title": "Liftoff",
-            "m3_title_color": "#c6c3d5",
-            "m3_icon": "",
-            "m3_bullets": "<ul><li>Lorem Ipsum is simply dummy text</li><li>Lorem Ipsum is simply dummy text</li></ul>"
-          }
-        }
-      },
-      "block_order": [
-        "tab_Adqyd8",
-        "tab_fcczkP",
-        "tab_jUr4Qq"
-      ],
-      "name": "Cora Product Tabs",
-      "settings": {}
     }
   },
   "order": [
@@ -443,7 +443,7 @@
     "cora_header_CHHPXG",
     "main",
     "cora_product_hero_eVrDBJ",
-    "cora_ingredients_grid_VCYbmQ",
-    "cora_product_tabs_NmNbkL"
+    "cora_product_tabs_NmNbkL",
+    "cora_ingredients_grid_VCYbmQ"
   ]
 }

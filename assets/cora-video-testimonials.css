@@ -2,8 +2,7 @@
 
 .cora-video-testimonials {
   position: relative;
-  background-color: #f9f8fc;
-  background-size: cover;
+   background-size: cover;
   background-position: center;
   padding: 48px 24px;
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -30,8 +29,7 @@
 }
 
 .cora-video-testimonials {
-  background: #f9f8fc;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+   font-family: "Helvetica Neue", Arial, sans-serif;
   padding: 48px 24px;
 }
 

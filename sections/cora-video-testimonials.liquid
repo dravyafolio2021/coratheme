@@ -7,15 +7,9 @@
   id="cora-video-testimonials-{{ section.id }}"
   class="cora-video-testimonials"
   style="
-    {% if section.settings.bg_image != blank %}
-      background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');
-      background-size: cover;
-      background-position: center;
-    {% else %}
-      background-color: {{ section.settings.bg_color }};
-    {% endif %}
+     
   "
->
+ >
   {% if section.settings.overlay_color != blank %}
     <div
       class="cora-video__overlay"
@@ -75,6 +69,17 @@
     </div>
   </div>
 </section>
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.parent_bg_color }};
+    {% if section.settings.parent_bg_image != blank %}
+      background-image: url('{{ section.settings.parent_bg_image | image_url: width: 1600 }}');
+      background-size: {{ section.settings.parent_bg_size }};
+      background-repeat: {{ section.settings.parent_bg_repeat }};
+      background-position: {{ section.settings.parent_bg_position }};
+    {% endif %}
+  }
+</style>
 
 {{ 'cora-video-testimonials.css' | asset_url | stylesheet_tag }}
 
@@ -88,12 +93,57 @@
       "label": "Heading",
       "default": "4 Reasons Why Men Love [highlight]Zenmies[/highlight]"
     },
+    {
+      "type": "color",
+      "id": "parent_bg_color",
+      "label": "Parent Background Color",
+      "default": "#f9f8fc"
+    },{
+  "type": "image_picker",
+  "id": "parent_bg_image",
+  "label": "Parent Background Image"
+},
+{
+  "type": "select",
+  "id": "parent_bg_size",
+  "label": "Background Size",
+  "default": "cover",
+  "options": [
+    { "value": "cover", "label": "Cover" },
+    { "value": "contain", "label": "Contain" },
+    { "value": "auto", "label": "Auto" }
+  ]
+},
+{
+  "type": "select",
+  "id": "parent_bg_repeat",
+  "label": "Background Repeat",
+  "default": "no-repeat",
+  "options": [
+    { "value": "no-repeat", "label": "No Repeat" },
+    { "value": "repeat", "label": "Repeat" },
+    { "value": "repeat-x", "label": "Repeat X" },
+    { "value": "repeat-y", "label": "Repeat Y" }
+  ]
+},
+{
+  "type": "select",
+  "id": "parent_bg_position",
+  "label": "Background Position",
+  "default": "center center",
+  "options": [
+    { "value": "center center", "label": "Center" },
+    { "value": "top center", "label": "Top" },
+    { "value": "bottom center", "label": "Bottom" },
+    { "value": "left center", "label": "Left" },
+    { "value": "right center", "label": "Right" }
+  ]
+},
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
     { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#6b45e6" },
     { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#6B45E6" },
 
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f9f8fc" },
-    { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
     {
       "type": "color",
       "id": "overlay_color",

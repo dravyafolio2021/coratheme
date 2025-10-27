@@ -4,7 +4,10 @@
   Version: v1.0.0
 {% endcomment %}
 
-<section id="cora-ingredients-{{ section.id }}" class="cora-ingredients">
+<section
+  id="cora-ingredients-{{ section.id }}"
+  class="cora-ingredients"
+>
   <div class="cora-ingredients__inner">
     {% if section.settings.heading != blank %}
       <h2
@@ -36,8 +39,8 @@
                 <h3
                   class="cora-ingredient-card__title zhead"
                   style="
-                    color: {{ section.settings.title_color }};
-                     font-weight: {{ section.settings.title_weight }};
+                                        color: {{ section.settings.title_color }};
+                    font-weight: {{ section.settings.title_weight }};
                   "
                 >
                   {{ block.settings.title }}
@@ -45,8 +48,8 @@
                 <p
                   class="cora-ingredient-card__desc zbody"
                   style="
-                    color: {{ section.settings.desc_color }};
-                     font-weight: {{ section.settings.desc_weight }};
+                                        color: {{ section.settings.desc_color }};
+                    font-weight: {{ section.settings.desc_weight }};
                   "
                 >
                   {{ block.settings.description }}
@@ -88,6 +91,11 @@
     {% endif %}
   </div>
 </section>
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.parent_bg_color }};
+  }
+</style>
 
 {{ 'cora-ingredients.css' | asset_url | stylesheet_tag }}
 
@@ -102,6 +110,12 @@
       "default": "Unlock The Power Of 10 Ancient Performance Boosters"
     },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160e26" },
+    {
+      "type": "color",
+      "id": "parent_bg_color",
+      "label": "Parent Background Color",
+      "default": "#F0EAFD"
+    },
     {
       "type": "range",
       "id": "heading_size",
@@ -138,7 +152,7 @@
 
     { "type": "color", "id": "overlay_color", "label": "Image Overlay Color", "default": "rgba(0,0,0,0.4)" },
     { "type": "color", "id": "title_color", "label": "Ingredient Title Color", "default": "#ffffff" },
-     
+
     {
       "type": "select",
       "id": "title_weight",
@@ -153,7 +167,7 @@
     },
 
     { "type": "color", "id": "desc_color", "label": "Description Color", "default": "#f1f1f1" },
-    
+
     {
       "type": "select",
       "id": "desc_weight",
@@ -210,7 +224,7 @@
   "presets": [
     {
       "name": "Cora Ingredients Grid  ",
-       "category": "Zenmies",
+      "category": "Zenmies",
       "blocks": [
         { "type": "ingredient" },
         { "type": "ingredient" },

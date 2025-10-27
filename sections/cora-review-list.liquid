@@ -45,50 +45,58 @@
 
             <div class="cora-review-card__meta">
               <div class="meta-row">
-                <span class="cora-review-card__name">{{ block.settings.name }}</span>
-                {% if block.settings.verified %}
-                  <span class="cora-review-card__verified-badge">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="{{ section.settings.primary_color }}">
-                      <path d="M12 2l2.4 2.4 3.6-.8-.8 3.6 2.4 2.4-2.4 2.4.8 3.6-3.6-.8L12 22l-2.4-2.4-3.6.8.8-3.6-2.4-2.4 2.4-2.4-.8-3.6 3.6.8L12 2z"/><path fill="#fff" d="M10.4 13.6l-1.8-1.8 1.2-1.2 0.6 0.6 2.4-2.4 1.2 1.2z"/>
-                    </svg>
-                  </span>
-                  <span class="cora-review-card__verified-text">{{ section.settings.verified_label }}</span>
-                {% endif %}
-                <span class="cora-review-card__stars">
-                  {% assign r = block.settings.rating | plus: 0 %}
-                  {% for i in (1..5) %}
-                    {% if i <= r %}★{% else %}☆{% endif %}
-                  {% endfor %}
-                </span>
-              </div>
-              <div class="cora-review-card__date">
-                <span>{{ block.settings.date }}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="{{ section.settings.star_color }}">
-                  <path d="M12 2L14.4 8.4H21L15.6 12.6L18 19L12 15L6 19L8.4 12.6L3 8.4H9.6L12 2Z"/>
-                </svg>
+                <div class="meta-row_name">
+                  <span class="cora-review-card__name">{{ block.settings.name }}</span>
+                  {% if block.settings.verified %}
+                    <span class="cora-review-card__verified-badge">
+                      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.98985 2.66406L7.10207 5.3274H3.55095L4.43873 8.87853L1.77539 10.6541L4.43873 12.4296L3.55095 15.9808H7.10207L7.98985 18.6441L10.6532 16.8686L13.3165 18.6441L14.2043 15.9808H17.7554L16.8677 12.4296L19.531 10.6541L16.8677 8.87853L17.7554 5.3274H14.2043L13.3165 2.66406L10.6532 4.43962L7.98985 2.66406ZM14.2043 7.10297L15.0921 7.99075L8.87764 14.2052L6.21429 11.5419L7.10207 10.6541L8.87764 12.4296L14.2043 7.10297Z" fill="#0A9EE2"/>
+                      </svg>
+                    </span>
+                  {% endif %}
+                </div>
+
+                <span class="cora-review-card__verified-text">{{ section.settings.verified_label }}</span>
               </div>
             </div>
           </header>
 
-          <!-- Review Text -->
-          <p class="cora-review-card__text">{{ block.settings.review }}</p>
+          <div class="cora-review-card__text_parent">
+            <div class="cora-review-card_clara">
+              <span class="cora-review-card__stars">
+                {% assign r = block.settings.rating | plus: 0 %}
+                {% for i in (1..5) %}
+                  {% if i <= r %}★{% else %}☆{% endif %}
+                {% endfor %}
+              </span>
+              <div class="cora-review-card__date">
+                <span>{{ block.settings.date }}</span>
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.2045 2.66406C14.4307 2.66431 14.6484 2.75096 14.8129 2.90629C14.9775 3.06163 15.0765 3.27393 15.0897 3.49981C15.103 3.7257 15.0295 3.94813 14.8843 4.12165C14.739 4.29517 14.533 4.40668 14.3083 4.43341L14.2045 4.43962V8.66901L15.8859 12.0328C15.9324 12.1249 15.9624 12.2243 15.9747 12.3267L15.98 12.4296V14.2052C15.98 14.4227 15.9002 14.6325 15.7557 14.795C15.6112 14.9575 15.4121 15.0613 15.1961 15.0868L15.0922 15.093H11.5411V18.6441C11.5409 18.8704 11.4542 19.088 11.2989 19.2526C11.1436 19.4171 10.9313 19.5161 10.7054 19.5294C10.4795 19.5426 10.2571 19.4692 10.0835 19.3239C9.91002 19.1787 9.7985 18.9727 9.77178 18.748L9.76556 18.6441V15.093H6.21444C5.99699 15.093 5.78712 15.0131 5.62462 14.8686C5.46213 14.7241 5.35832 14.525 5.33287 14.3091L5.32666 14.2052V12.4296C5.32678 12.3267 5.34481 12.2246 5.37993 12.1278L5.42076 12.0328L7.10222 8.66723V4.43962C6.87594 4.43937 6.6583 4.35273 6.49376 4.19739C6.32923 4.04206 6.23021 3.82976 6.21695 3.60387C6.20369 3.37798 6.27718 3.15556 6.42242 2.98204C6.56765 2.80852 6.77366 2.697 6.99835 2.67028L7.10222 2.66406H14.2045Z" fill="#DCC14C"/>
+                </svg>
+              </div>
+            </div>
+            <!-- Review Text -->
+            <p class="cora-review-card__text">{{ block.settings.review }}</p>
+            <div class="cora-review-card_clara">
+              {% if block.settings.recommend %}
+                <p class="cora-review-card__recommend">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="{{ section.settings.heart_color }}">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5c0-2.5 2-4.5 4.5-4.5 1.74 0 3.41 1.01 4.22 2.52C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                  {{ section.settings.recommend_label }}
+                </p>
+              {% endif %}
 
-          {% if block.settings.recommend %}
-            <p class="cora-review-card__recommend">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="{{ section.settings.heart_color }}">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5c0-2.5 2-4.5 4.5-4.5 1.74 0 3.41 1.01 4.22 2.52C11.09 5.01 12.76 4 14.5 4 17 4 19 6 19 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-              {{ section.settings.recommend_label }}
-            </p>
-          {% endif %}
-
-          <!-- Footer -->
-          <footer class="cora-review-card__footer">
-            <button class="cora-review-card__helpful" data-helpful>
-              {{ section.settings.helpful_label }}
-              <span class="count" data-helpful-count>{{ block.settings.helpful_count | default: 0 }}</span>
-            </button>
-          </footer>
+              <!-- Footer -->
+              <footer class="cora-review-card__footer">
+                <button class="cora-review-card__helpful" data-helpful>
+                  {{ section.settings.helpful_label }}
+                  <span class="count" data-helpful-count>{{ block.settings.helpful_count | default: 0 }}</span>
+                </button>
+              </footer>
+            </div>
+          </div>
         </article>
       {% endfor %}
     </div>

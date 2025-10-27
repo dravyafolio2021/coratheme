@@ -18,6 +18,13 @@
   margin: 0 auto;
 }
 
+
+.cora-product-hero__pricing{
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: start;
+}
 /* ================= IMAGE AREA ================= */
 .Imagegallery {
   display: flex;
@@ -231,10 +238,9 @@
   color: #6F43D5;
   font-size: 0.9rem;
   line-height: 1.5;
-  max-width: 550px;
+   
   text-align: center;
-  margin: 0 auto;
-}
+ }
 
 .cora-product-hero__guarantee {
   display: flex;
@@ -244,8 +250,7 @@
   font-weight: 600;
   color: #160E26;
   justify-content: flex-start;
-  margin-top: 16px;
-}
+ }
 
 /* ==========================================================================
    📱 Responsive

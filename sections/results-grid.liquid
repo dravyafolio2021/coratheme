@@ -51,7 +51,11 @@
     </div>
   </div>
 </section>
-
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.parent_bg_color }};
+  }
+</style>
 {{ 'results-grid.css' | asset_url | stylesheet_tag }}
 
 {% schema %}
@@ -66,7 +70,12 @@
       "default": "See How 247,353+ Men Over 30 Are Burning Fat, Building Strength, And Getting Results That Show"
     },
     { "type": "color", "id": "highlight_color", "label": "Highlight Color", "default": "#6B45E6" },
-
+{
+      "type": "color",
+      "id": "parent_bg_color",
+      "label": "Parent Background Color",
+      "default": "#F0EAFD"
+    },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
     { "type": "image_picker", "id": "main_image", "label": "Main Image (Hero Left)" },
     { "type": "color", "id": "card_bg", "label": "Card Background", "default": "#F4F1FB" },

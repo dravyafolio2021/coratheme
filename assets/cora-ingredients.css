@@ -1,10 +1,10 @@
 .cora-ingredients {
-  background: #f7f5fb;
+  background: #F0EAFD;
   font-family: "Helvetica Neue", Arial, sans-serif;
   padding: 48px 24px;
 }
-#sshopify-section-template--18807082614944__cora_ingredients_grid_VCYbmQ {
-  background-color: #f7f5fb;
+#shopify-section-template--18807082614944__cora_ingredients_grid_VCYbmQ {
+  background-color: #F0EAFD;
 }
 .cora-ingredients__inner {
   display: flex;
@@ -81,7 +81,7 @@
   justify-content: center;
   font-weight: 600;
   text-decoration: none;
-  padding: 14px 36px;
+  padding: 14px 60px;
   transition: all 0.3s ease;
 }
 

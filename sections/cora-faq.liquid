@@ -58,7 +58,11 @@
     </div>
   </div>
 </section>
-
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.parent_bg_color }};
+  }
+</style>
 {{ 'cora-faq.css' | asset_url | stylesheet_tag }}
 
 {% schema %}
@@ -71,7 +75,12 @@
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f9f8fc" },
     { "type": "color", "id": "overlay_color", "label": "Overlay Color (use rgba for transparency)", "default": "rgba(255,255,255,0)" },
-
+{
+      "type": "color",
+      "id": "parent_bg_color",
+      "label": "Parent Background Color",
+      "default": "#f9f8fc"
+    },
     { "type": "color", "id": "question_color", "label": "Question Text Color", "default": "#160e26" },
     { "type": "color", "id": "answer_color", "label": "Answer Text Color", "default": "#5b5668" },
     { "type": "color", "id": "card_bg", "label": "Card Background Color", "default": "#ebe8f2" }

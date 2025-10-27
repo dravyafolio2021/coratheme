@@ -17,6 +17,8 @@
             alt="{{ section.settings.main_image_alt | escape }}"
             class="cora-product-gallery__image"
             loading="lazy"
+            height="100%"
+            width="100%"
           >
         </div>
 
@@ -30,6 +32,8 @@
                 alt="{{ block.settings.image_alt | escape }}"
                 class="cora-product-gallery__thumbnail {% if forloop.first %}active{% endif %}"
                 loading="lazy"
+                height="100%"
+                width="100%"
                 onclick="
                   document.getElementById('mainProductImage-{{ section.id }}').src='{{ block.settings.image | image_url: width: 1000 }}';
                   document.querySelectorAll('#cora-product-hero-{{ section.id }} .cora-product-gallery__thumbnail').forEach(el => el.classList.remove('active'));
@@ -131,6 +135,8 @@
           {% if section.settings.guarantee_icon %}
             <div class="guarantee__icon">
               <img
+                height="100%"
+                width="100%"
                 src="{{ section.settings.guarantee_icon | image_url: width: 80 }}"
                 alt="Satisfaction Guarantee"
                 loading="lazy"
@@ -207,22 +213,22 @@
       ]
     },
     {
-  "type": "gallery_image",
-  "name": "Gallery Image",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Gallery Image"
+      "type": "gallery_image",
+      "name": "Gallery Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Gallery Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Alt Text",
+          "default": "Product Gallery Image"
+        }
+      ]
     },
-    {
-      "type": "text",
-      "id": "image_alt",
-      "label": "Alt Text",
-      "default": "Product Gallery Image"
-    }
-  ]
-},
 
     {
       "type": "trust_icon",

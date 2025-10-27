@@ -61,6 +61,12 @@
   </div>
 </section>
 
+
+<style>
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.parent_bg_color }};
+  }
+</style>
 {{ 'performance-graph.css' | asset_url | stylesheet_tag }}
 
 {% schema %}
@@ -75,7 +81,12 @@
       "default": "Achieve Interstellar Levels Of Testosterone Naturally With Zenmies"
     },
     { "type": "color", "id": "accent_color", "label": "Accent Color", "default": "#6B45E6" },
-
+   {
+      "type": "color",
+      "id": "parent_bg_color",
+      "label": "Parent Background Color",
+      "default": "#f4eefb"
+    },
     { "type": "color", "id": "heading_color", "label": "Heading Color", "default": "#160E26" },
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#F4EEFB" },
 

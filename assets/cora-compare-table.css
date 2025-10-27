@@ -1,3 +1,7 @@
+/* ================================
+   Cora Compare Table – Clean Rounded Column Version
+   ================================ */
+
 .cora-compare-table {
   position: relative;
   padding: 70px 20px 90px;
@@ -6,12 +10,15 @@
   background: #fff;
 }
 
+/* Overlay */
 .cora-compare__overlay {
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
+/* Inner Container */
 .cora-compare__inner {
   position: relative;
   z-index: 1;
@@ -23,7 +30,9 @@
   gap: 60px;
 }
 
-/* Heading */
+/* =====================
+   Heading
+   ===================== */
 .cora-compare__heading {
   font-family: "Mulish", sans-serif;
   font-size: clamp(1.6rem, 2vw, 2.2rem);
@@ -39,69 +48,112 @@
   font-weight: 800;
 }
 
- 
-/* Table */
+/* =====================
+   Table Wrapper
+   ===================== */
 .cora-compare__table-wrap {
   overflow-x: visible;
   width: 100%;
 }
 
+/* =====================
+   Table Core
+   ===================== */
 .cora-compare__table {
   width: 100%;
   border-collapse: collapse;
   font-family: "Lato", sans-serif;
   border: none;
- }
+}
 
+/* Cells */
 .cora-compare__table th,
 .cora-compare__table td {
   padding: 16px 12px;
-  border: 1px solid #eee;
   text-align: center;
   vertical-align: middle;
   font-size: 0.95rem;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
+/* Remove outer borders */
+.cora-compare__table th:first-child,
+.cora-compare__table td:first-child {
+  border-left: none;
+}
+.cora-compare__table th:last-child,
+.cora-compare__table td:last-child {
+  border-right: none;
+}
+
+/* Header Row */
 .cora-compare__table th {
   font-weight: 700;
   color: #1a1529;
- }
+  border-top: none;
+}
 
+/* Left Column (Feature names) */
 .cora-compare__table td:first-child {
   text-align: left;
   font-weight: 600;
   color: #3c3847;
 }
 
-/* Highlight column */
+/* Highlight Column (Zenmies) */
 .cora-compare__table .highlight {
   background: rgba(107, 69, 230, 0.08);
   font-weight: 700;
-  border-radius: 0px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Image in header */
+/* Round Top and Bottom of Highlight Column */
+.cora-compare__table thead th.highlight {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  overflow: visible;
+}
+
+.cora-compare__table tbody tr:last-child td.highlight {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  overflow: hidden;
+}
+
+/* Header Image */
 .cora-compare__table img {
   display: block;
   margin: 0 auto 8px;
   max-width: 80px;
   border-radius: 12px;
   margin-top: -80px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* SVG icons */
+/* SVG Icons */
 .icon-svg {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .icon-svg svg {
   width: 20px;
   height: auto;
 }
 
-/* CTA button */
+/* Optional Hover */
+ 
+
+/* Remove bottom border from last row */
+.cora-compare__table tr:last-child td {
+  border-bottom: none;
+}
+
+/* =====================
+   CTA Button
+   ===================== */
 .cora-compare__btn {
   display: inline-block;
   font-family: "Mulish", sans-serif;
@@ -120,11 +172,14 @@
   opacity: 0.95;
 }
 
-/* Responsive */
+/* =====================
+   Responsive Styling
+   ===================== */
 @media (max-width: 900px) {
   .cora-compare__heading {
     font-size: 1.6rem;
   }
+
   .cora-compare__table th,
   .cora-compare__table td {
     padding: 12px 8px;
@@ -132,26 +187,69 @@
   }
 
   .cora-compare-table {
-  position: relative;
-  padding: 70px 0;
-  text-align: center;
-  overflow: hidden;
-  background: #fff;
-}
+    padding: 70px 0;
+    background: #fff;
+  }
+
+  /* Convert to card layout on mobile */
+  .cora-compare__table thead {
+    display: none;
+  }
+
+  .cora-compare__table,
+  .cora-compare__table tbody,
+  .cora-compare__table tr,
+  .cora-compare__table td {
+    display: block;
+    width: 100%;
+    border: none;
+  }
+
+  .cora-compare__table tr {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  }
+
+  .cora-compare__table td {
+    padding: 10px 0;
+  }
+
+  .cora-compare__table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 700;
+    color: #1a1529;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+  }
+
+  .cora-compare__table td:first-child::before {
+    content: "Feature";
+  }
+
+  .cora-compare__table td.highlight {
+    background: rgba(107, 69, 230, 0.08);
+    border-radius: 10px;
+    padding: 12px;
+    margin: 6px 0;
+  }
+
+  .cora-compare__brand-img {
+    display: none;
+  }
+
+  .cora-compare__btn {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 @media (max-width: 600px) {
   .cora-compare__heading {
     font-size: 1.4rem;
-  }
-.cora-compare__table-wrap {
-  overflow-x: visible;
-  width: 100%;
-}
-
-
-  .cora-compare__btn {
-    width: 100%;
-    max-width: 320px;
   }
 }

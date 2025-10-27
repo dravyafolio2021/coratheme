@@ -21,7 +21,7 @@
             {% assign avg_rating_num = section.settings.avg_rating | plus: 0 %}
             {% for i in (1..5) %}
               {% if i <= avg_rating_num %}
-                ★
+                ★ 
               {% else %}
                 ☆
               {% endif %}
@@ -73,13 +73,13 @@
       </div>
     {% endif %}
 
-    {% if section.settings.show_cta_button %}
+    {% comment %} {% if section.settings.show_cta_button %}
       <div class="cora-reviews__more">
         <a href="{{ section.settings.more_url | default: '#' }}" class="cora-reviews__more-btn">
           {{ section.settings.more_label }}
         </a>
       </div>
-    {% endif %}
+    {% endif %} {% endcomment %}
   </div>
 </section>
 

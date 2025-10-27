@@ -1,7 +1,7 @@
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 16px 40px 16px;
 }
 
 .cora-review-widget__heading {
@@ -71,7 +71,17 @@
   gap: 6px;
   flex-wrap: wrap;
 }
-
+.cora-reviews__more-btn {
+  background: #160e26;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.cora-reviews__more-btn:hover {
+  opacity: 0.9;
+}
 .cora-review-card_clara {
   display: flex;
   justify-content: space-between;

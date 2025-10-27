@@ -38,7 +38,9 @@
             name="faq-group-{{ section.id }}"
             id="faq-{{ section.id }}-{{ forloop.index }}"
             class="cora-faq__toggle"
-            {% if forloop.first %}checked{% endif %}
+            {% if forloop.first %}
+              checked
+            {% endif %}
           >
           <label
             for="faq-{{ section.id }}-{{ forloop.index }}"
@@ -56,6 +58,7 @@
         </div>
       {% endfor %}
     </div>
+    <a href="#" class="cora-faq__button zhead"> View more FAQs </a>
   </div>
 </section>
 <style>
@@ -74,8 +77,13 @@
 
     { "type": "image_picker", "id": "bg_image", "label": "Background Image" },
     { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#f9f8fc" },
-    { "type": "color", "id": "overlay_color", "label": "Overlay Color (use rgba for transparency)", "default": "rgba(255,255,255,0)" },
-{
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color (use rgba for transparency)",
+      "default": "rgba(255,255,255,0)"
+    },
+    {
       "type": "color",
       "id": "parent_bg_color",
       "label": "Parent Background Color",
@@ -91,19 +99,20 @@
       "name": "FAQ Item",
       "settings": [
         { "type": "text", "id": "question", "label": "Question", "default": "How long until I see results?" },
-        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>" }
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Zenmies is for men over 18 looking to support testosterone safely and naturally.</p>"
+        }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Cora FAQ", "category": "Zenmies",
-      "blocks": [
-        { "type": "faq" },
-        { "type": "faq" },
-        { "type": "faq" },
-        { "type": "faq" }
-      ]
+      "name": "Cora FAQ",
+      "category": "Zenmies",
+      "blocks": [{ "type": "faq" }, { "type": "faq" }, { "type": "faq" }, { "type": "faq" }]
     }
   ]
 }

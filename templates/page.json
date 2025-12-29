@@ -79,7 +79,7 @@
       ],
       "name": "Cora Visual Builder",
       "settings": {
-        "design_mode": true
+        "design_mode": false
       }
     },
     "cora_header_CHHPXG": {

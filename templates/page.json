@@ -40,31 +40,22 @@
             "width": 100
           }
         },
-        "container_WaFG4e": {
+        "container_GeaWwn": {
           "type": "container",
           "settings": {
             "level": 0,
             "direction": "column",
             "width": 100,
-            "bg_color": "transparent",
+            "bg_color": "rgba(0,0,0,0)",
             "padding": 20
           }
         },
-        "button_EBzEJg": {
+        "button_gtxNeT": {
           "type": "button",
           "settings": {
             "level": 1,
             "text": "Click Me",
             "link": "",
-            "width": 100
-          }
-        },
-        "heading_BUFN8K": {
-          "type": "heading",
-          "settings": {
-            "level": 1,
-            "text": "hi shravya",
-            "size": 32,
             "width": 100
           }
         }
@@ -73,9 +64,8 @@
         "container_X4xgxz",
         "heading_RncdL6",
         "button_DaG4rb",
-        "container_WaFG4e",
-        "button_EBzEJg",
-        "heading_BUFN8K"
+        "container_GeaWwn",
+        "button_gtxNeT"
       ],
       "name": "Cora Visual Builder",
       "settings": {

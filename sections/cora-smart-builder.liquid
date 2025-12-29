@@ -1,129 +1,199 @@
 {%- style -%}
-  /* The Visual Builder CSS */
-  .cora-node {
+  /* --- CORA BUILDER CSS --- */
+  .cora-section-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cora-container {
     display: flex;
-    flex-wrap: wrap;
     box-sizing: border-box;
-    transition: all 0.3s ease;
+    position: relative;
+    transition: all 0.2s ease-in-out;
   }
-  
-  /* EDITOR ONLY: "Blueprint Mode" to see invisible containers */
-  .shopify-design-mode .cora-node {
-    border: 1px dashed rgba(0,0,0,0.1);
-    min-height: 30px; 
-    padding: 10px; /* Force space so you can drop items */
+
+  /* EDITOR MODE: Blueprint Guides */
+  .shopify-design-mode .cora-container {
+    border: 1px dashed #bbb;
+    min-height: 40px; /* Make empty containers visible */
   }
-  
-  .shopify-design-mode .cora-node:hover {
+  .shopify-design-mode .cora-container:hover {
     border-color: #0084ff;
-    background: rgba(0, 132, 255, 0.05);
+    box-shadow: inset 0 0 0 1px #0084ff;
   }
-  
-  /* Debug Badge */
-  .cora-level-badge {
-    display: none;
-    position: absolute; top: 0; left: 0; 
-    background: #000; color: #fff; font-size: 9px; padding: 2px 4px;
-    z-index: 10;
+  .shopify-design-mode .cora-level-tag {
+    position: absolute; top: 0; left: 0;
+    background: #0084ff; color: white;
+    font-size: 9px; padding: 1px 4px;
+    z-index: 2; pointer-events: none;
   }
-  .shopify-design-mode .cora-level-badge { display: block; }
+
+  /* RESPONSIVE: Mobile defaults */
+  @media screen and (max-width: 768px) {
+    .cora-mobile-col { flex-direction: column !important; }
+    .cora-mobile-row { flex-direction: row !important; }
+    .cora-mobile-w-100 { width: 100% !important; }
+    .cora-mobile-pad-20 { padding: 20px !important; }
+  }
 {%- endstyle -%}
 
-<div class="cora-smart-section {% if section.settings.design_mode %}shopify-design-mode{% endif %}">
-  
-  {%- assign current_level = 0 -%}
+<div class="cora-section-wrapper {% if section.settings.design_mode %}shopify-design-mode{% endif %}">
   
   {%- for block in section.blocks -%}
     
-    {%- assign next_block_index = forloop.index -%}
-    {%- assign next_block = section.blocks[next_block_index] -%}
+    {%- comment -%} --- 1. SETUP VARIABLES --- {%- endcomment -%}
+    {%- assign next_block = section.blocks[forloop.index] -%}
     {%- assign this_level = block.settings.level | default: 0 -%}
     {%- assign next_level = next_block.settings.level | default: 0 -%}
     
-    {%- comment -%} 1. OPENING TAG (If this is a container) {%- endcomment -%}
+    {%- comment -%} Handle "End of Stream" by assuming next level is 0 {%- endcomment -%}
+    {%- if forloop.last -%}
+      {%- assign next_level = 0 -%} 
+      {%- assign is_last = true -%}
+    {%- endif -%}
+
+    {%- comment -%} --- 2. RENDER THE OPENING TAG / WIDGET --- {%- endcomment -%}
+    
     {%- if block.type == 'container' -%}
-      <div class="cora-node cora-lvl-{{ this_level }}" 
-           style="width: {{ block.settings.width }}%; 
-                  flex-direction: {{ block.settings.direction }};
-                  justify-content: {{ block.settings.justify }};
-                  align-items: {{ block.settings.align }};
-                  gap: {{ block.settings.gap }}px;
-                  background: {{ block.settings.bg_color }};
-                  padding: {{ block.settings.padding }}px;
-                  position: relative;">
-        <span class="cora-level-badge">Lvl {{ this_level }}</span>
+      <div class="cora-container cora-lvl-{{ this_level }} {% if block.settings.mobile_stack %}cora-mobile-col{% endif %}"
+           style="
+             flex-direction: {{ block.settings.direction }};
+             justify-content: {{ block.settings.justify }};
+             align-items: {{ block.settings.align }};
+             flex-wrap: {{ block.settings.wrap }};
+             gap: {{ block.settings.gap }}px;
+             width: {{ block.settings.width }}%;
+             min-height: {{ block.settings.min_height }}px;
+             padding: {{ block.settings.padding }}px;
+             background-color: {{ block.settings.bg_color }};
+             {% if block.settings.glass %}
+               backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
+             {% endif %}
+           " 
+           {{ block.shopify_attributes }}>
+           
+           {%- if section.settings.design_mode -%}
+             <span class="cora-level-tag">{{ this_level }}</span>
+           {%- endif -%}
+
     {%- else -%}
-      {%- comment -%} RENDER WIDGETS (Text, Button, Image) {%- endcomment -%}
-      <div class="cora-widget" style="width: {{ block.settings.width }}%; padding: 5px;">
+      <div class="cora-widget" style="width: {{ block.settings.width }}%; padding: 5px;" {{ block.shopify_attributes }}>
         {%- case block.type -%}
           {%- when 'heading' -%}
-            <h2 style="margin:0; font-size:{{ block.settings.size }}px;">{{ block.settings.text }}</h2>
+            <{{ block.settings.tag }} style="margin:0; text-align:{{ block.settings.align}}; color:{{ block.settings.color }}; font-size:{{ block.settings.size }}px;">
+              {{ block.settings.text }}
+            </{{ block.settings.tag }}>
+          
+          {%- when 'text' -%}
+            <div style="text-align:{{ block.settings.align}}; color:{{ block.settings.color }};">
+              {{ block.settings.content }}
+            </div>
+
           {%- when 'button' -%}
-            <a href="#" class="btn">{{ block.settings.text }}</a>
+            <div style="text-align:{{ block.settings.align}};">
+              <a href="{{ block.settings.link }}" class="btn" 
+                 style="background: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: 12px 24px; text-decoration: none; display: inline-block;">
+                 {{ block.settings.text }}
+              </a>
+            </div>
+            
         {%- endcase -%}
       </div>
     {%- endif -%}
 
     {%- comment -%} 
-      2. THE "SMART CLOSING" LOGIC 
-      We calculate the difference between THIS block and the NEXT block.
-      If the next block is "higher up" (lower number), we must close divs.
+      --- 3. THE ELEMENTOR CLOSING LOGIC --- 
+      We decide how many </div> tags to print based on the NEXT block's level.
     {%- endcomment -%}
 
-    {%- if forloop.last -%}
-      {%- assign diff = this_level -%} {% comment %} Close everything at end {% endcomment %}
-    {%- else -%}
+    {%- assign close_count = 0 -%}
+
+    {%- if next_level <= this_level -%}
       {%- assign diff = this_level | minus: next_level -%}
+      
+      {%- if block.type == 'container' -%}
+        {%- comment -%} 
+           If I am a container and the next item is same/lower level, 
+           I must close myself. (+1 to the difference) 
+        {%- endcomment -%}
+        {%- assign close_count = diff | plus: 1 -%}
+      {%- else -%}
+        {%- comment -%} 
+           If I am a widget, I don't close myself (no div), 
+           but I might close my parent containers if we are stepping down.
+        {%- endcomment -%}
+        {%- assign close_count = diff -%}
+      {%- endif -%}
     {%- endif -%}
 
-    {%- if diff >= 0 and block.type == 'container' -%}
-      {%- comment -%} If I am a container and next is same/lower level, I close myself immediately (Empty Box) {%- endcomment -%}
+    {%- comment -%} Force close everything on the very last block {%- endcomment -%}
+    {%- if forloop.last -%}
+       {%- if block.type == 'container' -%}
+         {%- assign close_count = this_level | plus: 1 -%}
+       {%- else -%}
+         {%- assign close_count = this_level -%}
        {%- endif -%}
-
-    {%- comment -%} Close divs based on level difference {%- endcomment -%}
-    {%- if diff >= 0 -%}
-       {%- for i in (0..diff) -%}
-         {%- comment -%} 
-           Only close DIVs. Widgets don't have open tags waiting.
-           This logic assumes strict nesting. 
-           (In a real production version, we track open tags more carefully)
-         {%- endcomment -%}
-         </div> 
-       {%- endfor -%}
     {%- endif -%}
 
-    {%- comment -%} 
-       Logic Correction: The above loop is simplified. 
-       In reality, we only close if we are stepping DOWN.
-    {%- endcomment -%}
-    
+    {%- comment -%} EXECUTE CLOSE {%- endcomment -%}
+    {%- if close_count > 0 -%}
+      {%- for i in (1..close_count) -%}
+        </div> {%- endfor -%}
+    {%- endif -%}
+
   {%- endfor -%}
-  
+
 </div>
 
 {% schema %}
 {
-  "name": "Cora Visual Builder",
+  "name": "Cora Elementor Engine",
   "settings": [
-    { "type": "header", "content": "Developer Tools" },
-    { "type": "checkbox", "id": "design_mode", "label": "🔵 Enable Design Mode", "default": true, "info": "Shows outlines to help visualize the nesting." }
+    { "type": "header", "content": "Engine Settings" },
+    { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Borders)", "default": true }
   ],
   "blocks": [
     {
       "type": "container",
       "name": "📦 Container",
       "settings": [
-        { "type": "header", "content": "Visual Hierarchy" },
-        { "type": "range", "id": "level", "min": 0, "max": 5, "step": 1, "label": "Nesting Level", "default": 0, "info": "0 = Root, 1 = Inside previous Level 0..." },
-        
-        { "type": "header", "content": "Layout & Style" },
+        { "type": "header", "content": "HIERARCHY (The Magic)" },
+        { "type": "range", "id": "level", "min": 0, "max": 5, "step": 1, "label": "Nesting Level", "default": 0, "info": "0 = Section, 1 = Inside 0, 2 = Inside 1..." },
+
+        { "type": "header", "content": "FLEXBOX LAYOUT" },
         { "type": "select", "id": "direction", "label": "Direction", "options": [
-          { "value": "row", "label": "Horizontal (Row)" },
-          { "value": "column", "label": "Vertical (Column)" }
+          { "value": "row", "label": "Row (Horizontal)" },
+          { "value": "column", "label": "Column (Vertical)" }
         ], "default": "column" },
+        { "type": "select", "id": "justify", "label": "Justify Content", "options": [
+          { "value": "flex-start", "label": "Start" },
+          { "value": "center", "label": "Center" },
+          { "value": "flex-end", "label": "End" },
+          { "value": "space-between", "label": "Space Between" }
+        ], "default": "flex-start" },
+        { "type": "select", "id": "align", "label": "Align Items", "options": [
+          { "value": "stretch", "label": "Stretch" },
+          { "value": "center", "label": "Center" },
+          { "value": "flex-start", "label": "Start" },
+          { "value": "flex-end", "label": "End" }
+        ], "default": "stretch" },
+        { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap (px)", "default": 20 },
+        { "type": "select", "id": "wrap", "label": "Wrap", "options": [
+          { "value": "nowrap", "label": "No Wrap" },
+          { "value": "wrap", "label": "Wrap" }
+        ], "default": "nowrap" },
+
+        { "type": "header", "content": "SIZE & SPACING" },
         { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 },
-        { "type": "color", "id": "bg_color", "label": "Background Color", "default": "transparent" },
-        { "type": "range", "id": "padding", "min": 0, "max": 100, "step": 5, "unit": "px", "label": "Padding", "default": 20 }
+        { "type": "range", "id": "min_height", "min": 0, "max": 800, "step": 50, "unit": "px", "label": "Min Height", "default": 50 },
+        { "type": "range", "id": "padding", "min": 0, "max": 100, "step": 5, "label": "Padding", "default": 20 },
+        
+        { "type": "header", "content": "STYLE" },
+        { "type": "color", "id": "bg_color", "label": "Background", "default": "transparent" },
+        { "type": "checkbox", "id": "glass", "label": "Glassmorphism Effect", "default": false },
+        
+        { "type": "header", "content": "RESPONSIVE" },
+        { "type": "checkbox", "id": "mobile_stack", "label": "Stack on Mobile (Force Column)", "default": true }
       ]
     },
     {
@@ -132,7 +202,21 @@
       "settings": [
         { "type": "range", "id": "level", "min": 1, "max": 6, "step": 1, "label": "Nesting Level", "default": 1 },
         { "type": "text", "id": "text", "label": "Text", "default": "Headline" },
-        { "type": "range", "id": "size", "min": 10, "max": 100, "step": 1, "unit": "px", "label": "Font Size", "default": 32 },
+        { "type": "select", "id": "tag", "label": "HTML Tag", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "h3", "label": "H3" } ], "default": "h2" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#000000" },
+        { "type": "range", "id": "size", "min": 12, "max": 100, "label": "Size", "default": 32 },
+        { "type": "select", "id": "align", "label": "Align", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
+        { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "📄 Text Block",
+      "settings": [
+        { "type": "range", "id": "level", "min": 1, "max": 6, "step": 1, "label": "Nesting Level", "default": 1 },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Lorem ipsum...</p>" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#333333" },
+        { "type": "select", "id": "align", "label": "Align", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
         { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 }
       ]
     },
@@ -143,10 +227,13 @@
         { "type": "range", "id": "level", "min": 1, "max": 6, "step": 1, "label": "Nesting Level", "default": 1 },
         { "type": "text", "id": "text", "label": "Label", "default": "Click Me" },
         { "type": "url", "id": "link", "label": "Link" },
+        { "type": "color", "id": "bg_color", "label": "Background", "default": "#000000" },
+        { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
+        { "type": "select", "id": "align", "label": "Align", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
         { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 }
       ]
     }
   ],
-  "presets": [{ "name": "Cora Visual Builder" }]
+  "presets": [{ "name": "Cora Elementor Engine" }]
 }
 {% endschema %}

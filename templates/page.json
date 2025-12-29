@@ -18,8 +18,8 @@
             "level": 0,
             "direction": "column",
             "width": 100,
-            "bg_color": "transparent",
-            "padding": 20
+            "padding": 20,
+            "bg_color": "transparent"
           }
         },
         "heading_RncdL6": {
@@ -46,8 +46,8 @@
             "level": 0,
             "direction": "column",
             "width": 100,
-            "bg_color": "rgba(0,0,0,0)",
-            "padding": 20
+            "padding": 20,
+            "bg_color": "rgba(0,0,0,0)"
           }
         },
         "button_gtxNeT": {
@@ -62,8 +62,8 @@
         "heading_JbFra8": {
           "type": "heading",
           "settings": {
-            "level": 2,
-            "text": "Headline",
+            "level": 3,
+            "text": "{{ page.title }}",
             "size": 32,
             "width": 100
           }

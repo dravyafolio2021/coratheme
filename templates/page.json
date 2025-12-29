@@ -53,9 +53,18 @@
         "button_gtxNeT": {
           "type": "button",
           "settings": {
-            "level": 2,
+            "level": 1,
             "text": "Click Me",
             "link": "",
+            "width": 100
+          }
+        },
+        "heading_JbFra8": {
+          "type": "heading",
+          "settings": {
+            "level": 1,
+            "text": "Headline",
+            "size": 32,
             "width": 100
           }
         }
@@ -65,7 +74,8 @@
         "heading_RncdL6",
         "button_DaG4rb",
         "container_GeaWwn",
-        "button_gtxNeT"
+        "button_gtxNeT",
+        "heading_JbFra8"
       ],
       "name": "Cora Visual Builder",
       "settings": {

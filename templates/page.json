@@ -20,7 +20,7 @@
             "width_boxed": 1200,
             "width_percent": 100,
             "min_height": 60,
-            "direction": "row",
+            "direction": "column",
             "justify": "flex-start",
             "align": "stretch",
             "gap": 20,
@@ -63,7 +63,7 @@
             "width_boxed": 1200,
             "width_percent": 100,
             "min_height": 60,
-            "direction": "row",
+            "direction": "column",
             "justify": "flex-start",
             "align": "stretch",
             "gap": 20,
@@ -110,10 +110,10 @@
       "name": "Cora Visual Builder",
       "settings": {
         "design_mode": true,
-        "direction": "row",
+        "direction": "row-reverse",
         "justify": "flex-start",
         "align": "stretch",
-        "gap": 15,
+        "gap": 25,
         "wrap": "nowrap"
       }
     },

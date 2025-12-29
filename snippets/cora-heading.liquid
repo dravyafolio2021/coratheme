@@ -1,0 +1,22 @@
+{%- style -%}
+  .cora-heading-{{ block.id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    text-align: {{ block.settings.alignment }};
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {{ block.settings.font_weight }};
+    line-height: 1.2;
+    letter-spacing: {{ block.settings.letter_spacing }}px;
+    padding: {{ block.settings.padding_y }}px 0;
+  }
+  /* Mobile Responsive */
+  @media screen and (max-width: 768px) {
+    .cora-heading-{{ block.id }} {
+      font-size: {{ block.settings.font_size | divided_by: 1.5 | round }}px;
+    }
+  }
+{%- endstyle -%}
+
+<{{ block.settings.html_tag }} class="cora-heading-{{ block.id }}" {{ block.shopify_attributes }}>
+  {{ block.settings.heading_text }}
+</{{ block.settings.html_tag }}>

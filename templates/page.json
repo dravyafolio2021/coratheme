@@ -12,25 +12,81 @@
     "cora_container_FN8CK9": {
       "type": "cora-container",
       "blocks": {
+        "row_start_JmC9kF": {
+          "type": "row_start",
+          "settings": {
+            "width": 50,
+            "direction": "column",
+            "bg_color": "rgba(0,0,0,0)",
+            "padding": 20,
+            "gap": 10,
+            "align": "flex-start"
+          }
+        },
         "heading_eyxWb8": {
           "type": "heading",
-          "settings": {}
+          "settings": {
+            "heading_text": "Add Your Heading",
+            "html_tag": "h2",
+            "font_size": 32,
+            "font_weight": 700,
+            "text_color": "#000000",
+            "alignment": "center",
+            "padding_y": 10
+          }
         },
         "text_PnUiTL": {
           "type": "text",
-          "settings": {}
+          "settings": {
+            "text_content": "<p>Lorem ipsum dolor sit amet.</p>",
+            "text_color": "#333333",
+            "alignment": "left"
+          }
+        },
+        "button_eUgLdE": {
+          "type": "button",
+          "settings": {
+            "label": "Click Me",
+            "link": "",
+            "bg_color": "#000000",
+            "text_color": "#ffffff",
+            "border_radius": 5,
+            "padding_x": 30,
+            "padding_y": 12,
+            "alignment": "left"
+          }
+        },
+        "row_start_dzMtKb": {
+          "type": "row_start",
+          "settings": {
+            "width": 50,
+            "direction": "column",
+            "bg_color": "rgba(0,0,0,0)",
+            "padding": 20,
+            "gap": 10,
+            "align": "flex-start"
+          }
         },
         "button_Jbbcxt": {
           "type": "button",
           "settings": {
             "label": "Click Me",
-            "link": ""
+            "link": "",
+            "bg_color": "#000000",
+            "text_color": "#ffffff",
+            "border_radius": 5,
+            "padding_x": 30,
+            "padding_y": 12,
+            "alignment": "left"
           }
         }
       },
       "block_order": [
+        "row_start_JmC9kF",
         "heading_eyxWb8",
         "text_PnUiTL",
+        "button_eUgLdE",
+        "row_start_dzMtKb",
         "button_Jbbcxt"
       ],
       "name": "Cora Container",
@@ -86,7 +142,7 @@
             "shadow_vertical": 5,
             "shadow_blur": 15,
             "shadow_spread": 0,
-            "shadow_color": "rgba(0,0,0,0.1)",
+            "shadow_color": "#0000001a",
             "mobile_flex_direction": "column",
             "mobile_gap": 15,
             "mobile_min_height": 0,

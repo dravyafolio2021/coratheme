@@ -1,0 +1,17 @@
+{%- comment -%} Find all children of the current ID {%- endcomment -%}
+{%- assign current_children = section.blocks | where: "type", "node" | where: "settings.parent_id", target_id -%}
+
+<div class="cora-node {{ css_class }}" style="{{ css_style }}" {{ shopify_attributes }}>
+  
+  {%- comment -%} 1. RENDER CONTENT (If this node has text/image) {%- endcomment -%}
+  {%- if content != blank -%}
+    <div class="cora-content">{{ content }}</div>
+  {%- endif -%}
+
+  {%- comment -%} 2. RENDER CHILDREN (The Nesting Magic) {%- endcomment -%}
+  {%- for child in current_children -%}
+    {%- comment -%} Pass control to Layer 2 {%- endcomment -%}
+    {% render 'cora-node-2', block: child, target_id: child.settings.node_id, css_class: child.settings.css_class, css_style: child.settings.css_style, content: child.settings.content, shopify_attributes: child.shopify_attributes %}
+  {%- endfor -%}
+
+</div>

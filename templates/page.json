@@ -53,7 +53,7 @@
         "button_gtxNeT": {
           "type": "button",
           "settings": {
-            "level": 1,
+            "level": 2,
             "text": "Click Me",
             "link": "",
             "width": 100

@@ -1,39 +1,68 @@
 {%- style -%}
-  /* --- CORA BUILDER CSS --- */
+  /* --- CORA BUILDER ENGINE CSS --- */
   .cora-section-wrapper {
     width: 100%;
     overflow: hidden;
   }
 
+  /* Base Layout Classes */
   .cora-container {
     display: flex;
     box-sizing: border-box;
-    position: relative;
+    position: relative; /* Needed for Design Mode badges */
     transition: all 0.2s ease-in-out;
   }
-
-  /* EDITOR MODE: Blueprint Guides */
-  .shopify-design-mode .cora-container {
-    border: 1px dashed #bbb;
-    min-height: 40px; /* Make empty containers visible */
+  
+  .cora-widget {
+    position: relative; /* Needed for Design Mode badges */
+    box-sizing: border-box;
+    width: 100%; /* Default width unless overridden */
   }
-  .shopify-design-mode .cora-container:hover {
-    border-color: #0084ff;
-    box-shadow: inset 0 0 0 1px #0084ff;
+
+  /* --- DESIGN MODE (The Visual Builder Look) --- */
+  
+  /* 1. Dashed Outlines for ALL elements (Containers & Widgets) */
+  .shopify-design-mode .cora-container,
+  .shopify-design-mode .cora-widget {
+    outline: 1px dashed #ccc; /* Use outline so it doesn't affect width calculations */
+    min-height: 30px; /* Ensure empty elements are clickable */
+  }
+
+  /* 2. Hover Effect (Active Element) */
+  .shopify-design-mode .cora-container:hover,
+  .shopify-design-mode .cora-widget:hover {
+    outline: 1px solid #0084ff;
+    background-color: rgba(0, 132, 255, 0.05);
+    z-index: 2; /* Bring active element to front visually */
+  }
+
+  /* 3. The Level Badge (The Blue Square) */
+  .cora-level-tag {
+    display: none; /* Hidden by default */
   }
   .shopify-design-mode .cora-level-tag {
-    position: absolute; top: 0; left: 0;
-    background: #0084ff; color: white;
-    font-size: 9px; padding: 1px 4px;
-    z-index: 2; pointer-events: none;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #0084ff;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    line-height: 1;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through to the element */
+  }
+  
+  /* Specific styling for widget badges */
+  .shopify-design-mode .cora-widget .cora-level-tag {
+    background-color: #666; /* Grey badge for widgets to distinguish from containers */
   }
 
   /* RESPONSIVE: Mobile defaults */
   @media screen and (max-width: 768px) {
     .cora-mobile-col { flex-direction: column !important; }
-    .cora-mobile-row { flex-direction: row !important; }
-    .cora-mobile-w-100 { width: 100% !important; }
-    .cora-mobile-pad-20 { padding: 20px !important; }
   }
 {%- endstyle -%}
 
@@ -55,16 +84,37 @@
     {%- comment -%} --- 2. RENDER THE OPENING TAG / WIDGET --- {%- endcomment -%}
     
     {%- if block.type == 'container' -%}
+      
+      {%- comment -%} LOGIC: Calculate Width {%- endcomment -%}
+      {%- assign final_width = block.settings.width_percent | append: '%' -%}
+      {%- assign final_max_width = 'none' -%}
+      {%- assign margin_auto = '' -%}
+      
+      {%- if block.settings.content_width == 'boxed' -%}
+        {%- assign final_max_width = block.settings.width_boxed | append: 'px' -%}
+        {%- assign margin_auto = 'margin-left: auto; margin-right: auto;' -%}
+      {%- endif -%}
+
       <div class="cora-container cora-lvl-{{ this_level }} {% if block.settings.mobile_stack %}cora-mobile-col{% endif %}"
            style="
+             /* Elementor Layout Features */
+             display: flex;
              flex-direction: {{ block.settings.direction }};
              justify-content: {{ block.settings.justify }};
              align-items: {{ block.settings.align }};
              flex-wrap: {{ block.settings.wrap }};
              gap: {{ block.settings.gap }}px;
-             width: {{ block.settings.width }}%;
+             
+             /* Sizing */
+             width: {{ final_width }};
+             max-width: {{ final_max_width }};
              min-height: {{ block.settings.min_height }}px;
+             
+             /* Spacing & Auto Margins for Boxed Layout */
              padding: {{ block.settings.padding }}px;
+             {{ margin_auto }}
+             
+             /* Design */
              background-color: {{ block.settings.bg_color }};
              {% if block.settings.glass %}
                backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
@@ -78,6 +128,11 @@
 
     {%- else -%}
       <div class="cora-widget" style="width: {{ block.settings.width }}%; padding: 5px;" {{ block.shopify_attributes }}>
+        
+        {%- if section.settings.design_mode -%}
+             <span class="cora-level-tag">{{ this_level }}</span>
+        {%- endif -%}
+
         {%- case block.type -%}
           {%- when 'heading' -%}
             <{{ block.settings.tag }} style="margin:0; text-align:{{ block.settings.align}}; color:{{ block.settings.color }}; font-size:{{ block.settings.size }}px;">
@@ -96,13 +151,22 @@
                  {{ block.settings.text }}
               </a>
             </div>
-            
+          
+           {%- when 'image' -%}
+            <div style="text-align:{{ block.settings.align}};">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 800 | image_tag: style: 'max-width: 100%; height: auto;' }}
+              {% else %}
+                {{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+            </div>
+
         {%- endcase -%}
       </div>
     {%- endif -%}
 
     {%- comment -%} 
-      --- 3. THE ELEMENTOR CLOSING LOGIC --- 
+      --- 3. THE CLOSING LOGIC (The "End" of the box) --- 
       We decide how many </div> tags to print based on the NEXT block's level.
     {%- endcomment -%}
 
@@ -119,7 +183,7 @@
         {%- assign close_count = diff | plus: 1 -%}
       {%- else -%}
         {%- comment -%} 
-           If I am a widget, I don't close myself (no div), 
+           If I am a widget, I don't close myself (no div to close), 
            but I might close my parent containers if we are stepping down.
         {%- endcomment -%}
         {%- assign close_count = diff -%}
@@ -150,26 +214,38 @@
   "name": "Cora Elementor Engine",
   "settings": [
     { "type": "header", "content": "Engine Settings" },
-    { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Borders)", "default": true }
+    { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Outlines)", "default": true, "info": "Shows dashed outlines and level tags for easy editing." }
   ],
   "blocks": [
     {
       "type": "container",
       "name": "📦 Container",
       "settings": [
-        { "type": "header", "content": "HIERARCHY (The Magic)" },
-        { "type": "range", "id": "level", "min": 0, "max": 5, "step": 1, "label": "Nesting Level", "default": 0, "info": "0 = Section, 1 = Inside 0, 2 = Inside 1..." },
+        { "type": "header", "content": "HIERARCHY" },
+        { "type": "range", "id": "level", "min": 0, "max": 5, "step": 1, "label": "Nesting Level", "default": 0, "info": "0 = Root, 1 = Inside Level 0..." },
 
-        { "type": "header", "content": "FLEXBOX LAYOUT" },
+        { "type": "header", "content": "LAYOUT (Parent Settings)" },
+        { "type": "select", "id": "content_width", "label": "Content Width", "options": [
+          { "value": "full", "label": "Full Width (100%)" },
+          { "value": "boxed", "label": "Boxed" }
+        ], "default": "full" },
+        { "type": "range", "id": "width_boxed", "min": 500, "max": 1600, "step": 20, "unit": "px", "label": "Boxed Width", "default": 1200, "info": "Only works if Content Width is 'Boxed'" },
+        { "type": "range", "id": "width_percent", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Container Width (%)", "default": 100, "info": "Use 50% for 2-column layouts" },
+        { "type": "range", "id": "min_height", "min": 0, "max": 1000, "step": 20, "unit": "px", "label": "Min Height", "default": 60 },
+
+        { "type": "header", "content": "ITEMS (Flexbox)" },
         { "type": "select", "id": "direction", "label": "Direction", "options": [
           { "value": "row", "label": "Row (Horizontal)" },
-          { "value": "column", "label": "Column (Vertical)" }
+          { "value": "column", "label": "Column (Vertical)" },
+          { "value": "row-reverse", "label": "Row Reverse" },
+          { "value": "column-reverse", "label": "Column Reverse" }
         ], "default": "column" },
         { "type": "select", "id": "justify", "label": "Justify Content", "options": [
           { "value": "flex-start", "label": "Start" },
           { "value": "center", "label": "Center" },
           { "value": "flex-end", "label": "End" },
-          { "value": "space-between", "label": "Space Between" }
+          { "value": "space-between", "label": "Space Between" },
+          { "value": "space-around", "label": "Space Around" }
         ], "default": "flex-start" },
         { "type": "select", "id": "align", "label": "Align Items", "options": [
           { "value": "stretch", "label": "Stretch" },
@@ -177,22 +253,16 @@
           { "value": "flex-start", "label": "Start" },
           { "value": "flex-end", "label": "End" }
         ], "default": "stretch" },
-        { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap (px)", "default": 20 },
+        { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap between elements", "default": 20 },
         { "type": "select", "id": "wrap", "label": "Wrap", "options": [
           { "value": "nowrap", "label": "No Wrap" },
           { "value": "wrap", "label": "Wrap" }
         ], "default": "nowrap" },
-
-        { "type": "header", "content": "SIZE & SPACING" },
-        { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 },
-        { "type": "range", "id": "min_height", "min": 0, "max": 800, "step": 50, "unit": "px", "label": "Min Height", "default": 50 },
-        { "type": "range", "id": "padding", "min": 0, "max": 100, "step": 5, "label": "Padding", "default": 20 },
         
         { "type": "header", "content": "STYLE" },
         { "type": "color", "id": "bg_color", "label": "Background", "default": "transparent" },
+        { "type": "range", "id": "padding", "min": 0, "max": 100, "step": 5, "label": "Padding", "default": 20 },
         { "type": "checkbox", "id": "glass", "label": "Glassmorphism Effect", "default": false },
-        
-        { "type": "header", "content": "RESPONSIVE" },
         { "type": "checkbox", "id": "mobile_stack", "label": "Stack on Mobile (Force Column)", "default": true }
       ]
     },
@@ -230,6 +300,16 @@
         { "type": "color", "id": "bg_color", "label": "Background", "default": "#000000" },
         { "type": "color", "id": "text_color", "label": "Text Color", "default": "#ffffff" },
         { "type": "select", "id": "align", "label": "Align", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "left" },
+        { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "🖼️ Image",
+      "settings": [
+        { "type": "range", "id": "level", "min": 1, "max": 6, "step": 1, "label": "Nesting Level", "default": 1 },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "align", "label": "Align", "options": [ { "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }, { "value": "right", "label": "Right" } ], "default": "center" },
         { "type": "range", "id": "width", "min": 10, "max": 100, "step": 5, "unit": "%", "label": "Width", "default": 100 }
       ]
     }

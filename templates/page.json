@@ -16,10 +16,19 @@
           "type": "container",
           "settings": {
             "level": 0,
+            "content_width": "full",
+            "width_boxed": 1200,
+            "width_percent": 100,
+            "min_height": 60,
             "direction": "row",
-            "width": 100,
+            "justify": "flex-start",
+            "align": "stretch",
+            "gap": 20,
+            "wrap": "nowrap",
+            "bg_color": "rgba(0,0,0,0)",
             "padding": 20,
-            "bg_color": "transparent"
+            "glass": false,
+            "mobile_stack": true
           }
         },
         "heading_RncdL6": {
@@ -27,7 +36,10 @@
           "settings": {
             "level": 1,
             "text": "shravya",
+            "tag": "h2",
+            "color": "#000000",
             "size": 32,
+            "align": "left",
             "width": 100
           }
         },
@@ -37,6 +49,9 @@
             "level": 1,
             "text": "Click Me",
             "link": "",
+            "bg_color": "#000000",
+            "text_color": "#ffffff",
+            "align": "left",
             "width": 100
           }
         },
@@ -44,10 +59,19 @@
           "type": "container",
           "settings": {
             "level": 0,
+            "content_width": "full",
+            "width_boxed": 1200,
+            "width_percent": 100,
+            "min_height": 60,
             "direction": "row",
-            "width": 100,
+            "justify": "flex-start",
+            "align": "stretch",
+            "gap": 20,
+            "wrap": "nowrap",
+            "bg_color": "rgba(0,0,0,0)",
             "padding": 20,
-            "bg_color": "rgba(0,0,0,0)"
+            "glass": false,
+            "mobile_stack": true
           }
         },
         "button_gtxNeT": {
@@ -56,6 +80,9 @@
             "level": 1,
             "text": "Click Me",
             "link": "",
+            "bg_color": "#000000",
+            "text_color": "#ffffff",
+            "align": "left",
             "width": 100
           }
         },
@@ -64,7 +91,10 @@
           "settings": {
             "level": 3,
             "text": "{{ page.title }}",
+            "tag": "h2",
+            "color": "#000000",
             "size": 32,
+            "align": "left",
             "width": 100
           }
         }
@@ -79,7 +109,12 @@
       ],
       "name": "Cora Visual Builder",
       "settings": {
-        "design_mode": true
+        "design_mode": true,
+        "direction": "row",
+        "justify": "flex-start",
+        "align": "stretch",
+        "gap": 15,
+        "wrap": "nowrap"
       }
     },
     "cora_header_CHHPXG": {

@@ -20,95 +20,58 @@
   }
 
   /* --- DESIGN MODE (The Visual Builder Look) --- */
-  
-  /* 1. Dashed Outlines for ALL elements (Containers & Widgets) */
   .shopify-design-mode .cora-container,
   .shopify-design-mode .cora-widget {
-    outline: 1px dashed #ccc; /* Use outline so it doesn't affect width calculations */
-    min-height: 30px; /* Ensure empty elements are clickable */
+    outline: 1px dashed #ccc; 
+    min-height: 30px; 
   }
 
-  /* 2. Hover Effect (Active Element) */
   .shopify-design-mode .cora-container:hover,
   .shopify-design-mode .cora-widget:hover {
     outline: 1px solid #0084ff;
     background-color: rgba(0, 132, 255, 0.05);
-    z-index: 2; /* Bring active element to front visually */
+    z-index: 2; 
   }
 
-  /* 3. The Level Badge (The Blue Square) */
-  .cora-level-tag {
-    display: none; /* Hidden by default */
-  }
+  /* Level Badges */
+  .cora-level-tag { display: none; }
   .shopify-design-mode .cora-level-tag {
     display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #0084ff;
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-    padding: 2px 6px;
-    line-height: 1;
-    z-index: 10;
-    pointer-events: none; /* Let clicks pass through to the element */
+    position: absolute; top: 0; left: 0;
+    background-color: #0084ff; color: white;
+    font-size: 10px; font-weight: bold;
+    padding: 2px 6px; z-index: 10;
+    pointer-events: none;
   }
-  
-  /* Specific styling for widget badges */
-  .shopify-design-mode .cora-widget .cora-level-tag {
-    background-color: #666; /* Grey badge for widgets to distinguish from containers */
-  }
+  .shopify-design-mode .cora-widget .cora-level-tag { background-color: #666; }
 
-  /* RESPONSIVE: Mobile defaults */
   @media screen and (max-width: 768px) {
     .cora-mobile-col { flex-direction: column !important; }
   }
 {%- endstyle -%}
 
-<div class="cora-section-wrapper {% if section.settings.design_mode %}shopify-design-mode{% endif %}" style="
-             /* Elementor Layout Features */
-             display: flex;
-             flex-direction: {{ block.settings.direction }};
-             justify-content: {{ block.settings.justify }};
-             align-items: {{ block.settings.align }};
-             flex-wrap: {{ block.settings.wrap }};
-             gap: {{ block.settings.gap }}px;
-             
-             /* Sizing */
-             width: {{ final_width }};
-             max-width: {{ final_max_width }};
-             min-height: {{ block.settings.min_height }}px;
-             
-             /* Spacing & Auto Margins for Boxed Layout */
-             padding: {{ block.settings.padding }}px;
-             {{ margin_auto }}
-             
-             /* Design */
-             background-color: {{ block.settings.bg_color }};
-             {% if block.settings.glass %}
-               backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
-             {% endif %}
-           " >
+<div class="cora-section-wrapper {% if section.settings.design_mode %}shopify-design-mode{% endif %}" 
+     style="
+       display: flex;
+       flex-direction: {{ section.settings.direction }};
+       justify-content: {{ section.settings.justify }};
+       align-items: {{ section.settings.align }};
+       flex-wrap: {{ section.settings.wrap }};
+       gap: {{ section.settings.gap }}px;
+     ">
   
   {%- for block in section.blocks -%}
     
-    {%- comment -%} --- 1. SETUP VARIABLES --- {%- endcomment -%}
     {%- assign next_block = section.blocks[forloop.index] -%}
     {%- assign this_level = block.settings.level | default: 0 -%}
     {%- assign next_level = next_block.settings.level | default: 0 -%}
     
-    {%- comment -%} Handle "End of Stream" by assuming next level is 0 {%- endcomment -%}
     {%- if forloop.last -%}
       {%- assign next_level = 0 -%} 
-      {%- assign is_last = true -%}
     {%- endif -%}
 
-    {%- comment -%} --- 2. RENDER THE OPENING TAG / WIDGET --- {%- endcomment -%}
-    
     {%- if block.type == 'container' -%}
       
-      {%- comment -%} LOGIC: Calculate Width {%- endcomment -%}
       {%- assign final_width = block.settings.width_percent | append: '%' -%}
       {%- assign final_max_width = 'none' -%}
       {%- assign margin_auto = '' -%}
@@ -120,24 +83,17 @@
 
       <div class="cora-container cora-lvl-{{ this_level }} {% if block.settings.mobile_stack %}cora-mobile-col{% endif %}"
            style="
-             /* Elementor Layout Features */
              display: flex;
              flex-direction: {{ block.settings.direction }};
              justify-content: {{ block.settings.justify }};
              align-items: {{ block.settings.align }};
              flex-wrap: {{ block.settings.wrap }};
              gap: {{ block.settings.gap }}px;
-             
-             /* Sizing */
              width: {{ final_width }};
              max-width: {{ final_max_width }};
              min-height: {{ block.settings.min_height }}px;
-             
-             /* Spacing & Auto Margins for Boxed Layout */
              padding: {{ block.settings.padding }}px;
              {{ margin_auto }}
-             
-             /* Design */
              background-color: {{ block.settings.bg_color }};
              {% if block.settings.glass %}
                backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
@@ -188,32 +144,18 @@
       </div>
     {%- endif -%}
 
-    {%- comment -%} 
-      --- 3. THE CLOSING LOGIC (The "End" of the box) --- 
-      We decide how many </div> tags to print based on the NEXT block's level.
-    {%- endcomment -%}
-
+    {%- comment -%} CLOSING LOGIC {%- endcomment -%}
     {%- assign close_count = 0 -%}
 
     {%- if next_level <= this_level -%}
       {%- assign diff = this_level | minus: next_level -%}
-      
       {%- if block.type == 'container' -%}
-        {%- comment -%} 
-           If I am a container and the next item is same/lower level, 
-           I must close myself. (+1 to the difference) 
-        {%- endcomment -%}
         {%- assign close_count = diff | plus: 1 -%}
       {%- else -%}
-        {%- comment -%} 
-           If I am a widget, I don't close myself (no div to close), 
-           but I might close my parent containers if we are stepping down.
-        {%- endcomment -%}
         {%- assign close_count = diff -%}
       {%- endif -%}
     {%- endif -%}
 
-    {%- comment -%} Force close everything on the very last block {%- endcomment -%}
     {%- if forloop.last -%}
        {%- if block.type == 'container' -%}
          {%- assign close_count = this_level | plus: 1 -%}
@@ -222,10 +164,10 @@
        {%- endif -%}
     {%- endif -%}
 
-    {%- comment -%} EXECUTE CLOSE {%- endcomment -%}
     {%- if close_count > 0 -%}
       {%- for i in (1..close_count) -%}
-        </div> {%- endfor -%}
+        </div> 
+      {%- endfor -%}
     {%- endif -%}
 
   {%- endfor -%}
@@ -239,30 +181,30 @@
     { "type": "header", "content": "Engine Settings" },
     { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Outlines)", "default": true, "info": "Shows dashed outlines and level tags for easy editing." },
     { "type": "header", "content": "ITEMS (Flexbox)" },
-        { "type": "select", "id": "direction", "label": "Direction", "options": [
-          { "value": "row", "label": "Row (Horizontal)" },
-          { "value": "column", "label": "Column (Vertical)" },
-          { "value": "row-reverse", "label": "Row Reverse" },
-          { "value": "column-reverse", "label": "Column Reverse" }
-        ], "default": "column" },
-        { "type": "select", "id": "justify", "label": "Justify Content", "options": [
-          { "value": "flex-start", "label": "Start" },
-          { "value": "center", "label": "Center" },
-          { "value": "flex-end", "label": "End" },
-          { "value": "space-between", "label": "Space Between" },
-          { "value": "space-around", "label": "Space Around" }
-        ], "default": "flex-start" },
-        { "type": "select", "id": "align", "label": "Align Items", "options": [
-          { "value": "stretch", "label": "Stretch" },
-          { "value": "center", "label": "Center" },
-          { "value": "flex-start", "label": "Start" },
-          { "value": "flex-end", "label": "End" }
-        ], "default": "stretch" },
-        { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap between elements", "default": 20 },
-        { "type": "select", "id": "wrap", "label": "Wrap", "options": [
-          { "value": "nowrap", "label": "No Wrap" },
-          { "value": "wrap", "label": "Wrap" }
-        ], "default": "nowrap" },
+    { "type": "select", "id": "direction", "label": "Direction", "options": [
+      { "value": "row", "label": "Row (Horizontal)" },
+      { "value": "column", "label": "Column (Vertical)" },
+      { "value": "row-reverse", "label": "Row Reverse" },
+      { "value": "column-reverse", "label": "Column Reverse" }
+    ], "default": "column" },
+    { "type": "select", "id": "justify", "label": "Justify Content", "options": [
+      { "value": "flex-start", "label": "Start" },
+      { "value": "center", "label": "Center" },
+      { "value": "flex-end", "label": "End" },
+      { "value": "space-between", "label": "Space Between" },
+      { "value": "space-around", "label": "Space Around" }
+    ], "default": "flex-start" },
+    { "type": "select", "id": "align", "label": "Align Items", "options": [
+      { "value": "stretch", "label": "Stretch" },
+      { "value": "center", "label": "Center" },
+      { "value": "flex-start", "label": "Start" },
+      { "value": "flex-end", "label": "End" }
+    ], "default": "stretch" },
+    { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap between elements", "default": 20 },
+    { "type": "select", "id": "wrap", "label": "Wrap", "options": [
+      { "value": "nowrap", "label": "No Wrap" },
+      { "value": "wrap", "label": "Wrap" }
+    ], "default": "nowrap" }
   ],
   "blocks": [
     {

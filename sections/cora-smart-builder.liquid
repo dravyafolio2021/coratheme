@@ -214,7 +214,32 @@
   "name": "Cora Elementor Engine",
   "settings": [
     { "type": "header", "content": "Engine Settings" },
-    { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Outlines)", "default": true, "info": "Shows dashed outlines and level tags for easy editing." }
+    { "type": "checkbox", "id": "design_mode", "label": "🔵 Design Mode (Show Outlines)", "default": true, "info": "Shows dashed outlines and level tags for easy editing." },
+    { "type": "header", "content": "ITEMS (Flexbox)" },
+        { "type": "select", "id": "direction", "label": "Direction", "options": [
+          { "value": "row", "label": "Row (Horizontal)" },
+          { "value": "column", "label": "Column (Vertical)" },
+          { "value": "row-reverse", "label": "Row Reverse" },
+          { "value": "column-reverse", "label": "Column Reverse" }
+        ], "default": "column" },
+        { "type": "select", "id": "justify", "label": "Justify Content", "options": [
+          { "value": "flex-start", "label": "Start" },
+          { "value": "center", "label": "Center" },
+          { "value": "flex-end", "label": "End" },
+          { "value": "space-between", "label": "Space Between" },
+          { "value": "space-around", "label": "Space Around" }
+        ], "default": "flex-start" },
+        { "type": "select", "id": "align", "label": "Align Items", "options": [
+          { "value": "stretch", "label": "Stretch" },
+          { "value": "center", "label": "Center" },
+          { "value": "flex-start", "label": "Start" },
+          { "value": "flex-end", "label": "End" }
+        ], "default": "stretch" },
+        { "type": "range", "id": "gap", "min": 0, "max": 100, "step": 5, "label": "Gap between elements", "default": 20 },
+        { "type": "select", "id": "wrap", "label": "Wrap", "options": [
+          { "value": "nowrap", "label": "No Wrap" },
+          { "value": "wrap", "label": "Wrap" }
+        ], "default": "nowrap" },
   ],
   "blocks": [
     {

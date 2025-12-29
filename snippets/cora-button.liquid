@@ -1,0 +1,24 @@
+{%- style -%}
+  .cora-btn-{{ block.id }} {
+    display: inline-block;
+    text-decoration: none;
+    padding: {{ block.settings.padding_y }}px {{ block.settings.padding_x }}px;
+    background-color: {{ block.settings.bg_color }};
+    color: {{ block.settings.text_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid {{ block.settings.bg_color }};
+  }
+  .cora-btn-{{ block.id }}:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+{%- endstyle -%}
+
+<div style="width: 100%; text-align: {{ block.settings.alignment }}; margin: 10px 0;">
+  <a href="{{ block.settings.link }}" class="cora-btn-{{ block.id }}" {{ block.shopify_attributes }}>
+    {{ block.settings.label }}
+  </a>
+</div>

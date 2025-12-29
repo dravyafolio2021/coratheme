@@ -66,7 +66,30 @@
   }
 {%- endstyle -%}
 
-<div class="cora-section-wrapper {% if section.settings.design_mode %}shopify-design-mode{% endif %}">
+<div class="cora-section-wrapper {% if section.settings.design_mode %}shopify-design-mode{% endif %}" style="
+             /* Elementor Layout Features */
+             display: flex;
+             flex-direction: {{ block.settings.direction }};
+             justify-content: {{ block.settings.justify }};
+             align-items: {{ block.settings.align }};
+             flex-wrap: {{ block.settings.wrap }};
+             gap: {{ block.settings.gap }}px;
+             
+             /* Sizing */
+             width: {{ final_width }};
+             max-width: {{ final_max_width }};
+             min-height: {{ block.settings.min_height }}px;
+             
+             /* Spacing & Auto Margins for Boxed Layout */
+             padding: {{ block.settings.padding }}px;
+             {{ margin_auto }}
+             
+             /* Design */
+             background-color: {{ block.settings.bg_color }};
+             {% if block.settings.glass %}
+               backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);
+             {% endif %}
+           " >
   
   {%- for block in section.blocks -%}
     

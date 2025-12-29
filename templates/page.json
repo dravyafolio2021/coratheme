@@ -12,17 +12,6 @@
     "cora_container_FN8CK9": {
       "type": "cora-container",
       "blocks": {
-        "row_start_JmC9kF": {
-          "type": "row_start",
-          "settings": {
-            "width": 50,
-            "direction": "column",
-            "bg_color": "rgba(0,0,0,0)",
-            "padding": 20,
-            "gap": 10,
-            "align": "flex-start"
-          }
-        },
         "heading_eyxWb8": {
           "type": "heading",
           "settings": {
@@ -56,17 +45,6 @@
             "alignment": "left"
           }
         },
-        "row_start_dzMtKb": {
-          "type": "row_start",
-          "settings": {
-            "width": 50,
-            "direction": "column",
-            "bg_color": "rgba(0,0,0,0)",
-            "padding": 20,
-            "gap": 10,
-            "align": "flex-start"
-          }
-        },
         "button_Jbbcxt": {
           "type": "button",
           "settings": {
@@ -82,11 +60,9 @@
         }
       },
       "block_order": [
-        "row_start_JmC9kF",
         "heading_eyxWb8",
         "text_PnUiTL",
         "button_eUgLdE",
-        "row_start_dzMtKb",
         "button_Jbbcxt"
       ],
       "name": "Cora Container",

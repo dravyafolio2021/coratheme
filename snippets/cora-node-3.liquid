@@ -11,7 +11,6 @@
   {%- comment -%} 2. RENDER CHILDREN (The Nesting Magic) {%- endcomment -%}
   {%- for child in current_children -%}
     {%- comment -%} Pass control to Layer 2 {%- endcomment -%}
-    {% render 'cora-node-3', block: child, target_id: child.settings.node_id, css_class: child.settings.css_class, css_style: child.settings.css_style, content: child.settings.content, shopify_attributes: child.shopify_attributes %}
   {%- endfor -%}
 
 </div>

@@ -9,47 +9,78 @@
  */
 {
   "sections": {
-    "cora_builder_pPn9JW": {
-      "type": "cora-builder",
+    "cora_smart_builder_NC47jw": {
+      "type": "cora-smart-builder",
       "blocks": {
-        "node_xT3FP6": {
-          "type": "node",
+        "container_X4xgxz": {
+          "type": "container",
           "settings": {
-            "node_id": "",
-            "parent_id": "",
-            "text_content": "",
-            "custom_css": "width: 100%; padding: 20px; background: #f4f4f4;",
-            "custom_class": ""
+            "level": 0,
+            "direction": "column",
+            "width": 100,
+            "bg_color": "transparent",
+            "padding": 20
           }
         },
-        "node_eTwm9d": {
-          "type": "node",
+        "heading_RncdL6": {
+          "type": "heading",
           "settings": {
-            "node_id": "",
-            "parent_id": "",
-            "text_content": "",
-            "custom_css": "width: 100%; padding: 20px; background: #f4f4f4;",
-            "custom_class": ""
+            "level": 1,
+            "text": "shravya",
+            "size": 32,
+            "width": 100
           }
         },
-        "node_REE9gA": {
-          "type": "node",
+        "button_DaG4rb": {
+          "type": "button",
           "settings": {
-            "node_id": "",
-            "parent_id": "",
-            "text_content": "",
-            "custom_css": "width: 100%; padding: 20px; background: #f4f4f4;",
-            "custom_class": ""
+            "level": 1,
+            "text": "Click Me",
+            "link": "",
+            "width": 100
+          }
+        },
+        "container_WaFG4e": {
+          "type": "container",
+          "settings": {
+            "level": 0,
+            "direction": "column",
+            "width": 100,
+            "bg_color": "transparent",
+            "padding": 20
+          }
+        },
+        "button_EBzEJg": {
+          "type": "button",
+          "settings": {
+            "level": 1,
+            "text": "Click Me",
+            "link": "",
+            "width": 100
+          }
+        },
+        "heading_BUFN8K": {
+          "type": "heading",
+          "settings": {
+            "level": 1,
+            "text": "hi shravya",
+            "size": 32,
+            "width": 100
           }
         }
       },
       "block_order": [
-        "node_xT3FP6",
-        "node_eTwm9d",
-        "node_REE9gA"
+        "container_X4xgxz",
+        "heading_RncdL6",
+        "button_DaG4rb",
+        "container_WaFG4e",
+        "button_EBzEJg",
+        "heading_BUFN8K"
       ],
-      "name": "Cora Builder Engine",
-      "settings": {}
+      "name": "Cora Visual Builder",
+      "settings": {
+        "design_mode": true
+      }
     },
     "cora_header_CHHPXG": {
       "type": "cora-header",
@@ -1017,7 +1048,7 @@
     }
   },
   "order": [
-    "cora_builder_pPn9JW",
+    "cora_smart_builder_NC47jw",
     "cora_header_CHHPXG",
     "main",
     "cora_product_hero_DzBVUT",

@@ -16,7 +16,7 @@
           "type": "container",
           "settings": {
             "level": 0,
-            "direction": "column",
+            "direction": "row",
             "width": 100,
             "padding": 20,
             "bg_color": "transparent"
@@ -44,7 +44,7 @@
           "type": "container",
           "settings": {
             "level": 0,
-            "direction": "column",
+            "direction": "row",
             "width": 100,
             "padding": 20,
             "bg_color": "rgba(0,0,0,0)"
@@ -79,7 +79,7 @@
       ],
       "name": "Cora Visual Builder",
       "settings": {
-        "design_mode": false
+        "design_mode": true
       }
     },
     "cora_header_CHHPXG": {

@@ -1,0 +1,23 @@
+{%- style -%}
+  .cora-img-wrapper-{{ block.id }} {
+    width: 100%;
+    text-align: {{ block.settings.alignment }};
+  }
+  .cora-img-{{ block.id }} {
+    max-width: {{ block.settings.width }}%;
+    height: auto;
+    border-radius: {{ block.settings.border_radius }}px;
+    box-shadow: {{ block.settings.shadow_opacity }}px {{ block.settings.shadow_opacity }}px 20px rgba(0,0,0, {{ block.settings.shadow_opacity | divided_by: 100.0 }});
+  }
+{%- endstyle -%}
+
+<div class="cora-img-wrapper-{{ block.id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.image != blank %}
+    <img src="{{ block.settings.image | image_url: width: 800 }}" 
+         alt="{{ block.settings.image.alt }}" 
+         class="cora-img-{{ block.id }}"
+         loading="lazy">
+  {% else %}
+    {{ 'image' | placeholder_svg_tag: 'cora-img-' | append: block.id }}
+  {% endif %}
+</div>

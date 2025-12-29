@@ -1,0 +1,48 @@
+{%- style -%}
+  .cora-builder-section { width: 100%; overflow: hidden; }
+  .cora-node { display: flex; flex-wrap: wrap; box-sizing: border-box; }
+  .cora-content { width: 100%; }
+{%- endstyle -%}
+
+<div class="cora-builder-section">
+  {%- comment -%} Find Root Nodes (Blocks with NO Parent ID) {%- endcomment -%}
+  {%- assign root_nodes = section.blocks | where: "type", "node" -%}
+  
+  {%- for block in root_nodes -%}
+    {%- if block.settings.parent_id == blank -%}
+      {% render 'cora-node-1', 
+         block: block, 
+         target_id: block.settings.node_id, 
+         css_class: block.settings.custom_class,
+         css_style: block.settings.custom_css,
+         content: block.settings.text_content,
+         shopify_attributes: block.shopify_attributes 
+      %}
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Cora Builder Engine",
+  "blocks": [
+    {
+      "type": "node",
+      "name": "📦 Node (Element)",
+      "settings": [
+        { "type": "header", "content": "Identity (The Logic)" },
+        { "type": "text", "id": "node_id", "label": "Block ID", "info": "Give this block a unique name (e.g., 'hero-box')" },
+        { "type": "text", "id": "parent_id", "label": "Parent ID", "info": "Enter the Block ID you want to put this inside. Leave empty for Root." },
+        
+        { "type": "header", "content": "Content" },
+        { "type": "richtext", "id": "text_content", "label": "Text / HTML" },
+        
+        { "type": "header", "content": "Visuals (CSS)" },
+        { "type": "textarea", "id": "custom_css", "label": "Inline CSS", "default": "width: 100%; padding: 20px; background: #f4f4f4;", "info": "Write standard CSS here." },
+        { "type": "text", "id": "custom_class", "label": "CSS Class" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Cora Builder Engine" }]
+}
+{% endschema %}

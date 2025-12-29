@@ -1,0 +1,25 @@
+{%- style -%}
+  .cora-inner-{{ block.id }} {
+    display: flex;
+    flex-direction: {{ block.settings.direction }};
+    justify-content: {{ block.settings.justify }};
+    align-items: {{ block.settings.align }};
+    gap: {{ block.settings.gap }}px;
+    width: {{ block.settings.width }}%;
+    background: {{ block.settings.bg_color }};
+    padding: {{ block.settings.padding }}px;
+    border-radius: {{ block.settings.radius }}px;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Allows wrapping if content is too big */
+  }
+  
+  /* Mobile: Force full width usually */
+  @media screen and (max-width: 768px) {
+    .cora-inner-{{ block.id }} {
+      width: 100% !important;
+      flex-direction: column;
+    }
+  }
+{%- endstyle -%}
+
+<div class="cora-inner-{{ block.id }}" {{ block.shopify_attributes }}>

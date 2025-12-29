@@ -44,15 +44,19 @@
 
 <div class="cora-container-{{ section.id }}">
   {%- for block in section.blocks -%}
-    {%- case block.type -%}
-      {%- when 'heading' -%}
-        <h2 style="color: {{ block.settings.color }}; margin:0;">{{ block.settings.text }}</h2>
-      {%- when 'text' -%}
-        <div style="color: {{ block.settings.color }};">{{ block.settings.text }}</div>
-      {%- when 'button' -%}
-        <a href="{{ block.settings.link }}" style="padding: 10px 20px; background: #000; color: #fff; text-decoration: none;">{{ block.settings.label }}</a>
-    {%- endcase -%}
-  {%- endfor -%}
+  {%- case block.type -%}
+    {%- when 'heading' -%}
+      {% render 'cora-heading', block: block %}
+    {%- when 'text' -%}
+      {% render 'cora-text', block: block %}
+    {%- when 'button' -%}
+      {% render 'cora-button', block: block %}
+    {%- when 'image' -%}
+      {% render 'cora-image', block: block %}
+    {%- when 'spacer' -%}
+      {% render 'cora-spacer', block: block %}
+  {%- endcase -%}
+{%- endfor -%}
 </div>
 
 {% schema %}
@@ -251,6 +255,13 @@
     ], "default": "center" }
   ]
 },
+{
+  "type": "spacer",
+  "name": "Spacer",
+  "settings": [
+    { "type": "range", "id": "height", "min": 10, "max": 200, "step": 5, "unit": "px", "label": "Height", "default": 50 }
+  ]
+}
 
   ],
   "presets": [

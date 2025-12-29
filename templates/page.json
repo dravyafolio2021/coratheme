@@ -9,6 +9,103 @@
  */
 {
   "sections": {
+    "cora_container_FN8CK9": {
+      "type": "cora-container",
+      "blocks": {
+        "heading_eyxWb8": {
+          "type": "heading",
+          "settings": {}
+        },
+        "text_PnUiTL": {
+          "type": "text",
+          "settings": {}
+        },
+        "button_Jbbcxt": {
+          "type": "button",
+          "settings": {
+            "label": "Click Me",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_eyxWb8",
+        "text_PnUiTL",
+        "button_Jbbcxt"
+      ],
+      "name": "Cora Container",
+      "settings": {
+        "content_width": "boxed",
+        "max_width": 1200,
+        "min_height": 400,
+        "direction_desktop": "column",
+        "direction_mobile": "column",
+        "justify_content": "center",
+        "align_items": "center",
+        "gap": 20,
+        "bg_color": "#f4f4f4",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_horizontal": 20
+      }
+    },
+    "176701183560478b45": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_8ceb958_jmpTiV": {
+          "type": "ai_gen_block_8ceb958",
+          "settings": {
+            "desktop_width_percent": 100,
+            "flex_direction": "row",
+            "justify_content": "flex-start",
+            "align_items": "stretch",
+            "flex_wrap": "nowrap",
+            "gap": 20,
+            "min_height": 0,
+            "overflow": "visible",
+            "padding_top": 20,
+            "padding_bottom": 20,
+            "padding_left": 20,
+            "padding_right": 20,
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "background_color": "rgba(0,0,0,0)",
+            "background_size": "cover",
+            "background_position": "center center",
+            "background_repeat": "no-repeat",
+            "enable_overlay": false,
+            "overlay_color": "#000000",
+            "overlay_opacity": 0.5,
+            "enable_border": false,
+            "border_width": 1,
+            "border_style": "solid",
+            "border_color": "#000000",
+            "border_radius": 0,
+            "enable_shadow": false,
+            "shadow_horizontal": 0,
+            "shadow_vertical": 5,
+            "shadow_blur": 15,
+            "shadow_spread": 0,
+            "shadow_color": "rgba(0,0,0,0.1)",
+            "mobile_flex_direction": "column",
+            "mobile_gap": 15,
+            "mobile_min_height": 0,
+            "mobile_padding_top": 15,
+            "mobile_padding_bottom": 15,
+            "mobile_padding_left": 15,
+            "mobile_padding_right": 15,
+            "mobile_margin_top": 0,
+            "mobile_margin_bottom": 0,
+            "html_content": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_8ceb958_jmpTiV"
+      ],
+      "settings": {}
+    },
     "cora_promo_bar_3TUiCc": {
       "type": "cora-promo-bar",
       "name": "Cora Promo Bar (Marquee)",
@@ -994,6 +1091,8 @@
     }
   },
   "order": [
+    "cora_container_FN8CK9",
+    "176701183560478b45",
     "cora_promo_bar_3TUiCc",
     "cora_header_CHHPXG",
     "main",
